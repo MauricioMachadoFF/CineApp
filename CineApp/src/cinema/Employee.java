@@ -6,6 +6,7 @@ public class Employee {
 	private String CPF;
 	private int employeeCode;
 	
+	//KInda like the create/registerEmployee
 	public Employee(String name, String cellphone, String CPF, int employeeCode) {
 		this.name = name;
 		this.cellphone = cellphone;
