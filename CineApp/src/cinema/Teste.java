@@ -1,6 +1,6 @@
 package cinema;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Teste {
 
@@ -49,8 +49,13 @@ public class Teste {
 		        887
 			);
 		
+		//Snacks
+		ArrayList<Snack> snacks = new ArrayList<Snack>();
+				
+		//Beverage
+		ArrayList<Beverage> beverage = new ArrayList<Beverage>();
+		
 		//Data for the objects --> If Possible we should separate the prev data in a snigle file
-		//Employee
 		
 		
 		//Ids
@@ -61,7 +66,9 @@ public class Teste {
 		do {
 			System.out.print("\n**Menu**\n"
 					+ "1- Do Something\n"
-					+ "2- EMPLOYEE'S SECTION\n"
+					+ "2- Cadastrar comidas\n"
+					+ "3- Cadastrar bebidas\n"
+					+ "4- EMPLOYEE'S SECTION\n"
 					+ "7- Sair\n");
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
@@ -87,8 +94,27 @@ public class Teste {
 					
 					
 					break;
-					
 				case 2:
+					//register Snack
+					snacks.add(new Snack("Chocolate", 5.7, 10, 2, true));
+					System.out.println(snacks);
+					
+					//delete Snack
+					snacks.remove(0);
+					System.out.println(snacks);
+					
+					break;
+				case 3:
+					//register Beverage
+					beverage.add(new Beverage("Suco", 3.70, 20, 555, true, false, true, 300));
+					System.out.println(beverage);
+					
+					//delete Beverage
+					beverage.remove(0);
+					System.out.println(beverage);
+
+					break;
+				case 4:
 					employeeCount = employeeSection(employees, employeeCount, idGenMax, idGenMin);
 					break;
 				case 7:
