@@ -56,12 +56,5 @@ public class Employee {
 				.concat("\nEmployee's CPF: " + this.CPF)
 				.concat("\nEmployee's Code: ") + this.employeeCode;
 	}
-	
-	public void deleteEmployee() {
-		this.name = null;
-		this.cellphone = null;
-		this.CPF = null;
-		this.employeeCode = -1;
-	}
 }
 
