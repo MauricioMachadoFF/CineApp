@@ -95,12 +95,12 @@ public class Teste {
 					break;
 				case 2:
 					//register Snack
-					snacks.add(new Snack("Chocolate", 5.7, 10, 2, true));
-					System.out.println(snacks);
+					
+					snackSession(snacks);
 					
 					//delete Snack
-					snacks.remove(0);
-					System.out.println(snacks);
+					//snacks.remove(0);
+					//System.out.println(snacks);
 					
 					break;
 				case 3:
@@ -185,8 +185,86 @@ public class Teste {
 				case 6:
 					System.out.println("Voltando ao menu principal ...");
 					break;
-				
+			} 
 			
+		}
+		while(option != 6);
+	}
+	
+	public static void snackSession(ArrayList<Snack> snacks) {
+		int option, qtyRegister;
+		String name;
+		double price;
+		int stock, batch, sweetOrNot;
+		boolean isSweet=true;
+		Scanner ler = new Scanner(System.in);
+		
+		
+		do {
+			System.out.print("\n** LANCHES **\n"
+					+ "1- Cadastrar Lanche\n"
+					+ "2- Atualizar Lanche\n"
+					+ "3- Apagar Lanche\n"
+					+ "4- Imprimir lanches disponíveis\n"
+					+ "5- Vender\n"
+					+ "6- Sair\n");
+			System.out.print("O que você deseja fazer: ");
+			option = ler.nextInt();
+			switch(option) {
+			
+				case 1:
+					System.out.println("Quantos lanches você deseja cadastrar?");
+					qtyRegister = ler.nextInt();
+					for (int i = 0; i<qtyRegister; i++) {
+						
+						System.out.println("\nQual é o nome do alimento?");
+						ler.nextLine();
+						name = ler.nextLine();
+						
+						System.out.println("Qual é o preço? (Utilize . para separar os decimais)");
+						price = ler.nextDouble();
+						
+						System.out.println("Qual é a quantidade em estoque?");
+						stock = ler.nextInt();
+						
+						System.out.println("Qual é o lote?");
+						batch = ler.nextInt();
+						
+						System.out.println("Qual é a data de vencimento?");
+						//ler data
+						do {
+							System.out.println("Esse alimento é: |1|Doce |2|Salgado");
+							sweetOrNot = ler.nextInt();
+							
+							if (sweetOrNot==1) {
+								isSweet=true;
+							} else if (sweetOrNot==2) {
+								isSweet=false;
+							}
+						} while (sweetOrNot!=1 && sweetOrNot!=2);
+						
+						snacks.add(new Snack(name, price, stock, batch, isSweet));
+						System.out.println("Cadastro realizado!");
+						System.out.println(snacks.get(snacks.size()-1).toString());
+						System.out.println("");
+					}
+					break;
+					
+				case 2:
+
+					break;
+				case 3:
+
+					break;
+				case 4:
+
+					break;
+				case 5:
+
+					break;
+				case 6:
+
+					break;
 			} 
 			
 		}
