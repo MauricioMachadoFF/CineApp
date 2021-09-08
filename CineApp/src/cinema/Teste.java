@@ -330,6 +330,16 @@ public class Teste {
 					break;
 				case 3:
 
+					System.out.println("\nQual é o nome do lanche que deseja deletar?");
+					ler.nextLine();
+					name=ler.nextLine();
+					
+					for(int i = 0; i < snacks.size(); i++) {
+						if(snacks.get(i).getName().equals(name)) {
+							snacks.remove(i);
+							System.out.println("\nLanche deletado!");
+						}
+					}
 					break;
 				case 4:
 
@@ -341,6 +351,7 @@ public class Teste {
 
 					break;
 				default:
+					System.out.println("Opcao Invalida");
 					break;
 			} 
 			
