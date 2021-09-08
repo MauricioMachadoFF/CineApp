@@ -65,7 +65,7 @@ public class Teste {
 		do {
 			System.out.print("\n**Menu**\n"
 					+ "1- Do Something\n"
-					+ "2- Cadastrar comidas\n"
+					+ "2- LANCHES\n"
 					+ "3- Cadastrar bebidas\n"
 					+ "4- EMPLOYEE'S SECTION\n"
 					+ "7- Sair\n");
@@ -251,7 +251,16 @@ public class Teste {
 					break;
 					
 				case 2:
-
+					
+					//System.out.println("\nQual é o nome do alimento que deseja editar?");
+					//name=ler.nextLine();
+					
+					//for(int i = 0; i < snacks.size(); i++) {
+					//	if(snacks.get(i).getName() == name) {
+						//	snacks.remove(i);
+						//}
+					//}
+					
 					break;
 				case 3:
 
