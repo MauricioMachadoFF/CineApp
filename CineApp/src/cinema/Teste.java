@@ -191,23 +191,11 @@ public class Teste {
 		while(option != 6);
 	}
 	
-	
-	public static void snackRegister(ArrayList<Snack> snacks) {
-		int option, qtyRegister;
-		String name;
-		double price;
-		int stock, batch, sweetOrNot;
-		boolean isSweet=true;
-		Scanner ler = new Scanner(System.in);
-		
-		
-	}
-	
 	public static void snackSession(ArrayList<Snack> snacks) {
 		int option, qtyRegister, auxiliar;
 		String name, editName;
 		double price;
-		int stock, batch, sweetOrNot;
+		int stock, batch, sweetOrNot, sale;
 		boolean isSweet=true;
 		Scanner ler = new Scanner(System.in);
 		
@@ -329,7 +317,6 @@ public class Teste {
 					
 					break;
 				case 3:
-
 					System.out.println("\nQual é o nome do lanche que deseja deletar?");
 					ler.nextLine();
 					name=ler.nextLine();
@@ -341,14 +328,43 @@ public class Teste {
 						}
 					}
 					break;
+					
 				case 4:
-
+					System.out.println("\nLanches com estoque disponível:");
+					for(int i = 0; i < snacks.size(); i++) {
+						if(snacks.get(i).getStockQuantity()>0) {
+							System.out.println(snacks.get(i).getName());
+						}
+					}
+					
 					break;
 				case 5:
-
+					System.out.println("\n**SISTEMA DE VENDAS**");
+					System.out.println("Digite o nome do lanche:");
+					ler.nextLine();
+					name=ler.nextLine();
+					
+					for(int i = 0; i < snacks.size(); i++) {
+						if(snacks.get(i).getName().equals(name)) {
+							if(snacks.get(i).getStockQuantity()>0) {
+								do {
+									System.out.println("Quantidade vendida:");
+									sale=ler.nextInt();
+									if(sale>snacks.get(i).getStockQuantity()) {
+										System.out.println("Quantidade em estoque: " + snacks.get(i).getStockQuantity());
+										System.out.println("Insira uma quantidade válida");
+									}
+								}while(sale>snacks.get(i).getStockQuantity());
+								
+								snacks.get(i).setStockQuantity(snacks.get(i).getStockQuantity()-sale);
+								System.out.println("Venda Efetuada");
+							} else {System.out.println("Produto esgotado!");}
+							
+						}
+					}
 					break;
 				case 6:
-
+					System.out.println("Voltando ao menu principal ...");
 					break;
 				default:
 					System.out.println("Opcao Invalida");

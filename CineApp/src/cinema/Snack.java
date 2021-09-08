@@ -104,4 +104,5 @@ public class Snack extends Food {
 				.concat("Data de vencimento: " + this.expirationDate + "\n");
 	}
 	
+	
 }
