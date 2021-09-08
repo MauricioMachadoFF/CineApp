@@ -1,6 +1,8 @@
 package cinema;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Snack extends Food {
 	
@@ -103,5 +105,3 @@ public class Snack extends Food {
 	}
 	
 }
-
-

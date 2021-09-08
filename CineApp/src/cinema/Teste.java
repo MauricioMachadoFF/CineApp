@@ -191,9 +191,21 @@ public class Teste {
 		while(option != 6);
 	}
 	
-	public static void snackSession(ArrayList<Snack> snacks) {
+	
+	public static void snackRegister(ArrayList<Snack> snacks) {
 		int option, qtyRegister;
 		String name;
+		double price;
+		int stock, batch, sweetOrNot;
+		boolean isSweet=true;
+		Scanner ler = new Scanner(System.in);
+		
+		
+	}
+	
+	public static void snackSession(ArrayList<Snack> snacks) {
+		int option, qtyRegister, auxiliar;
+		String name, editName;
 		double price;
 		int stock, batch, sweetOrNot;
 		boolean isSweet=true;
@@ -252,14 +264,68 @@ public class Teste {
 					
 				case 2:
 					
-					//System.out.println("\nQual é o nome do alimento que deseja editar?");
-					//name=ler.nextLine();
+					System.out.println("\nQual é o nome do alimento que deseja editar?");
+					ler.nextLine();
+					name=ler.nextLine();
+					System.out.println("Qual dado deseja editar?");
+					System.out.println("1- Nome \n2- Preco \n3-Estoque \n4- Lote \n5- Doce ou Salgado");
+					auxiliar=ler.nextInt();
 					
-					//for(int i = 0; i < snacks.size(); i++) {
-					//	if(snacks.get(i).getName() == name) {
-						//	snacks.remove(i);
-						//}
-					//}
+					for(int i = 0; i < snacks.size(); i++) {
+						if(snacks.get(i).getName().equals(name)) {
+							
+							switch(auxiliar) {
+							case 1:
+								System.out.println("\nDigite o novo nome:");
+								ler.nextLine();
+								name=ler.nextLine();
+								snacks.get(i).setName(name);
+								break;
+								
+							case 2:
+								System.out.println("\nDigite o novo preco:");
+								ler.nextLine();
+								price=ler.nextDouble();
+								snacks.get(i).setPrice(price);
+								break;
+								
+							case 3:
+								System.out.println("\nDigite o novo estoque:");
+								ler.nextLine();
+								stock=ler.nextInt();
+								snacks.get(i).setStockQuantity(stock);
+								break;
+								
+							case 4:
+								System.out.println("\nDigite o novo lote:");
+								ler.nextLine();
+								batch=ler.nextInt();
+								snacks.get(i).setBatch(batch);
+								break;
+								
+							case 5:
+								do {
+									System.out.println("Esse alimento é: |1|Doce |2|Salgado");
+									ler.nextLine();
+									sweetOrNot = ler.nextInt();
+									
+									if (sweetOrNot==1) {
+										isSweet=true;
+									} else if (sweetOrNot==2) {
+										isSweet=false;
+									}
+								} while (sweetOrNot!=1 && sweetOrNot!=2);
+								snacks.get(i).setIsSweet(isSweet);
+								break;
+							default:
+								System.out.println("Opcao Invalida");
+								break;
+							}
+							
+						}
+					}
+					
+					System.out.println(snacks.get(snacks.size()-1).toString());
 					
 					break;
 				case 3:
@@ -273,6 +339,8 @@ public class Teste {
 					break;
 				case 6:
 
+					break;
+				default:
 					break;
 			} 
 			
