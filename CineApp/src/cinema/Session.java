@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Session {
-	
 	private Date schedule;
 	private MovieRoom room;
 	private Movie movie;
@@ -16,10 +15,23 @@ public class Session {
 		this.movie = movie;
 	}
 	
+	
+	public Date getSchedule() {
+		return schedule;
+	}
+
 	public void setSchedule(String preSchedule) throws ParseException {
 		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		this.schedule = dateFormat.parse(preSchedule);
 	}
+
+	public MovieRoom getRoom() {
+		return room;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}	
 	
 	public String toString() {
 		return new String("Nome do Filme: " + this.movie.getName())

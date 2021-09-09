@@ -1,28 +1,29 @@
 package cinema;
 
 public class Ticket {
-	private boolean is3d;
 	private String seat;
-	private double price;
-	private Session session = new Session();
+	private Session session;
 	
-	public boolean isIs3d() {
-		return is3d;
+	public Ticket(String seat, Session session) {
+		this.seat = seat;
+		this.session = session;
 	}
+
 	public String getSeat() {
 		return seat;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setIs3d(boolean is3d) {
-		this.is3d = is3d;
 	}
 	public void setSeat(String seat) {
 		this.seat = seat;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public Session getSession() {
+		return session;
 	}
 	
+	public String toString() {
+		return new String("Nome do Filme: " + session.getMovie().getName())
+				.concat("\nNumero da Sala: " + session.getRoom().getRoomNumber())
+				.concat("\nData da Sessao: " + session.getSchedule())
+				.concat("\nAssento: " + this.getSeat()
+						);
+	}
 }

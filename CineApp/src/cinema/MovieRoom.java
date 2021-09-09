@@ -1,4 +1,5 @@
 package cinema;
+import java.util.Scanner;
 
 public class MovieRoom {
 	final String[][] seatMap = {
@@ -14,8 +15,10 @@ public class MovieRoom {
 			{"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11", "J12", "J13", "J14", "J15"}
 			};
 	private boolean acessabilty;
-	private boolean roomType;
+	private boolean roomType; //mudar para is3D, para o nome ficar mais claro
 	private int roomNumber;
+	// private double price;    faz mais sentido o preço do ingresso depender da sala
+	
 	// Verificar esse tipo de sala como boolean
 
 	public MovieRoom(int room) {
@@ -44,6 +47,15 @@ public class MovieRoom {
 		this.roomType = roomType;
 	}
 	
-	
+	public void printSeatMap() {
+		Scanner ler = new Scanner(System.in);
+		
+		for (int l = 0; l < 10; l++){
+			for (int c = 0; c < 15; c++){
+				System.out.print(seatMap[l][c]+"	");
+			}
+			System.out.print("\n");
+	    }
+	}
 	
 }

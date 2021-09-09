@@ -95,6 +95,9 @@ public class Teste {
 		//Beverage
 		ArrayList<Beverage> beverage = new ArrayList<Beverage>();
 		
+		//MovieRoom
+		ArrayList<Ticket> ticket = new ArrayList<Ticket>();
+		
 		//Data for the objects --> If Possible we should separate the prev data in a snigle file
 		
 		
@@ -111,7 +114,10 @@ public class Teste {
 					+ "4- FUNCIONARIOS\n"
 					+ "5- SESSOES\n"
 					+ "6- MOVIE ROOM\n"
-					+ "7- Sair\n");
+					+ "7- INGRESSO\n"
+					+ "8- RECIBO TOTAL\n"
+					+ "9- Sair\n"
+					);
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
 			
@@ -123,14 +129,7 @@ public class Teste {
 					snackSession(snacks);
 					break;
 				case 3:
-					//register Beverage
-					beverage.add(new Beverage("Suco", 3.70, 20, 555, true, false, true, 300));
-					System.out.println(beverage);
-					
-					//delete Beverage
-					beverage.remove(0);
-					System.out.println(beverage);
-
+					beverageSession(beverage);
 					break;
 				case 4:
 					employeeSection(employee, idGenMax, idGenMin);
@@ -145,12 +144,21 @@ public class Teste {
 					break;
 					
 				case 7:
+					ticketSession(ticket, sessions);
+					
+					break;
+					
+				case 8:
+					
+					break;
+					
+				case 9:
 					System.out.println("Até mais");
 					break;
 				default:
 					break;
 			}
-		} while (item != 7); 
+		} while (item != 9); 
 	}
 	
 	public static void roomSection(ArrayList<MovieRoom> rooms) {
@@ -560,6 +568,7 @@ public class Teste {
 						
 						
 						beverages.add(new Beverage(name, price, stock, batch, whithIce, isDiet, whithStraw, size));
+						
 						System.out.println("Cadastro realizado!");
 						System.out.println(beverages.get(beverages.size()-1).toString());
 						System.out.println("");
@@ -588,7 +597,7 @@ public class Teste {
 					for(int i = 0; i < beverages.size(); i++) {
 						if(beverages.get(i).getName().equals(name)) {
 							beverages.remove(i);
-							System.out.println("\nLanche deletado!");
+							System.out.println("\nBebida deletada!");
 						}
 					}
 					break;
@@ -604,7 +613,7 @@ public class Teste {
 					break;
 				case 5:
 					System.out.println("\n**SISTEMA DE VENDAS**");
-					System.out.println("Digite o nome do lanche:");
+					System.out.println("Digite o nome da bebida:");
 					ler.nextLine();
 					name=ler.nextLine();
 					
@@ -636,6 +645,81 @@ public class Teste {
 			} 
 			
 		}while(option != 6);
+	
+	}
+	
+	public static void ticketSession(ArrayList<Ticket> ticket, ArrayList<Session> session) {
+		int option, qtyRegister, sessionChosen;
+		String is3D, seatChosen;
+		Scanner ler = new Scanner(System.in);
+		
+		//teste
+		
+		do {
+			System.out.print("\n** INGRESSOS **\n"
+					+ "1- Vender Ingresso\n"
+					+ "2- Atualizar Ingresso\n"
+					+ "3- Apagar Ingresso\n"
+					+ "4- Imprimir Ingressos Comprados\n"
+					+ "5- Sair\n");
+			System.out.print("O que você deseja fazer: ");
+			option = ler.nextInt();
+			switch(option) {
+			
+				case 1:
+					
+					System.out.println("\nSessões Disponíveis:");
+					for(int n = 0; n < session.size(); n++) {
+						
+						if(session.get(n).getRoom().getIsRoomType() == true) {
+							is3D="Sim";
+						} else {
+							is3D="Não";
+						}
+						
+						System.out.println((n+1)+"- "
+												+ session.get(n).getMovie().getName() + "\n"
+												+ "Horário: " + session.get(n).getSchedule() + "\n"
+												+ "3D: " + is3D  + "\n");
+					}
+					System.out.println("Digite o numero correspondente a sessao escolhida:");
+					sessionChosen=ler.nextInt();
+					
+					System.out.println("Mapa de Assento:");
+					session.get(sessionChosen).getRoom().printSeatMap();
+					System.out.println("Digite o assento escolhido");
+					ler.nextLine();
+					seatChosen=ler.nextLine();
+					//validar a escolha do assento
+					
+					ticket.add(new Ticket(seatChosen, session.get(sessionChosen)));
+					
+					System.out.println("Venda Realizada com Sucesso!\nConfira os detalhes abaixo:");
+					System.out.println(ticket.get(ticket.size()-1).toString());
+					
+					break;
+					
+				case 2:
+					
+					break;
+					
+				case 3:
+					break;
+					
+				case 4:
+					break;
+					
+				case 5:
+					System.out.println("Voltando ao menu principal ...");
+					
+					break;
+					
+				default:
+					System.out.println("Opcao Invalida");
+					break;
+			} 
+			
+		}while(option != 5);
 	
 	}
 }
