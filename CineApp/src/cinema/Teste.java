@@ -1,6 +1,7 @@
 package cinema;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Teste {
 
@@ -48,6 +49,29 @@ public class Teste {
 		        887
 			));
 		
+		ArrayList<Movie> movies = new ArrayList<Movie>();
+		movies.add( new Movie(
+				"Creed",
+				2015,
+				"Action",
+				"The former World Heavyweight Champion Rocky Balboa serves as a trainer and mentor to Adonis Johnson, the son of his late friend and former rival Apollo Creed.",
+				10
+			));
+		movies.add( new Movie(
+				"Attack on Titan",
+				2014,
+				"Anime",
+				"After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.",
+				56
+			));
+		movies.add( new Movie(
+				"Room",
+				2016,
+				"Horror",
+				"Held captive for 7 years in an enclosed space, a woman and her young son finally gain their freedom, allowing the boy to experience the outside world for the first time.",
+				34
+			));
+		
 		//Snacks
 		ArrayList<Snack> snacks = new ArrayList<Snack>();
 				
@@ -64,7 +88,7 @@ public class Teste {
 		
 		do {
 			System.out.print("\n**Menu**\n"
-					+ "1- Do Something\n"
+					+ "1- FILMES\n"
 					+ "2- LANCHES\n"
 					+ "3- Cadastrar bebidas\n"
 					+ "4- FUNCIONARIOS\n"
@@ -74,6 +98,7 @@ public class Teste {
 			
 			switch(item) {
 				case 1:
+					moviesSection(movies);
 					break;
 				case 2:
 					snackSession(snacks);
@@ -100,8 +125,113 @@ public class Teste {
 		} while (item != 7); 
 	}
 	
+	public static void moviesSection(ArrayList<Movie> movies) {
+		int option, movieId, auxiliar, posMovie = 0;
+		Scanner ler = new Scanner(System.in).useDelimiter("\n");
+		do {
+			System.out.print("\n** FILMES **\n"
+					+ "1- Registrar Novo Filme\n"
+					+ "2- Ver Todos Filmes\n"
+					+ "3- Procurar Filme por Id\n"
+					+ "4- Atualizar Filme\n"
+					+ "5- Deletar Filme\n"
+					+ "6- Sair\n");
+			System.out.print("O que você deseja fazer: ");
+			option = ler.nextInt();
+			
+			switch(option) {
+				
+				case 1:
+					movies.add( new Movie());
+					System.out.println(movies.get(movies.size()-1).toString());
+					break;
+					
+				case 2:
+					for(Movie movie : movies) {
+						System.out.println(movie.toString());
+						System.out.println();
+					} 
+					break;
+					
+				case 3:
+					System.out.println("Id do filme: ");
+					movieId = ler.nextInt();
+					for(Movie movie: movies) {
+						if(movie.getMovieId() == movieId) {
+							System.out.println(movie.toString());
+						}
+					}
+					break;
+					
+				case 4:
+					System.out.println("\nQual o código do filme que você deseja editar?");
+					//ler.nextLine();
+					movieId=ler.nextInt();
+					System.out.println("Qual dado deseja editar?");
+					System.out.println("1- Título \n2 - Ano de lancamento \n3 - Genero \n4 - Sinopse");
+					auxiliar=ler.nextInt();
+					
+					for(Movie movie : movies) {
+						if(movie.getMovieId() == movieId) {
+							
+							switch(auxiliar) {
+							case 1:
+								System.out.println("\nDigite o novo nome:");
+								movie.setName(ler.next());
+								System.out.println(movie.toString());
+								break;
+								
+							case 2:
+								System.out.println("\nDigite o ano de lançamento atualizado:");
+								movie.setYear(ler.nextInt());
+								System.out.println(movie.toString());
+								break;
+								
+							case 3:
+								System.out.println("\nDigite o genero do filme:");
+								movie.setGenre(ler.next());
+								System.out.println(movie.toString());
+								break;
+								
+							case 4:
+								System.out.println("\nDigite a sinopse do filme:");
+								movie.setSynopsis(ler.next());
+								System.out.println(movie.toString());
+								break;
+								
+							default:
+								System.out.println("Opcao Invalida");
+								break;
+							}
+						}
+					}
+					break;
+				
+				case 5:
+					System.out.println("Id do filme: ");
+					movieId = ler.nextInt();
+					for(int i = 0; i < movies.size(); i++) {
+						if(movies.get(i).getMovieId() == movieId) {
+							movies.remove(i);
+						}
+					}
+					System.out.println("Filme deletado!");
+					break;
+					
+				case 6:
+					System.out.println("Voltando ao menu principal!");
+					break;
+					
+				default:
+					System.out.println("Opcao Invalida");
+					break;
+			}
+			
+		} while(option != 6);
+	}
+	
 	public static void employeeSection(ArrayList<Employee> employeeList, int max, int min) {
-		int option, employeeCode, auxiliar;
+		int option, employeeCode, auxiliar, posEmployee=0;
 		Scanner ler = new Scanner(System.in);
 		String name, cellphone, CPF;
 		int id;
@@ -160,6 +290,8 @@ public class Teste {
 						
 						if(employeeList.get(i).getEmployeeCode() == employeeCode) {
 							
+							posEmployee = i;
+							
 							switch(auxiliar) {
 							case 1:
 								System.out.println("\nDigite o novo nome:");
@@ -188,7 +320,7 @@ public class Teste {
 							}
 						}
 					}
-					System.out.println(employeeList.get(employeeList.size()-1).toString());
+					System.out.println(employeeList.get(posEmployee).toString());
 					break;
 					
 				case 5:
