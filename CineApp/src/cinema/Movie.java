@@ -88,4 +88,54 @@ public class Movie {
 			.concat("\nSinopse: " + this.synopsis)
 			.concat("\nMovieId: ") + this.movieId;
 	}
+	
+	public void updateMovie() {
+		int auxiliar;
+		System.out.println("\nQual o código do filme que você deseja editar?");
+		System.out.println("Qual dado deseja editar?");
+		System.out.println("1- Título \n2 - Ano de lancamento \n3 - Genero \n4 - Sinopse");
+		auxiliar=ler.nextInt();
+		
+		switch(auxiliar) {
+		case 1:
+			System.out.println("\nDigite o novo nome:");
+			setName(ler.next());
+			break;
+			
+		case 2:
+			System.out.println("\nDigite o ano de lançamento atualizado:");
+			setYear(ler.nextInt());
+			break;
+			
+		case 3:
+			System.out.println("\nDigite o genero do filme:");
+			setGenre(ler.next());
+			break;
+			
+		case 4:
+			System.out.println("\nDigite a sinopse do filme:");
+			setSynopsis(ler.next());
+			break;
+			
+		default:
+			System.out.println("Opcao Invalida");
+			break;
+		}
+		System.out.println(toString());
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

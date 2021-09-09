@@ -190,42 +190,9 @@ public class Teste {
 					System.out.println("\nQual o código do filme que você deseja editar?");
 					//ler.nextLine();
 					movieId=ler.nextInt();
-					System.out.println("Qual dado deseja editar?");
-					System.out.println("1- Título \n2 - Ano de lancamento \n3 - Genero \n4 - Sinopse");
-					auxiliar=ler.nextInt();
-					
 					for(Movie movie : movies) {
 						if(movie.getMovieId() == movieId) {
-							
-							switch(auxiliar) {
-							case 1:
-								System.out.println("\nDigite o novo nome:");
-								movie.setName(ler.next());
-								System.out.println(movie.toString());
-								break;
-								
-							case 2:
-								System.out.println("\nDigite o ano de lançamento atualizado:");
-								movie.setYear(ler.nextInt());
-								System.out.println(movie.toString());
-								break;
-								
-							case 3:
-								System.out.println("\nDigite o genero do filme:");
-								movie.setGenre(ler.next());
-								System.out.println(movie.toString());
-								break;
-								
-							case 4:
-								System.out.println("\nDigite a sinopse do filme:");
-								movie.setSynopsis(ler.next());
-								System.out.println(movie.toString());
-								break;
-								
-							default:
-								System.out.println("Opcao Invalida");
-								break;
-							}
+							movie.updateMovie();
 						}
 					}
 					break;
@@ -303,49 +270,14 @@ public class Teste {
 					break;
 				case 4:
 					System.out.println("\nQual o código do funcionário que você deseja editar?");
-					ler.nextLine();
+					//ler.nextLine();
 					employeeCode=ler.nextInt();
-					System.out.println("Qual dado deseja editar?");
-					System.out.println("1- Nome \n2- Número de celular \n3-CPF");
-					auxiliar=ler.nextInt();
-					
-					for(int i = 0; i < employeeList.size(); i++) {
-						
-						if(employeeList.get(i).getEmployeeCode() == employeeCode) {
-							
-							posEmployee = i;
-							
-							switch(auxiliar) {
-							case 1:
-								System.out.println("\nDigite o novo nome:");
-								ler.nextLine();
-								name=ler.nextLine();
-								employeeList.get(i).setName(name);
-								break;
-								
-							case 2:
-								System.out.println("\nDigite o novo número de celular (sem espaços):");
-								//ler.nextLine();
-								cellphone=ler.next();
-								employeeList.get(i).setCellphone(cellphone);
-								break;
-								
-							case 3:
-								System.out.println("\nDigite o CPF atualizado (sem espaços ou digitos especiais):");
-								//ler.nextLine();
-								CPF=ler.next();
-								employeeList.get(i).setCPF(CPF);
-								break;
-								
-							default:
-								System.out.println("Opcao Invalida");
-								break;
-							}
+					for(Employee employee : employeeList) {
+						if(employee.getEmployeeCode() == employeeCode) {
+							employee.updateEmployee();;
 						}
 					}
-					System.out.println(employeeList.get(posEmployee).toString());
 					break;
-					
 				case 5:
 					System.out.println("Whta's the employee code you want to delete?");
 					employeeCode = ler.nextInt();

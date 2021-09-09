@@ -1,6 +1,8 @@
 package cinema;
+import java.util.Scanner;
 
 public class Employee {
+	private Scanner ler = new Scanner(System.in).useDelimiter("\n");
 	private String name;
 	private String cellphone;
 	private String CPF;
@@ -56,5 +58,42 @@ public class Employee {
 				.concat("\nEmployee's CPF: " + this.CPF)
 				.concat("\nEmployee's Code: ") + this.employeeCode;
 	}
+	
+	//update employee information
+	public void updateEmployee() {
+		int auxiliar;
+		System.out.println("Qual dado deseja editar?");
+		System.out.println("1- Nome \n2- Número de celular \n3-CPF");
+		auxiliar=ler.nextInt();
+		
+		switch(auxiliar) {
+		case 1:
+			System.out.println("\nDigite o novo nome:");
+			ler.nextLine();
+			name=ler.nextLine();
+			setName(name);
+			break;
+			
+		case 2:
+			System.out.println("\nDigite o novo número de celular (sem espaços):");
+			//ler.nextLine();
+			cellphone=ler.next();
+			setCellphone(cellphone);
+			break;
+			
+		case 3:
+			System.out.println("\nDigite o CPF atualizado (sem espaços ou digitos especiais):");
+			//ler.nextLine();
+			CPF=ler.next();
+			setCPF(CPF);
+			break;
+			
+		default:
+			System.out.println("Opcao Invalida");
+			break;
+		}
+		System.out.println(toString());
+	}
+	
 }
 
