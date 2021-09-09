@@ -107,7 +107,7 @@ public class Teste {
 			System.out.print("\n**Menu**\n"
 					+ "1- FILMES\n"
 					+ "2- LANCHES\n"
-					+ "3- Cadastrar bebidas\n"
+					+ "3- BEBIDAS\n"
 					+ "4- FUNCIONARIOS\n"
 					+ "5- SESSOES\n"
 					+ "6- MOVIE ROOM\n"
@@ -158,8 +158,8 @@ public class Teste {
 		Scanner ler = new Scanner(System.in).useDelimiter("\n");
 		do {
 			System.out.print("\n** SALAS **\n"
-					+ "1- Registrar Novo Sala\n"
-					+ "2- Ver Todos Salas\n"
+					+ "1- Registrar Nova Sala\n"
+					+ "2- Ver Todas Salas\n"
 					+ "4- Atualizar Filme\n"
 					+ "5- Deletar Sala\n"
 					+ "6- Sair\n");
@@ -324,7 +324,7 @@ public class Teste {
 					employeeCode=ler.nextInt();
 					for(Employee employee : employeeList) {
 						if(employee.getEmployeeCode() == employeeCode) {
-							employee.updateEmployee();;
+							employee.updateEmployee();
 						}
 					}
 					break;
@@ -407,70 +407,18 @@ public class Teste {
 					break;
 					
 				case 2:
-					
 					System.out.println("\nQual é o nome do alimento que deseja editar?");
 					ler.nextLine();
 					name=ler.nextLine();
-					System.out.println("Qual dado deseja editar?");
-					System.out.println("1- Nome \n2- Preco \n3-Estoque \n4- Lote \n5- Doce ou Salgado");
-					auxiliar=ler.nextInt();
 					
 					for(int i = 0; i < snacks.size(); i++) {
 						if(snacks.get(i).getName().equals(name)) {
-							
-							switch(auxiliar) {
-							case 1:
-								System.out.println("\nDigite o novo nome:");
-								ler.nextLine();
-								name=ler.nextLine();
-								snacks.get(i).setName(name);
-								break;
-								
-							case 2:
-								System.out.println("\nDigite o novo preco:");
-								ler.nextLine();
-								price=ler.nextDouble();
-								snacks.get(i).setPrice(price);
-								break;
-								
-							case 3:
-								System.out.println("\nDigite o novo estoque:");
-								ler.nextLine();
-								stock=ler.nextInt();
-								snacks.get(i).setStockQuantity(stock);
-								break;
-								
-							case 4:
-								System.out.println("\nDigite o novo lote:");
-								ler.nextLine();
-								batch=ler.nextInt();
-								snacks.get(i).setBatch(batch);
-								break;
-								
-							case 5:
-								do {
-									System.out.println("Esse alimento é: |1|Doce |2|Salgado");
-									ler.nextLine();
-									sweetOrNot = ler.nextInt();
-									
-									if (sweetOrNot==1) {
-										isSweet=true;
-									} else if (sweetOrNot==2) {
-										isSweet=false;
-									}
-								} while (sweetOrNot!=1 && sweetOrNot!=2);
-								snacks.get(i).setIsSweet(isSweet);
-								break;
-							default:
-								System.out.println("Opcao Invalida");
-								break;
-							}
-							
+							snacks.get(i).updateSnacks();
+			
+							System.out.println(snacks.get(snacks.size()-1).toString());
 						}
 					}
-					
-					System.out.println(snacks.get(snacks.size()-1).toString());
-					
+			
 					break;
 				case 3:
 					System.out.println("\nQual é o nome do lanche que deseja deletar?");
@@ -531,4 +479,163 @@ public class Teste {
 		while(option != 6);
 	}
 	
+
+	public static void beverageSession(ArrayList<Beverage> beverages) {
+		int option, qtyRegister, auxiliar, size;
+		String name, editName;
+		double price;
+		int stock, batch, iceOrNot, strawOrNot, dietOrNot, sale;
+		boolean whithIce=true, whithStraw=false, isDiet=false;
+		Scanner ler = new Scanner(System.in);
+		
+		
+		do {
+			System.out.print("\n** BEBIDAS **\n"
+					+ "1- Cadastrar Bebida\n"
+					+ "2- Atualizar Bebida\n"
+					+ "3- Apagar Bebida\n"
+					+ "4- Imprimir Bebidas Disponíveis\n"
+					+ "5- Vender\n"
+					+ "6- Sair\n");
+			System.out.print("O que você deseja fazer: ");
+			option = ler.nextInt();
+			switch(option) {
+			
+				case 1:
+					System.out.println("Quantas bebidas você deseja cadastrar?");
+					qtyRegister = ler.nextInt();
+					for (int i = 0; i<qtyRegister; i++) {
+						
+						System.out.println("\nQual é o nome da bebida?");
+						ler.nextLine();
+						name = ler.nextLine();
+						
+						System.out.println("Qual é o preço? (Utilize . para separar os decimais)");
+						price = ler.nextDouble();
+						
+						System.out.println("Qual é a quantidade em estoque?");
+						stock = ler.nextInt();
+						
+						System.out.println("Qual é o lote?");
+						batch = ler.nextInt();
+						
+						System.out.println("Qual é a data de vencimento?");
+						//ler data
+						do {
+							System.out.println("A bebida vai acompanhada de gelo? |1|Sim |2|Não");
+							iceOrNot = ler.nextInt();
+							
+							if (iceOrNot==1) {
+								whithIce=true;
+							} else if (iceOrNot==2) {
+								whithIce=false;
+							}
+						} while (iceOrNot!=1 && iceOrNot!=2);
+						
+						do {
+							System.out.println("A bebida vai acompanhada de canudo? |1|Sim |2|Não");
+							strawOrNot = ler.nextInt();
+							
+							if (strawOrNot==1) {
+								whithStraw=true;
+							} else if (strawOrNot==2) {
+								whithStraw=false;
+							}
+						} while (iceOrNot!=1 && iceOrNot!=2);
+						
+						do {
+							System.out.println("A bebida é Diet? |1|Sim |2|Não");
+							dietOrNot = ler.nextInt();
+							
+							if (dietOrNot==1) {
+								isDiet=true;
+							} else if (dietOrNot==2) {
+								isDiet=false;
+							}
+						} while (dietOrNot!=1 && dietOrNot!=2);
+						
+						System.out.println("Qual é o tamanho da bebida (em ml)?");
+						System.out.println("Tamanhos disponiveis: 300, 400 ou 500");
+						size = ler.nextInt();
+						
+						
+						beverages.add(new Beverage(name, price, stock, batch, whithIce, isDiet, whithStraw, size));
+						System.out.println("Cadastro realizado!");
+						System.out.println(beverages.get(beverages.size()-1).toString());
+						System.out.println("");
+					}
+					break;
+					
+				case 2:
+					System.out.println("\nQual é o nome da bebida que deseja editar?");
+					ler.nextLine();
+					name=ler.nextLine();
+					
+					for(int i = 0; i < beverages.size(); i++) {
+						if(beverages.get(i).getName().equals(name)) {
+							beverages.get(i).updateBeverages();
+			
+							System.out.println(beverages.get(beverages.size()-1).toString());
+						}
+					}
+			
+					break;
+				case 3:
+					System.out.println("\nQual é o nome da bebida que deseja deletar?");
+					ler.nextLine();
+					name=ler.nextLine();
+					
+					for(int i = 0; i < beverages.size(); i++) {
+						if(beverages.get(i).getName().equals(name)) {
+							beverages.remove(i);
+							System.out.println("\nLanche deletado!");
+						}
+					}
+					break;
+					
+				case 4:
+					System.out.println("\nBebidas com estoque disponível:");
+					for(int i = 0; i < beverages.size(); i++) {
+						if(beverages.get(i).getStockQuantity()>0) {
+							System.out.println(beverages.get(i).getName());
+						}
+					}
+					
+					break;
+				case 5:
+					System.out.println("\n**SISTEMA DE VENDAS**");
+					System.out.println("Digite o nome do lanche:");
+					ler.nextLine();
+					name=ler.nextLine();
+					
+					for(int i = 0; i < beverages.size(); i++) {
+						if(beverages.get(i).getName().equals(name)) {
+							if(beverages.get(i).getStockQuantity()>0) {
+								do {
+									System.out.println("Quantidade vendida:");
+									sale=ler.nextInt();
+									if(sale>beverages.get(i).getStockQuantity()) {
+										System.out.println("Quantidade em estoque: " + beverages.get(i).getStockQuantity());
+										System.out.println("Insira uma quantidade válida");
+									}
+								}while(sale>beverages.get(i).getStockQuantity());
+								
+								beverages.get(i).setStockQuantity(beverages.get(i).getStockQuantity()-sale);
+								System.out.println("Venda Efetuada");
+							} else {System.out.println("Produto esgotado!");}
+							
+						}
+					}
+					break;
+				case 6:
+					System.out.println("Voltando ao menu principal ...");
+					break;
+				default:
+					System.out.println("Opcao Invalida");
+					break;
+			} 
+			
+		}while(option != 6);
+	
+	}
 }

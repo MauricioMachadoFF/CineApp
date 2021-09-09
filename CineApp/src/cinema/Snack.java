@@ -104,5 +104,65 @@ public class Snack extends Food {
 				.concat("Data de vencimento: " + this.expirationDate + "\n");
 	}
 	
-	
+	//update snacks information
+		public void updateSnacks() {
+			int option, qtyRegister, auxiliar;
+			int sweetOrNot;
+			Scanner ler = new Scanner(System.in);
+			
+			
+			System.out.println("Qual dado deseja editar?");
+			System.out.println("1- Nome \n2- Preco \n3-Estoque \n4- Lote \n5- Doce ou Salgado");
+			auxiliar=ler.nextInt();
+			
+			switch(auxiliar) {
+			case 1:
+				System.out.println("\nDigite o novo nome:");
+				ler.nextLine();
+				name=ler.nextLine();
+				setName(name);
+				break;
+				
+			case 2:
+				System.out.println("\nDigite o novo preco:");
+				ler.nextLine();
+				price=ler.nextDouble();
+				setPrice(price);
+				break;
+				
+			case 3:
+				System.out.println("\nDigite o novo estoque:");
+				ler.nextLine();
+				stockQuantity=ler.nextInt();
+				setStockQuantity(stockQuantity);
+				break;
+				
+			case 4:
+				System.out.println("\nDigite o novo lote:");
+				ler.nextLine();
+				batch=ler.nextInt();
+				setBatch(batch);
+				break;
+				
+			case 5:
+				do {
+					System.out.println("Esse alimento é: |1|Doce |2|Salgado");
+					ler.nextLine();
+					sweetOrNot = ler.nextInt();
+					
+					if (sweetOrNot==1) {
+						isSweet=true;
+					} else if (sweetOrNot==2) {
+						isSweet=false;
+					}
+				} while (sweetOrNot!=1 && sweetOrNot!=2);
+				setIsSweet(isSweet);
+				break;
+			default:
+				System.out.println("Opcao Invalida");
+				break;
+			}
+			
+			System.out.println(toString());
+		}
 }

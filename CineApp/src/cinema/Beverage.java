@@ -1,6 +1,7 @@
 package cinema;
 
 import java.util.Date;
+import java.util.Scanner;
 
 public class Beverage extends Food {
 	
@@ -123,17 +124,113 @@ public class Beverage extends Food {
 	}
 	
 	//readFood
-		public String toString() {
-			return new String("Nome: " + this.name + "\n")
-					.concat("Valor: R$ " + this.price + "\n")
-					.concat("Quantidade em estoque: " + this.stockQuantity + " copos\n")
-					.concat("Lote: " + this.batch + "\n")
-					.concat("Data de vencimento: " + this.expirationDate + "\n")
-					.concat("Com gelo? " + this.hasIce + "\n")
-					.concat("Com canudo? " + this.hasStraw + "\n")
-					.concat("Diet: " + this.isDiet + "\n")
-					.concat("Tamanho " + this.size + " ml\n");
-		}
+	public String toString() {
+		return new String("Nome: " + this.name + "\n")
+			.concat("Valor: R$ " + this.price + "\n")
+			.concat("Quantidade em estoque: " + this.stockQuantity + " copos\n")
+			.concat("Lote: " + this.batch + "\n")
+			.concat("Data de vencimento: " + this.expirationDate + "\n")
+			.concat("Com gelo? " + this.hasIce + "\n")
+			.concat("Com canudo? " + this.hasStraw + "\n")
+			.concat("Diet: " + this.isDiet + "\n")
+			.concat("Tamanho " + this.size + " ml\n");
+	}
 	
+		
+	//update beverages information
+	public void updateBeverages() {
+		int option, qtyRegister, auxiliar;
+		int iceOrNot, strawOrNot, dietOrNot, size;
+		Scanner ler = new Scanner(System.in);
+		
+		System.out.println("Qual dado deseja editar?");
+		System.out.println("1- Nome \n2- Preco \n3-Estoque \n4- Lote \n5- Gelo \n6- Canudo \n7- Diet \n8- Size");
+		auxiliar=ler.nextInt();
+					
+		switch(auxiliar) {
+			case 1:
+				System.out.println("\nDigite o novo nome:");
+				ler.nextLine();
+				name=ler.nextLine();
+				setName(name);
+				break;
+							
+			case 2:
+				System.out.println("\nDigite o novo preco:");
+				ler.nextLine();
+				price=ler.nextDouble();
+				setPrice(price);
+				break;
+							
+			case 3:
+				System.out.println("\nDigite o novo estoque:");
+				ler.nextLine();
+				stockQuantity=ler.nextInt();
+				setStockQuantity(stockQuantity);
+				break;
+							
+				case 4:
+				System.out.println("\nDigite o novo lote:");
+				ler.nextLine();
+				batch=ler.nextInt();
+				setBatch(batch);
+				break;
+							
+				case 5:
+					do {
+						System.out.println("A bebida vai acompanhada de gelo? |1|Sim |2|Não");
+						iceOrNot = ler.nextInt();
+								
+						if (iceOrNot==1) {
+							hasIce=true;
+						} else if (iceOrNot==2) {
+							hasIce=false;
+						}
+					} while (iceOrNot!=1 && iceOrNot!=2);
+					setHasIce(hasIce);
+					break;
+							
+				case 6:
+					do {
+						System.out.println("A bebida vai acompanhada de canudo? |1|Sim |2|Não");
+						strawOrNot = ler.nextInt();
+								
+						if (strawOrNot==1) {
+							hasStraw=true;
+						} else if (strawOrNot==2) {
+							hasStraw=false;
+						}
+					} while (strawOrNot!=1 && strawOrNot!=2);
+					setHasStraw(hasStraw);
+					break;
+							
+				case 7:
+					do {
+						System.out.println("A bebida é Diet? |1|Sim |2|Não");
+						dietOrNot = ler.nextInt();
+								
+						if (dietOrNot==1) {
+							isDiet=true;
+						} else if (dietOrNot==2) {
+							isDiet=false;
+						}
+					} while (dietOrNot!=1 && dietOrNot!=2);
+					setisDiet(isDiet);
+					break;
+							
+				case 8:
+					System.out.println("Digite o novo tamanho da bebida (em ml)?");
+					System.out.println("Tamanhos disponiveis: 300, 400 ou 500");
+					size = ler.nextInt();
+					setSize(size);
+					break;
+							
+				default:
+					System.out.println("Opcao Invalida");
+					break;
+		}
+					
+		System.out.println(toString());
+	}
 	
 }
