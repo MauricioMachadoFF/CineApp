@@ -15,7 +15,14 @@ public class MovieRoom {
 			};
 	private boolean acessabilty;
 	private boolean roomType;
+	private int roomNumber;
 	// Verificar esse tipo de sala como boolean
+
+	public MovieRoom(int room) {
+		this.acessabilty = true;
+		this.roomType = true;
+		this.roomNumber = room;
+	}
 	
 	public String[][] getSeatMap() {
 		return seatMap;
@@ -25,6 +32,9 @@ public class MovieRoom {
 	}
 	public boolean getIsRoomType() {
 		return roomType;
+	}
+	public int getRoomNumber() {
+		return roomNumber;
 	}
 
 	public void setAcessabilty(boolean acessabilty) {

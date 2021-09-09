@@ -1,11 +1,12 @@
 package cinema;
 
+import java.text.ParseException;
 import java.util.*;
 import java.util.function.Predicate;
 
 public class Teste {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
 		
 		int item;
@@ -72,6 +73,22 @@ public class Teste {
 				34
 			));
 		
+		//MovieRoom
+		ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
+		rooms.add( new MovieRoom(
+					1
+				));
+		
+		//Session
+		ArrayList<Session> sessions = new ArrayList<Session>();
+		sessions.add( new Session(
+					"2009-12-24 12:30",
+					rooms.get(0),
+					movies.get(0)
+				));
+		
+		
+		
 		//Snacks
 		ArrayList<Snack> snacks = new ArrayList<Snack>();
 				
@@ -92,6 +109,7 @@ public class Teste {
 					+ "2- LANCHES\n"
 					+ "3- Cadastrar bebidas\n"
 					+ "4- FUNCIONARIOS\n"
+					+ "5- SESSOES\n"
 					+ "7- Sair\n");
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
@@ -116,6 +134,11 @@ public class Teste {
 				case 4:
 					employeeSection(employee, idGenMax, idGenMin);
 					break;
+					
+				case 5:
+					System.out.println(sessions.get(0).toString());
+					break;
+					
 				case 7:
 					System.out.println("Até mais");
 					break;

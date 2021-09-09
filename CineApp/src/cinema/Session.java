@@ -1,25 +1,29 @@
 package cinema;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Session {
-	private Date schedule[];
-	private Date days[];
-	private MovieRoom[] rooms = new MovieRoom[10];
-	private Movie[] movies = new Movie[50];
 	
-	public Date[] getSchedule() {
-		return schedule;
-	}
-	public Date[] getDays() {
-		return days;
-	}
-	public void setSchedule(Date[] schedule) {
-		this.schedule = schedule;
-	}
-	public void setDays(Date[] days) {
-		this.days = days;
+	private Date schedule;
+	private MovieRoom room;
+	private Movie movie;
+	
+	public Session(String preSchedule, MovieRoom room, Movie movie) throws ParseException {
+		setSchedule(preSchedule);
+		this.room = room;
+		this.movie = movie;
 	}
 	
+	public void setSchedule(String preSchedule) throws ParseException {
+		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		this.schedule = dateFormat.parse(preSchedule);
+	}
 	
+	public String toString() {
+		return new String("Nome do Filme: " + this.movie.getName())
+				.concat("\nNumero da Sala: " + this.room.getRoomNumber())
+				.concat("\nData da Sessao: " + this.schedule);
+	}
 }
