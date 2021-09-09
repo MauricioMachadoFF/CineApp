@@ -110,6 +110,7 @@ public class Teste {
 					+ "3- Cadastrar bebidas\n"
 					+ "4- FUNCIONARIOS\n"
 					+ "5- SESSOES\n"
+					+ "6- MOVIE ROOM\n"
 					+ "7- Sair\n");
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
@@ -139,6 +140,10 @@ public class Teste {
 					System.out.println(sessions.get(0).toString());
 					break;
 					
+				case 6:
+					roomSection(rooms);
+					break;
+					
 				case 7:
 					System.out.println("Até mais");
 					break;
@@ -146,6 +151,51 @@ public class Teste {
 					break;
 			}
 		} while (item != 7); 
+	}
+	
+	public static void roomSection(ArrayList<MovieRoom> rooms) {
+		int option;
+		Scanner ler = new Scanner(System.in).useDelimiter("\n");
+		do {
+			System.out.print("\n** SALAS **\n"
+					+ "1- Registrar Novo Sala\n"
+					+ "2- Ver Todos Salas\n"
+					+ "4- Atualizar Filme\n"
+					+ "5- Deletar Sala\n"
+					+ "6- Sair\n");
+			System.out.print("O que você deseja fazer: ");
+			option = ler.nextInt();
+			
+			switch(option) {
+				
+				case 1:
+			
+					break;
+					
+				case 2:
+					
+				case 3:
+
+					break;
+					
+				case 4:
+					break;
+				
+				case 5:
+
+					break;
+					
+				case 6:
+					System.out.println("Voltando ao menu principal!");
+					break;
+					
+				default:
+					System.out.println("Opcao Invalida");
+					break;
+			}
+			
+		} while(option != 6);
+		
 	}
 	
 	public static void moviesSection(ArrayList<Movie> movies) {
