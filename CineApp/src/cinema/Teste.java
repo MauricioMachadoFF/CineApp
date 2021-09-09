@@ -67,41 +67,16 @@ public class Teste {
 					+ "1- Do Something\n"
 					+ "2- LANCHES\n"
 					+ "3- Cadastrar bebidas\n"
-					+ "4- EMPLOYEE'S SECTION\n"
+					+ "4- FUNCIONARIOS\n"
 					+ "7- Sair\n");
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
 			
 			switch(item) {
 				case 1:
-//					id = (int)Math.floor(Math.random()*(idGenMax-idGenMin+1)+idGenMin);
-//					System.out.println(id);
-//					
-//					//register Employee
-//					employees[2] = new Employee("Roberto", "24526", "7458340", 
-//							(int)Math.floor(Math.random()*(idGenMax-idGenMin+1)+idGenMin));
-//					System.out.println(employees[2].toString());
-//					
-//					//delete Employee
-//					//employees[1].deleteEmployee();
-//					
-//					//Get Employee Info
-//					for(int i = 0; i < 6; i++) {
-//						System.out.println(employees[i].toString());
-//					}
-//					//System.out.println(employees[1].toString());
-					
-					
 					break;
 				case 2:
-					//register Snack
-					
 					snackSession(snacks);
-					
-					//delete Snack
-					//snacks.remove(0);
-					//System.out.println(snacks);
-					
 					break;
 				case 3:
 					//register Beverage
@@ -126,7 +101,7 @@ public class Teste {
 	}
 	
 	public static void employeeSection(ArrayList<Employee> employeeList, int max, int min) {
-		int option, employeeCode;
+		int option, employeeCode, auxiliar;
 		Scanner ler = new Scanner(System.in);
 		String name, cellphone, CPF;
 		int id;
@@ -144,17 +119,17 @@ public class Teste {
 			switch(option) {
 			
 				case 1:
-					System.out.print("Let's register a employee!!!\n");
-					System.out.print("What's his/her name:\n");
+					System.out.print("Vamos registrar um funcionário!!!\n");
+					System.out.print("Nome:\n");
 					ler.nextLine();
 					name = ler.nextLine();
-					System.out.print("What's his/her cellphone (without white spaces):\n");
+					System.out.print("Número de celular (sem espaços):\n");
 					cellphone = ler.nextLine();	
-					System.out.print("What's his/her CPF:\n");
+					System.out.print("CPF:\n");
 					CPF = ler.nextLine();
 					
 					employeeList.add( new Employee(name, cellphone, CPF, (int)Math.floor(Math.random()*(max-min+1)+min)));
-					System.out.print("Employee created!!!");
+					System.out.print("Funcionário criado!!!");
 					System.out.println(employeeList.get(employeeList.size()-1).toString());
 					break;
 					
@@ -164,7 +139,7 @@ public class Teste {
 					}
 					break;
 				case 3:
-					System.out.println("Whta's the employee code?");
+					System.out.println("Código do funcionário: ");
 					employeeCode = ler.nextInt();
 					
 					for(int i = 0; i < employeeList.size(); i++) {
@@ -173,6 +148,49 @@ public class Teste {
 						}
 					}
 					break;
+				case 4:
+					System.out.println("\nQual o código do funcionário que você deseja editar?");
+					ler.nextLine();
+					employeeCode=ler.nextInt();
+					System.out.println("Qual dado deseja editar?");
+					System.out.println("1- Nome \n2- Número de celular \n3-CPF");
+					auxiliar=ler.nextInt();
+					
+					for(int i = 0; i < employeeList.size(); i++) {
+						
+						if(employeeList.get(i).getEmployeeCode() == employeeCode) {
+							
+							switch(auxiliar) {
+							case 1:
+								System.out.println("\nDigite o novo nome:");
+								ler.nextLine();
+								name=ler.nextLine();
+								employeeList.get(i).setName(name);
+								break;
+								
+							case 2:
+								System.out.println("\nDigite o novo número de celular (sem espaços):");
+								//ler.nextLine();
+								cellphone=ler.next();
+								employeeList.get(i).setCellphone(cellphone);
+								break;
+								
+							case 3:
+								System.out.println("\nDigite o CPF atualizado (sem espaços ou digitos especiais):");
+								//ler.nextLine();
+								CPF=ler.next();
+								employeeList.get(i).setCPF(CPF);
+								break;
+								
+							default:
+								System.out.println("Opcao Invalida");
+								break;
+							}
+						}
+					}
+					System.out.println(employeeList.get(employeeList.size()-1).toString());
+					break;
+					
 				case 5:
 					System.out.println("Whta's the employee code you want to delete?");
 					employeeCode = ler.nextInt();
@@ -181,6 +199,7 @@ public class Teste {
 							employeeList.remove(i);
 						}
 					}
+					System.out.println("Funcionario deletado!");
 					break;
 				case 6:
 					System.out.println("Voltando ao menu principal ...");
