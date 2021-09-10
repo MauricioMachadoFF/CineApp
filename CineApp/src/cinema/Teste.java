@@ -125,7 +125,8 @@ public class Teste {
 					+ "6- MOVIE ROOM\n"
 					+ "7- INGRESSO\n"
 					+ "8- GERAR RECIBO\n"
-					+ "9- Sair\n"
+					+ "9- VENDAS REALIZADAS\n"
+					+ "10- SAIR"
 					);
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
@@ -158,16 +159,20 @@ public class Teste {
 					break;
 					
 				case 8:
-					receiptSession(ticket, snacks, beverage, receipt);
+					saleSession(ticket, snacks, beverage, receipt);
 					break;
 					
 				case 9:
+					
+					break;
+					
+				case 10:
 					System.out.println("Até mais");
 					break;
 				default:
 					break;
 			}
-		} while (item != 9); 
+		} while (item != 10); 
 	}
 
 	public static void roomSection(ArrayList<MovieRoom> rooms) {
@@ -748,11 +753,10 @@ public class Teste {
 	
 	}
 	
-	public static void receiptSession(ArrayList<Ticket> ticket, ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Receipt> receipt) {
+	public static void saleSession(ArrayList<Ticket> ticket, ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Receipt> receipt) {
 		int aux;
 		String cpf, payment;
 		double totalAmount=0;
-		Receipt receiptRecord;
 		Scanner ler = new Scanner(System.in);
 		
 		for(int i = 0; i < snacks.size(); i++) {
@@ -769,7 +773,6 @@ public class Teste {
 		
 		System.out.println("Valor total: " + totalAmount + " reais");
 		System.out.println("Pagamento (dinheiro, pix ou cartao) \nEscreva o metodo de pagamento:");
-		ler.nextLine();
 		payment=ler.nextLine();
 		
 		System.out.println("CPF na nota? \n|1| Sim \n|2| Não");
@@ -778,7 +781,6 @@ public class Teste {
 		//uso de sobrecarga:
 		if(aux==1) {
 			System.out.println("Insira o CPF: ");
-			ler.nextLine();
 			cpf=ler.nextLine();
 			receipt.add(new Receipt(cpf, totalAmount, payment)); 
 			
@@ -791,5 +793,8 @@ public class Teste {
 			System.out.println(receipt.get(n).toString() + "\n");
 		}
 		
+		
+		
 	}
+	
 }

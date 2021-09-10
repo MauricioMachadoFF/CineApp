@@ -54,7 +54,6 @@ public class MovieRoom {
 	}
 
 	public void printSeatMap() {
-		Scanner ler = new Scanner(System.in);
 		
 		for (int l = 0; l < 10; l++){
 			for (int c = 0; c < 15; c++){

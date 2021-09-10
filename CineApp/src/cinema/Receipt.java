@@ -71,10 +71,10 @@ public class Receipt {
 	
 	public String toString() {
 		return new String()
-			.concat("------RESUMO DA COMPRA-------")
-			
-			.concat("\nValor: " + this.total +" reais")
-			.concat("\nMétodo de pagamento: " + this.paymentMethod)
+			.concat("------RESUMO DA COMPRA-------\n")
+			.concat("#" + this.id)
+			.concat("\nValor: " + this.total +" reais\n")
+			.concat("Método de pagamento: " + paymentMethod)
 			;
 	}
 	

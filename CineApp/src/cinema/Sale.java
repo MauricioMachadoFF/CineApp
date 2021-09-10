@@ -4,7 +4,7 @@ public class Sale {
 	private int saleId;
 	private Receipt receipt;
 	private Employee employee;
-	
+
 	public Sale(Employee employee, Receipt receipt) {
 		final int max = 100000;
 		final int min = 1;
@@ -16,8 +16,25 @@ public class Sale {
 	public int getSaleId() {
 		return saleId;
 	}
+	
+	public Receipt getReceipt() {
+		return receipt;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+	
 	public void setSaleId(int saleId) {
 		this.saleId = saleId;
+	}
+	
+	public void setReceipt(Receipt receipt) {
+		this.receipt = receipt;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	
 }
