@@ -2,7 +2,6 @@ package cinema;
 
 import java.text.ParseException;
 import java.util.*;
-import java.util.function.Predicate;
 
 public class Teste {
 
@@ -76,20 +75,27 @@ public class Teste {
 		//MovieRoom
 		ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
 		rooms.add( new MovieRoom(
-					1, 15.85
+					1, 
+					15.85
 				));
+		rooms.add( new MovieRoom(
+				15, 
+				18.00
+			));
 		
 		//Session
 		ArrayList<Session> sessions = new ArrayList<Session>();
 		sessions.add( new Session(
 					"2009-12-24 12:30",
 					rooms.get(0),
-					movies.get(0)
+					movies.get(0),
+					110
 				));
 		sessions.add( new Session(
 				"2009-12-24 12:30",
-				rooms.get(0),
-				movies.get(1)
+				rooms.get(1),
+				movies.get(1),
+				214
 			));
 		
 		
@@ -146,7 +152,7 @@ public class Teste {
 					break;
 					
 				case 5:
-					System.out.println(sessions.get(0).toString());
+					sessionSubMenu(sessions, movies, rooms);
 					break;
 					
 				case 6:
@@ -175,6 +181,110 @@ public class Teste {
 		} while (item != 10); 
 	}
 
+	public static void sessionSubMenu(
+			ArrayList<Session> sessions, 
+			ArrayList<Movie> movies, 
+			ArrayList<MovieRoom> rooms) throws ParseException 
+	{
+		int option, sessionId, movieId, roomId;
+		String preSchedule;
+		Movie movieSelected = null;
+		MovieRoom roomSelected = null;
+		Scanner ler = new Scanner(System.in).useDelimiter("\n");
+		do {
+			System.out.print("\n** SALAS **\n"
+					+ "1- Registrar Nova Sessao\n"
+					+ "2- Ver Todas Sessoes\n"
+					+ "3- Procurar Sessao por Codigo\n"
+					+ "4- Deletar Sessao\n"
+					+ "5- Sair\n");
+			System.out.print("O que você deseja fazer: ");
+			option = ler.nextInt();
+			
+			switch(option) {
+				
+				case 1:
+					for(Movie movie: movies) {
+						System.out.print(movie.toString() + "\n\n");
+					}
+					System.out.println("Escolha o id do movie que deseja adicionar a sessao: ");
+					movieId = ler.nextInt();
+					
+					for(MovieRoom room: rooms) {
+						System.out.print(room.toString() + "\n\n");
+					}
+					System.out.println("Escolha o numero da sala que deseja adicionar a sessao: ");
+					roomId = ler.nextInt();
+					
+					for(int i = 0; i < movies.size(); i++) {
+						if(movies.get(i).getMovieId() == movieId) {
+							movieSelected = movies.get(i);
+							break;
+						}
+					}
+					for(int i = 0; i < rooms.size(); i++) {
+						if(rooms.get(i).getRoomNumber() == roomId) {
+							roomSelected = rooms.get(i);
+							break;
+						}
+					}
+					
+					System.out.println(
+							"Decida o horario da sessao ela\n"
+							+ "Ela deve ser uma string\n"
+							+ "Exemplo (considere o conteúdo dentro das <>)\n"
+							+ "<2009-12-24 12:30>\n"
+							+ "Escreva tudo em uma linha com espacos e tracos"
+							);
+					preSchedule = ler.next();
+					sessions.add(new Session(
+							preSchedule,
+							roomSelected,
+							movieSelected
+							));
+					System.out.println(sessions.get(sessions.size() - 1).toString());
+					break;
+					
+				case 2:
+					for(Session session : sessions) {
+						System.out.println(session.toString());
+						System.out.println();
+					}
+					break;
+				case 3:
+					System.out.println("Id da Sessao: ");
+					sessionId = ler.nextInt();
+					for(Session session: sessions) {
+						if(session.getSessionId() == sessionId) {
+							System.out.println(session.toString());
+						}
+					}
+					break;
+				
+				case 4:
+					System.out.println("Id da Sessao: ");
+					sessionId = ler.nextInt();
+					for(int i = 0; i < sessions.size(); i++) {
+						if(sessions.get(i).getSessionId() == sessionId) {
+							sessions.remove(i);
+							System.out.printf("\n***Sessao removida***\n");
+						}
+					}
+					break;
+					
+				case 5:
+					System.out.println("Voltando ao menu principal!");
+					break;
+					
+				default:
+					System.out.println("Opcao Invalida");
+					break;
+			}
+			
+		} while(option != 5);
+		
+	}
+	
 	public static void roomSection(ArrayList<MovieRoom> rooms) {
 		int option, movieRoomId;
 		Scanner ler = new Scanner(System.in).useDelimiter("\n");
