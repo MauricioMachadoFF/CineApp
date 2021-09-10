@@ -36,6 +36,7 @@ public class Session {
 	public String toString() {
 		return new String("Nome do Filme: " + this.movie.getName())
 				.concat("\nNumero da Sala: " + this.room.getRoomNumber())
-				.concat("\nData da Sessao: " + this.schedule);
+				.concat("\nData da Sessao: " + this.schedule)
+				.concat("\nValor do ingresso: " + this.room.getPrice() + " reais");
 	}
 }

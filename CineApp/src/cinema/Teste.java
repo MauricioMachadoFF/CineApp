@@ -76,7 +76,7 @@ public class Teste {
 		//MovieRoom
 		ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
 		rooms.add( new MovieRoom(
-					1
+					1, 15.85
 				));
 		
 		//Session
@@ -100,8 +100,12 @@ public class Teste {
 		//Beverage
 		ArrayList<Beverage> beverage = new ArrayList<Beverage>();
 		
-		//MovieRoom
+		//Ticket
 		ArrayList<Ticket> ticket = new ArrayList<Ticket>();
+		
+		//Ticket
+		ArrayList<Receipt> receipt = new ArrayList<Receipt>();
+		
 		
 		//Data for the objects --> If Possible we should separate the prev data in a snigle file
 		
@@ -120,7 +124,7 @@ public class Teste {
 					+ "5- SESSOES\n"
 					+ "6- MOVIE ROOM\n"
 					+ "7- INGRESSO\n"
-					+ "8- RECIBO TOTAL\n"
+					+ "8- GERAR RECIBO\n"
 					+ "9- Sair\n"
 					);
 			System.out.print("O que você deseja fazer: ");
@@ -154,7 +158,7 @@ public class Teste {
 					break;
 					
 				case 8:
-					
+					receiptSession(ticket, snacks, beverage, receipt);
 					break;
 					
 				case 9:
@@ -165,7 +169,7 @@ public class Teste {
 			}
 		} while (item != 9); 
 	}
-	
+
 	public static void roomSection(ArrayList<MovieRoom> rooms) {
 		int option;
 		Scanner ler = new Scanner(System.in).useDelimiter("\n");
@@ -675,7 +679,7 @@ public class Teste {
 					System.out.println("\nSessões Disponíveis:");
 					for(int n = 0; n < session.size(); n++) {
 						
-						if(session.get(n).getRoom().getIsRoomType() == true) {
+						if(session.get(n).getRoom().getIs3D() == true) {
 							is3D="Sim";
 						} else {
 							is3D="Não";
@@ -684,7 +688,8 @@ public class Teste {
 						System.out.println((n+1)+"- "
 												+ session.get(n).getMovie().getName() + "\n"
 												+ "Horário: " + session.get(n).getSchedule() + "\n"
-												+ "3D: " + is3D  + "\n");
+												+ "3D: " + is3D  + "\n"
+												+ "Valor: " + session.get(n).getRoom().getPrice() + " reais");
 					}
 					System.out.println("Digite o numero correspondente a sessao escolhida:");
 					sessionChosen=(ler.nextInt());
@@ -741,5 +746,50 @@ public class Teste {
 			
 		}while(option != 4);
 	
+	}
+	
+	public static void receiptSession(ArrayList<Ticket> ticket, ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Receipt> receipt) {
+		int aux;
+		String cpf, payment;
+		double totalAmount=0;
+		Receipt receiptRecord;
+		Scanner ler = new Scanner(System.in);
+		
+		for(int i = 0; i < snacks.size(); i++) {
+			totalAmount = totalAmount + snacks.get(i).price;
+		}
+		
+		for(int i = 0; i < beverages.size(); i++) {
+			totalAmount = totalAmount + beverages.get(i).price;
+		}
+		
+		for(int i = 0; i < ticket.size(); i++) {
+			totalAmount = totalAmount + ticket.get(i).getSession().getRoom().getPrice();
+		}
+		
+		System.out.println("Valor total: " + totalAmount + " reais");
+		System.out.println("Pagamento (dinheiro, pix ou cartao) \nEscreva o metodo de pagamento:");
+		ler.nextLine();
+		payment=ler.nextLine();
+		
+		System.out.println("CPF na nota? \n|1| Sim \n|2| Não");
+		aux=ler.nextInt();
+		
+		//uso de sobrecarga:
+		if(aux==1) {
+			System.out.println("Insira o CPF: ");
+			ler.nextLine();
+			cpf=ler.nextLine();
+			receipt.add(new Receipt(cpf, totalAmount, payment)); 
+			
+		} else {
+			receipt.add(new Receipt(totalAmount, payment));
+		}
+		
+		for(int n = 0; n < receipt.size(); n++) {
+			System.out.println("#"+(n+1));
+			System.out.println(receipt.get(n).toString() + "\n");
+		}
+		
 	}
 }

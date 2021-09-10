@@ -15,16 +15,17 @@ public class MovieRoom {
 			{"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11", "J12", "J13", "J14", "J15"}
 			};
 	private boolean acessabilty;
-	private boolean roomType; //mudar para is3D, para o nome ficar mais claro
+	private boolean is3D;
 	private int roomNumber;
-	// private double price;    faz mais sentido o preço do ingresso depender da sala
+	private double price;
 	
 	// Verificar esse tipo de sala como boolean
 
-	public MovieRoom(int room) {
+	public MovieRoom(int room, double price) {
 		this.acessabilty = true;
-		this.roomType = true;
+		this.is3D = true;
 		this.roomNumber = room;
+		this.price = price;
 	}
 	
 	public String[][] getSeatMap() {
@@ -33,20 +34,25 @@ public class MovieRoom {
 	public boolean getIsAcessabilty() {
 		return acessabilty;
 	}
-	public boolean getIsRoomType() {
-		return roomType;
+	public boolean getIs3D() {
+		return is3D;
 	}
 	public int getRoomNumber() {
 		return roomNumber;
 	}
-
+	public double getPrice() {
+		return price;
+	}
 	public void setAcessabilty(boolean acessabilty) {
 		this.acessabilty = acessabilty;
 	}
-	public void setRoomType(boolean roomType) {
-		this.roomType = roomType;
+	public void setIs3D(boolean is3D) {
+		this.is3D = is3D;
 	}
-	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public void printSeatMap() {
 		Scanner ler = new Scanner(System.in);
 		

@@ -2,7 +2,7 @@ package cinema;
 
 public class Sale {
 	private int saleId;
-	private Receipt receipt = new Receipt();
+	private Receipt receipt;
 	private Employee employee;
 	
 	public Sale(Employee employee, Receipt receipt) {
