@@ -49,11 +49,6 @@ public class Snack extends Food {
 		return super.getBatch();
 	}
 
-	
-	public Date getExpirationDate() {
-		
-		return super.getExpirationDate();
-	}
 
 	public boolean getIsSweet() {
 		return isSweet;
@@ -84,12 +79,6 @@ public class Snack extends Food {
 		super.setBatch(batch);
 	}
 
-
-	public void setExpirationDate(Date expirationDate) {
-		
-		super.setExpirationDate(expirationDate);
-	}
-
 	public void setIsSweet(boolean isSweet) {
 		this.isSweet = isSweet;
 	}
@@ -100,8 +89,7 @@ public class Snack extends Food {
 		return new String("Nome: " + this.name + "\n")
 				.concat("Valor: R$ " + this.price + "\n")
 				.concat("Quantidade em estoque: " + this.stockQuantity + "\n")
-				.concat("Lote: " + this.batch + "\n")
-				.concat("Data de vencimento: " + this.expirationDate + "\n");
+				.concat("Lote: " + this.batch + "\n");
 	}
 	
 	//update snacks information

@@ -16,7 +16,7 @@ public class Teste {
 		
 		//Objects 
 		//Employee
-//		Employee[] employees = new Employee[employeeLimiter];
+
 		ArrayList<Employee> employee = new ArrayList<Employee>();
 		employee.add(new Employee(
 					"Ednaldo Pereira",
@@ -102,16 +102,55 @@ public class Teste {
 		
 		//Snacks
 		ArrayList<Snack> snacks = new ArrayList<Snack>();
+		snacks.add(new Snack("Chocolate",
+								5.90,
+								20,
+								578,
+								true));
+		snacks.add(new Snack("Pipoca",
+				7.10,
+				35,
+				8824,
+				false));
+		snacks.add(new Snack("Pipoca de doce",
+				7.10,
+				35,
+				8526,
+				true));
 				
 		//Beverage
 		ArrayList<Beverage> beverage = new ArrayList<Beverage>();
+		beverage.add(new Beverage("Refrigerante",
+									4.25,
+									30,
+									8562,
+									true,
+									false,
+									true));
+		
+		beverage.add(new Beverage("Suco",
+				5.75,
+				13,
+				8521,
+				true,
+				true,
+				true));
 		
 		//Ticket
 		ArrayList<Ticket> ticket = new ArrayList<Ticket>();
+		ticket.add(new Ticket("A1", sessions.get(0)));
+		ticket.add(new Ticket("C7", sessions.get(0)));
+		ticket.add(new Ticket("G8", sessions.get(1)));
+		ticket.add(new Ticket("G9", sessions.get(1)));
 		
 		//Ticket
 		ArrayList<Receipt> receipt = new ArrayList<Receipt>();
+		receipt.add(new Receipt("123.456.789-10", 75.40, "Cartao"));
+		receipt.add(new Receipt(65.40, "Dinheiro"));
 		
+		//Ticket
+		ArrayList<Sale> sale = new ArrayList<Sale>();
+		sale.add(new Sale(receipt.get(0), employee.get(2)));
 		
 		//Data for the objects --> If Possible we should separate the prev data in a snigle file
 		
@@ -131,8 +170,7 @@ public class Teste {
 					+ "6- MOVIE ROOM\n"
 					+ "7- INGRESSO\n"
 					+ "8- GERAR RECIBO\n"
-					+ "9- VENDAS REALIZADAS\n"
-					+ "10- SAIR\n"
+					+ "9- SAIR\n"
 					);
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
@@ -165,20 +203,17 @@ public class Teste {
 					break;
 					
 				case 8:
-					saleSession(ticket, snacks, beverage, receipt);
+					saleSession(ticket, snacks, beverage, receipt, employee, sale);
 					break;
 					
 				case 9:
-					
+					System.out.println("Até mais\n");
 					break;
-					
-				case 10:
-					System.out.println("Até mais");
-					break;
+
 				default:
 					break;
 			}
-		} while (item != 10); 
+		} while (item != 9); 
 	}
 
 	public static void sessionSubMenu(
@@ -710,12 +745,8 @@ public class Teste {
 							}
 						} while (dietOrNot!=1 && dietOrNot!=2);
 						
-						System.out.println("Qual é o tamanho da bebida (em ml)?");
-						System.out.println("Tamanhos disponiveis: 300, 400 ou 500");
-						size = ler.nextInt();
 						
-						
-						beverages.add(new Beverage(name, price, stock, batch, whithIce, isDiet, whithStraw, size));
+						beverages.add(new Beverage(name, price, stock, batch, whithIce, isDiet, whithStraw));
 						
 						System.out.println("Cadastro realizado!");
 						System.out.println(beverages.get(beverages.size()-1).toString());
@@ -886,9 +917,9 @@ public class Teste {
 		}while(option != 4);
 	
 	}
-	
-	public static void saleSession(ArrayList<Ticket> ticket, ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Receipt> receipt) {
-		int aux;
+
+	public static void saleSession(ArrayList<Ticket> ticket, ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Receipt> receipt, ArrayList<Employee> employee, ArrayList<Sale> sale) {
+		int aux, employeeId;
 		String cpf, payment;
 		double totalAmount=0;
 		Scanner ler = new Scanner(System.in);
@@ -915,6 +946,7 @@ public class Teste {
 		//uso de sobrecarga:
 		if(aux==1) {
 			System.out.println("Insira o CPF: ");
+			ler.nextLine();
 			cpf=ler.nextLine();
 			receipt.add(new Receipt(cpf, totalAmount, payment)); 
 			
@@ -927,8 +959,18 @@ public class Teste {
 			System.out.println(receipt.get(n).toString() + "\n");
 		}
 		
+		System.out.println("Insira o código do funcionário: ");
+		employeeId=ler.nextInt();
 		
-		
+		for(int n = 0; n < employee.size(); n++) {
+			if(employee.get(n).getEmployeeCode() == employeeId) {
+				sale.add(new Sale(receipt.get(receipt.size()-1), employee.get(n)));
+			}
+		}
+		System.out.println("Vendas realizadas:\n");
+		for(int n = 0; n < sale.size(); n++) {
+			System.out.println(sale.get(n).toString() + "\n");
+		}
 	}
 	
 }

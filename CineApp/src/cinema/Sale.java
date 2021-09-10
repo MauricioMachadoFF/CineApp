@@ -1,16 +1,17 @@
 package cinema;
 
 public class Sale {
-	private int saleId;
+	private int saleId=1;
 	private Receipt receipt;
 	private Employee employee;
+	final int max = 10000;
+	final int min = 1;
 
-	public Sale(Employee employee, Receipt receipt) {
-		final int max = 100000;
-		final int min = 1;
-		this.saleId = (int)Math.floor(Math.random()*(max-min+1)+min);
+	public Sale(Receipt receipt, Employee employee) {
+		this.saleId=(int)Math.floor(Math.random()*(max-min+1)+min);
 		this.receipt = receipt;
 		this.employee = employee;
+		
 	}
 	
 	public int getSaleId() {
@@ -24,9 +25,9 @@ public class Sale {
 	public Employee getEmployee() {
 		return employee;
 	}
-	
+
 	public void setSaleId(int saleId) {
-		this.saleId = saleId;
+		this.saleId = (int)Math.floor(Math.random()*(max-min+1)+min);
 	}
 	
 	public void setReceipt(Receipt receipt) {
@@ -36,5 +37,10 @@ public class Sale {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
+
+	public String toString() {
+		return new String("Venda nº: " + this.saleId + "\n")
+			.concat("Valor: R$ " + receipt.getTotal() + "\n")
+			.concat("Código do Vendedor: " + employee.getEmployeeCode() + "\n");
+	}
 }

@@ -8,7 +8,6 @@ public class Beverage extends Food {
 	private boolean hasIce;
 	private boolean isDiet;
 	private boolean hasStraw;
-	private int size;
 	
 	public Beverage(String nameDrink, 
 				double drinkPrice,
@@ -16,8 +15,7 @@ public class Beverage extends Food {
 				int drinkBatch,
 				boolean withIce,
 				boolean dietDrink,
-				boolean withStraw,
-				int cupSize) 
+				boolean withStraw) 
 	{
 		name = nameDrink;
 		price = drinkPrice;
@@ -26,8 +24,6 @@ public class Beverage extends Food {
 		hasIce = withIce;
 		isDiet = dietDrink;
 		hasStraw = withStraw;
-		size = cupSize;
-		/*expirationDate = drinkExpirationDate;*/
 	}
 	
 
@@ -55,11 +51,6 @@ public class Beverage extends Food {
 		return super.getBatch();
 	}
 
-	@Override
-	public Date getExpirationDate() {
-
-		return super.getExpirationDate();
-	}
 	
 	public boolean getHasIce() {
 		return hasIce;
@@ -71,10 +62,6 @@ public class Beverage extends Food {
 
 	public boolean getHasStraw() {
 		return hasStraw;
-	}
-
-	public int getSize() {
-		return size;
 	}
 
 	@Override
@@ -101,11 +88,6 @@ public class Beverage extends Food {
 		super.setBatch(batch);
 	}
 
-	@Override
-	public void setExpirationDate(Date expirationDate) {
-
-		super.setExpirationDate(expirationDate);
-	}
 
 	public void setHasIce(boolean hasIce) {
 		this.hasIce = hasIce;
@@ -115,9 +97,6 @@ public class Beverage extends Food {
 		this.isDiet = isDiet;
 	}
 
-	public void setSize(int size) {
-		this.size = size;
-	}
 
 	public void setHasStraw(boolean hasStraw) {
 		this.hasStraw = hasStraw;
@@ -129,11 +108,9 @@ public class Beverage extends Food {
 			.concat("Valor: R$ " + this.price + "\n")
 			.concat("Quantidade em estoque: " + this.stockQuantity + " copos\n")
 			.concat("Lote: " + this.batch + "\n")
-			.concat("Data de vencimento: " + this.expirationDate + "\n")
 			.concat("Com gelo? " + this.hasIce + "\n")
 			.concat("Com canudo? " + this.hasStraw + "\n")
-			.concat("Diet: " + this.isDiet + "\n")
-			.concat("Tamanho " + this.size + " ml\n");
+			.concat("Diet: " + this.isDiet + "\n");
 	}
 	
 		
@@ -144,7 +121,7 @@ public class Beverage extends Food {
 		Scanner ler = new Scanner(System.in);
 		
 		System.out.println("Qual dado deseja editar?");
-		System.out.println("1- Nome \n2- Preco \n3-Estoque \n4- Lote \n5- Gelo \n6- Canudo \n7- Diet \n8- Size");
+		System.out.println("1- Nome \n2- Preco \n3-Estoque \n4- Lote \n5- Gelo \n6- Canudo \n7- Diet \n");
 		auxiliar=ler.nextInt();
 					
 		switch(auxiliar) {
@@ -218,12 +195,6 @@ public class Beverage extends Food {
 					setisDiet(isDiet);
 					break;
 							
-				case 8:
-					System.out.println("Digite o novo tamanho da bebida (em ml)?");
-					System.out.println("Tamanhos disponiveis: 300, 400 ou 500");
-					size = ler.nextInt();
-					setSize(size);
-					break;
 							
 				default:
 					System.out.println("Opcao Invalida");
