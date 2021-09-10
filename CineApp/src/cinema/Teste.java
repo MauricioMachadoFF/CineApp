@@ -126,7 +126,7 @@ public class Teste {
 					+ "7- INGRESSO\n"
 					+ "8- GERAR RECIBO\n"
 					+ "9- VENDAS REALIZADAS\n"
-					+ "10- SAIR"
+					+ "10- SAIR\n"
 					);
 			System.out.print("O que você deseja fazer: ");
 			item = ler.nextInt();
@@ -176,13 +176,14 @@ public class Teste {
 	}
 
 	public static void roomSection(ArrayList<MovieRoom> rooms) {
-		int option;
+		int option, movieRoomId;
 		Scanner ler = new Scanner(System.in).useDelimiter("\n");
 		do {
 			System.out.print("\n** SALAS **\n"
 					+ "1- Registrar Nova Sala\n"
 					+ "2- Ver Todas Salas\n"
-					+ "4- Atualizar Filme\n"
+					+ "3- Procurar Sala por Codigo\n"
+					+ "4- Atualizar Sala\n"
 					+ "5- Deletar Sala\n"
 					+ "6- Sair\n");
 			System.out.print("O que você deseja fazer: ");
@@ -191,20 +192,43 @@ public class Teste {
 			switch(option) {
 				
 				case 1:
-			
+					rooms.add(new MovieRoom());
 					break;
 					
 				case 2:
-					
-				case 3:
-
+					for(MovieRoom room : rooms) {
+						System.out.println(room.toString());
+						System.out.println();
+					}
 					break;
-					
+				case 3:
+					System.out.println("Numero da Sala: ");
+					movieRoomId = ler.nextInt();
+					for(MovieRoom room: rooms) {
+						if(room.getRoomNumber() == movieRoomId) {
+							System.out.println(room.toString());
+						}
+					}
+					break;
 				case 4:
+					System.out.println("\nNumero da Sala que voce deseja editar?");
+					movieRoomId = ler.nextInt();
+					for(MovieRoom room : rooms) {
+						if(room.getRoomNumber() == movieRoomId) {
+							room.updateMovieRoom();
+						}
+					}
 					break;
 				
 				case 5:
-
+					System.out.println("Numero da Sala: ");
+					movieRoomId = ler.nextInt();
+					for(int i = 0; i < rooms.size(); i++) {
+						if(rooms.get(i).getRoomNumber() == movieRoomId) {
+							rooms.remove(i);
+							System.out.printf("\n***Sala removida***\n");
+						}
+					}
 					break;
 					
 				case 6:
@@ -221,7 +245,7 @@ public class Teste {
 	}
 	
 	public static void moviesSection(ArrayList<Movie> movies) {
-		int option, movieId, auxiliar, posMovie = 0;
+		int option, movieId;
 		Scanner ler = new Scanner(System.in).useDelimiter("\n");
 		do {
 			System.out.print("\n** FILMES **\n"

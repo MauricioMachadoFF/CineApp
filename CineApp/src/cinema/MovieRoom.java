@@ -1,4 +1,5 @@
 package cinema;
+
 import java.util.Scanner;
 
 public class MovieRoom {
@@ -14,25 +15,45 @@ public class MovieRoom {
 			{"I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9", "I10", "I11", "I12", "I13", "I14", "I15"},
 			{"J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10", "J11", "J12", "J13", "J14", "J15"}
 			};
-	private boolean acessabilty;
+	private boolean acessability;
 	private boolean is3D;
 	private int roomNumber;
 	private double price;
+	private Scanner ler = new Scanner(System.in).useDelimiter("\n");
 	
 	// Verificar esse tipo de sala como boolean
 
-	public MovieRoom(int room, double price) {
-		this.acessabilty = true;
+	public MovieRoom(int roomNumber, double price) {
+		this.acessability = true;
 		this.is3D = true;
-		this.roomNumber = room;
+		this.roomNumber = roomNumber;
 		this.price = price;
+	}
+	public MovieRoom() {
+		System.out.println("Numero da sala: ");
+		setRoomNumber(ler.nextInt());
+		System.out.println("Preco da Sala: ");
+		setPrice(ler.nextDouble());
+		System.out.println("Tem acessibilidade: "
+				+ "\nTrue"
+				+ "\nFalse"
+				+ "\nInserir apenas uma das opcoes acima"
+				);
+		setAcessability(ler.nextBoolean());
+		System.out.println("E Sala 3D:"
+				+ "\nTrue"
+				+ "\nFalse"
+				+ "\nInserir apenas uma das opcoes acima"
+				);
+		setIs3D(ler.nextBoolean());
+		System.out.println(toString());
 	}
 	
 	public String[][] getSeatMap() {
 		return seatMap;
 	}
 	public boolean getIsAcessabilty() {
-		return acessabilty;
+		return acessability;
 	}
 	public boolean getIs3D() {
 		return is3D;
@@ -43,14 +64,17 @@ public class MovieRoom {
 	public double getPrice() {
 		return price;
 	}
-	public void setAcessabilty(boolean acessabilty) {
-		this.acessabilty = acessabilty;
+	public void setAcessability(boolean acessability) {
+		this.acessability = acessability;
 	}
 	public void setIs3D(boolean is3D) {
 		this.is3D = is3D;
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
 	public void printSeatMap() {
@@ -61,6 +85,50 @@ public class MovieRoom {
 			}
 			System.out.print("\n");
 	    }
+	}
+	
+	public String toString() {
+		return new String("Numero da Sala: " + this.roomNumber)
+				.concat("\nPreco da Sala: " + this.price)
+				.concat("\nAcessibilidade: " + this.acessability)
+				.concat("\nSala 3D: ") + this.is3D;
+	}
+	
+	public void updateMovieRoom() {
+		int auxiliar;
+		System.out.println("Qual dado deseja editar?");
+		System.out.println("1- Preco da sala \n2- Acessabilidade \n3- Sala 3D");
+		auxiliar=ler.nextInt();
+		
+		switch(auxiliar) {
+		case 1:
+			System.out.println("\nDigite o novo preco da sala:");
+			setPrice(ler.nextDouble());
+			break;
+			
+		case 2:
+			System.out.println("\nAtualize a informacao sobre a acessibilidade:\n"
+					+ "True\n"
+					+ "False\n"
+					+ "Selecione uma das opcoes acima\n"
+					);
+			setAcessability(ler.nextBoolean());
+			break;
+			
+		case 3:
+			System.out.println("\nAtualize a informacao sobre a tecnologia 3D:\n"
+					+ "True\n"
+					+ "False\n"
+					+ "Selecione uma das opcoes acima\n"
+					);
+			setIs3D(ler.nextBoolean());
+			break;
+			
+		default:
+			System.out.println("Opcao Invalida");
+			break;
+		}
+		System.out.println(toString());
 	}
 	
 }
