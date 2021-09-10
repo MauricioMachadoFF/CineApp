@@ -23,7 +23,7 @@ public class Ticket {
 		return new String("Nome do Filme: " + session.getMovie().getName())
 				.concat("\nNumero da Sala: " + session.getRoom().getRoomNumber())
 				.concat("\nData da Sessao: " + session.getSchedule())
-				.concat("\nAssento: " + this.getSeat()
+				.concat("\nAssento: " + this.seat
 						);
 	}
 }

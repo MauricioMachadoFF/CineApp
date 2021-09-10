@@ -86,6 +86,11 @@ public class Teste {
 					rooms.get(0),
 					movies.get(0)
 				));
+		sessions.add( new Session(
+				"2009-12-24 12:30",
+				rooms.get(0),
+				movies.get(1)
+			));
 		
 		
 		
@@ -649,7 +654,7 @@ public class Teste {
 	}
 	
 	public static void ticketSession(ArrayList<Ticket> ticket, ArrayList<Session> session) {
-		int option, qtyRegister, sessionChosen;
+		int option,  sessionChosen, auxiliar;
 		String is3D, seatChosen;
 		Scanner ler = new Scanner(System.in);
 		
@@ -658,10 +663,9 @@ public class Teste {
 		do {
 			System.out.print("\n** INGRESSOS **\n"
 					+ "1- Vender Ingresso\n"
-					+ "2- Atualizar Ingresso\n"
-					+ "3- Apagar Ingresso\n"
-					+ "4- Imprimir Ingressos Comprados\n"
-					+ "5- Sair\n");
+					+ "2- Apagar Ingresso\n"
+					+ "3- Imprimir Ingressos Comprados\n"
+					+ "4- Sair\n");
 			System.out.print("O que você deseja fazer: ");
 			option = ler.nextInt();
 			switch(option) {
@@ -683,14 +687,16 @@ public class Teste {
 												+ "3D: " + is3D  + "\n");
 					}
 					System.out.println("Digite o numero correspondente a sessao escolhida:");
-					sessionChosen=ler.nextInt();
+					sessionChosen=(ler.nextInt());
+					sessionChosen--;
 					
 					System.out.println("Mapa de Assento:");
 					session.get(sessionChosen).getRoom().printSeatMap();
+					
 					System.out.println("Digite o assento escolhido");
 					ler.nextLine();
 					seatChosen=ler.nextLine();
-					//validar a escolha do assento
+					
 					
 					ticket.add(new Ticket(seatChosen, session.get(sessionChosen)));
 					
@@ -700,18 +706,32 @@ public class Teste {
 					break;
 					
 				case 2:
+					System.out.println("Ingressos Comprados:\n");
+					for(int n = 0; n < ticket.size(); n++) {
+						System.out.println("#"+(n+1));
+						System.out.println(ticket.get(n).toString() + "\n");
+					}
+					System.out.println("Insira o ingresso a ser deletado:\n");
+					auxiliar=ler.nextInt();
 					
-					break;
+					for(int n = 0; n < ticket.size(); n++) {
+						if(auxiliar==n+1) {
+							ticket.remove(n);
+							System.out.println("Ingresso deletado com sucesso!\n");
+						}
+					}
+				break;
 					
 				case 3:
+					
+					for(int n = 0; n < ticket.size(); n++) {
+							System.out.println("#"+(n+1));
+							System.out.println(ticket.get(n).toString() + "\n");
+						}
 					break;
 					
 				case 4:
-					break;
-					
-				case 5:
 					System.out.println("Voltando ao menu principal ...");
-					
 					break;
 					
 				default:
@@ -719,7 +739,7 @@ public class Teste {
 					break;
 			} 
 			
-		}while(option != 5);
+		}while(option != 4);
 	
 	}
 }
