@@ -25,7 +25,7 @@ public class DataControl {
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
 				Integer.parseInt(snackData[3]), Integer.parseInt(snackData[4]), Boolean.valueOf(snackData[5]));
-		data.updateSnack(Integer.parseInt(snackData[0]), snacks); //snackData[0] is the index of the snack that will be updated
+		data.updateSnack(Integer.parseInt(snackData[0]), snacks);
 		
 		return true;
 	}
