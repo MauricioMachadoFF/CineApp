@@ -58,6 +58,7 @@ public class Movie {
 	public void setMovieId() {
 		this.movieId = (int)Math.floor(Math.random()*(max-min+1)+min);
 	}
+	//add some secret comment hehe
 	
 	public String toString() {
 		return new String("Title: " + this.name)
