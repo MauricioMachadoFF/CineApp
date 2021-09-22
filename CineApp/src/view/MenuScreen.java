@@ -14,19 +14,35 @@ public class MenuScreen implements ActionListener {
 	
 	private static JFrame window = new JFrame("Sistema do Cinema");
 	private static JLabel title = new JLabel("Menu Principal");
-	private static JButton snack = new JButton("Lanche");
+	private static JButton food = new JButton("Gerenciar Lanches e Bebidas");
+	private static JButton employee = new JButton("Gerenciar Funcionarios");
+	private static JButton movie = new JButton("Gerenciar Filmes");
+	private static JButton room = new JButton("Gerenciar Salas");
+	private static JButton session = new JButton("Gerenciar Sessoes");
+	private static JButton sale = new JButton("Realizar Venda");
 	public static DataControl data = new DataControl();
 	
 	public MenuScreen() {
-		title.setBounds(120, 10, 150, 30);
-		snack.setBounds(140, 50, 100, 30);
+		title.setBounds(200, 10, 300, 20);
+		sale.setBounds(100, 50, 300, 30);
+		food.setBounds(100, 90, 300, 30);
+		employee.setBounds(100, 130, 300, 30);
+		movie.setBounds(100, 170, 300, 30);
+		room.setBounds(100, 210, 300, 30);
+		session.setBounds(100, 250, 300, 30);
 		
 		window.setLayout(null);
 		
 		window.add(title);
-		window.add(snack);
+		window.add(sale);
+		window.add(food);
+		window.add(movie);
+		window.add(room);
+		window.add(session);
+		window.add(employee);
 		
-		window.setSize(400, 250);
+		window.setSize(500, 350);
+		window.setLocationRelativeTo(null);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 	}
@@ -34,13 +50,13 @@ public class MenuScreen implements ActionListener {
 	public static void main(String[] args) {
 		MenuScreen menu = new MenuScreen();
 		
-		snack.addActionListener(menu);
+		food.addActionListener(menu);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if(src == snack)
-			new SnackScreen().showData(data, 1);
+		if(src == food)
+			new FoodScreen().showData(data);
 	}
 }

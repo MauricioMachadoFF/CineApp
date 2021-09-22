@@ -5,6 +5,7 @@ import model.*;
 
 public class DataControl {
 	private Data data = new Data();
+	private SnackControl snackControl;
 	
 	public DataControl() {
 		data.fillWithRandomData();
@@ -12,6 +13,10 @@ public class DataControl {
 
 	public Data getData() {
 		return data;
+	}
+	
+	public SnackControl getSnackControl() {
+		return snackControl;
 	}
 
 	public void setData(Data data) {
@@ -22,10 +27,23 @@ public class DataControl {
 		return this.data.getSnacks();
 	}
 	
+	public ArrayList<Beverage> getBeverages() {
+		return this.data.getBeverages();
+	}
+	
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
 				Integer.parseInt(snackData[3]), Integer.parseInt(snackData[4]), Boolean.valueOf(snackData[5]));
 		data.updateSnack(Integer.parseInt(snackData[0]), snacks);
+		
+		return true;
+	}
+	
+	public boolean editBeverage(String[] beverageData) {
+		Beverage beverages = new Beverage(beverageData[1], Double.valueOf(beverageData[2]),
+				Integer.parseInt(beverageData[3]), Integer.parseInt(beverageData[4]), Boolean.valueOf(beverageData[5]),
+				Boolean.valueOf(beverageData[6]), Boolean.valueOf(beverageData[7]));
+		data.updateBeverage(Integer.parseInt(beverageData[0]), beverages);
 		
 		return true;
 	}
@@ -38,8 +56,22 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean addBeverage(String[] beverageData) {
+		Beverage beverages = new Beverage(beverageData[0], Double.valueOf(beverageData[1]),
+				Integer.parseInt(beverageData[2]), Integer.parseInt(beverageData[3]), Boolean.valueOf(beverageData[4]),
+				Boolean.valueOf(beverageData[5]), Boolean.valueOf(beverageData[6]));
+		data.setBeverages(beverages);
+		
+		return true;
+	}
+	
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
+			return true;
+	}
+	
+	public boolean deleteBeverage(int i) {
+		data.getBeverages().remove(i);
 			return true;
 	}
 

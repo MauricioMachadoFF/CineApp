@@ -1,19 +1,22 @@
 package model;
 
-
-public class Snack extends Food {
-	private boolean isSweet;
+public class Beverage extends Food {
+	private boolean isDiet;
+	private boolean hasIce;
+	private boolean hasStraw;
 	
-	public Snack(){
+	public Beverage(){
 		super();
 	}
 	
-	public Snack(String nameSnack, double snackPrice, int snackStockQuantity, int snackBatch, boolean sweetSnack){
-		this.name = nameSnack;
-		this.price = snackPrice;
-		this.stockQuantity = snackStockQuantity;
-		this.batch = snackBatch;
-		this.isSweet = sweetSnack;
+	public Beverage(String nameB, double priceB, int stockQuantityB, int batchB, boolean diet, boolean ice, boolean straw){
+		this.name = nameB;
+		this.price = priceB;
+		this.stockQuantity = stockQuantityB;
+		this.batch = batchB;
+		this.isDiet = diet;
+		this.hasIce = ice;
+		this.hasStraw = straw;
 		
 	}
 	
@@ -23,12 +26,19 @@ public class Snack extends Food {
 				.concat("Quantidade em estoque: " + this.stockQuantity + "\n")
 				.concat("Lote: " + this.batch + "\n");
 	}
-
-
-	public boolean getIsSweet() {
-		return isSweet;
+	
+	public boolean getHasIce() {
+		return hasIce;
 	}
 
+	public boolean getHasStraw() {
+		return hasStraw;
+	}
+
+	public boolean getIsDiet() {
+		return isDiet;
+	}
+	
 	public String getName() {
 		return super.getName();
 	}
@@ -45,8 +55,16 @@ public class Snack extends Food {
 		return super.getBatch();
 	}
 
-	public void setSweet(boolean isSweet) {
-		this.isSweet = isSweet;
+	public void setHasIce(boolean hasIce) {
+		this.hasIce = hasIce;
+	}
+	
+	public void setHasStraw(boolean hasStraw) {
+		this.hasStraw = hasStraw;
+	}
+	
+	public void setDiet(boolean isDiet) {
+		this.isDiet = isDiet;
 	}
 	
 	public void setName(String name) {
@@ -64,5 +82,4 @@ public class Snack extends Food {
 	public void setBatch(int batch) {
 		super.setBatch(batch);
 	}
-	
 }
