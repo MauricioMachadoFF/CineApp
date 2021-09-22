@@ -28,18 +28,6 @@ public class Movie {
 		this.movieId = (int)Math.floor(Math.random()*(max-min+1)+min);
 	}
 	
-	public Movie() {
-		System.out.println("Nome do filme: ");
-		setName(ler.next());
-		System.out.println("Ano de Lancamento: ");
-		setYear(ler.nextInt());
-		System.out.println("Genero: ");
-		setGenre(ler.next());
-		System.out.println("Sinopse: ");
-		setSynopsis(ler.next());
-		setMovieId();
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -55,9 +43,6 @@ public class Movie {
 	public int getMovieId() {
 		return movieId;
 	}
-//	public Image getPoster() {
-//		return poster;
-//	}
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -74,50 +59,11 @@ public class Movie {
 		this.movieId = (int)Math.floor(Math.random()*(max-min+1)+min);
 	}
 	
-//	public void setPoster(Image poster) {
-//		this.poster = poster;
-//	}
-	
 	public String toString() {
 		return new String("Title: " + this.name)
 			.concat("\nYear: " + this.year)
 			.concat("\nGenero: " + this.genre)
 			.concat("\nSinopse: " + this.synopsis)
 			.concat("\nMovieId: ") + this.movieId;
-	}
-	
-	public void updateMovie() {
-		int auxiliar;
-		System.out.println("\nQual o código do filme que você deseja editar?");
-		System.out.println("Qual dado deseja editar?");
-		System.out.println("1- Título \n2 - Ano de lancamento \n3 - Genero \n4 - Sinopse");
-		auxiliar=ler.nextInt();
-		
-		switch(auxiliar) {
-		case 1:
-			System.out.println("\nDigite o novo nome:");
-			setName(ler.next());
-			break;
-			
-		case 2:
-			System.out.println("\nDigite o ano de lançamento atualizado:");
-			setYear(ler.nextInt());
-			break;
-			
-		case 3:
-			System.out.println("\nDigite o genero do filme:");
-			setGenre(ler.next());
-			break;
-			
-		case 4:
-			System.out.println("\nDigite a sinopse do filme:");
-			setSynopsis(ler.next());
-			break;
-			
-		default:
-			System.out.println("Opcao Invalida");
-			break;
-		}
-		System.out.println(toString());
 	}
 }
