@@ -51,12 +51,18 @@ public class MenuScreen implements ActionListener {
 		MenuScreen menu = new MenuScreen();
 		
 		food.addActionListener(menu);
+		movie.addActionListener(menu);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if(src == food)
+		if(src == food) {
 			new FoodScreen().showData(data);
+		}
+		else if (src == movie) {
+			new MovieSubMenu().showData(data);
+		}
+			
 	}
 }

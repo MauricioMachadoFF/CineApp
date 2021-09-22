@@ -31,6 +31,10 @@ public class DataControl {
 		return this.data.getBeverages();
 	}
 	
+	public ArrayList<Movie> getMovies() {
+		return this.data.getMovies();
+	}
+	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
 				Integer.parseInt(snackData[3]), Integer.parseInt(snackData[4]), Boolean.valueOf(snackData[5]));
@@ -44,6 +48,13 @@ public class DataControl {
 				Integer.parseInt(beverageData[3]), Integer.parseInt(beverageData[4]), Boolean.valueOf(beverageData[5]),
 				Boolean.valueOf(beverageData[6]), Boolean.valueOf(beverageData[7]));
 		data.updateBeverage(Integer.parseInt(beverageData[0]), beverages);
+		
+		return true;
+	}
+	
+	public boolean editMovie(String[] movieData) {
+		Movie movies = new Movie(movieData[1], Integer.parseInt(movieData[2]), movieData[3], movieData[4]);
+		data.updateMovie(Integer.parseInt(movieData[0]), movies);
 		
 		return true;
 	}
@@ -65,6 +76,12 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean addMovie(String[] movieData) {
+		Movie movies = new Movie(movieData[0], Integer.parseInt(movieData[1]), movieData[2], movieData[3]);
+		data.setMovies(movies);
+		return true;
+	}
+	
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
 			return true;
@@ -73,6 +90,12 @@ public class DataControl {
 	public boolean deleteBeverage(int i) {
 		data.getBeverages().remove(i);
 			return true;
+	}
+	
+	public boolean deleteMovie(int i) {
+		data.getMovies().remove(i);
+		
+		return true;
 	}
 
 }
