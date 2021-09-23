@@ -5,7 +5,6 @@ import model.*;
 
 public class DataControl {
 	private Data data = new Data();
-	private SnackControl snackControl;
 	
 	public DataControl() {
 		data.fillWithRandomData();
@@ -15,9 +14,10 @@ public class DataControl {
 		return data;
 	}
 	
-	public SnackControl getSnackControl() {
+	//acho que essa parte do código é desnecessária
+	/*public SnackControl getSnackControl() {
 		return snackControl;
-	}
+	}*/
 
 	public void setData(Data data) {
 		this.data = data;

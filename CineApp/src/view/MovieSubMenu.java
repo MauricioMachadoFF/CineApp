@@ -64,7 +64,7 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 		
 		if(src == createMovie) {
-			new MovieItem().addEdit(1, data, this, 0);
+			new MovieItem().addEdit(1, data, this, 1);
 		}
 		//atualiza a lista de lanches
 		if(src == refreshMovie) {

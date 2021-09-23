@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 import control.DataControl;
 
-public class MovieItem {
+public class MovieItem implements ActionListener {
 	private JFrame window;
 	private JLabel labelMvName= new JLabel("Nome do Flme: ");
 	private JTextField MvName;
@@ -22,8 +22,8 @@ public class MovieItem {
 	private JTextField MvSynopsis;
 	private JButton deleteMovie = new JButton("Excluir");
 	private JButton saveMovie = new JButton("Salvar");
-	private String[] editedMovie= new String[6];
-	private String[] newMovie = new String[5];
+	private String[] editedMovie= new String[5];
+	private String[] newMovie = new String[4];
 	private static DataControl data;
 	private int position;
 	private int option;
@@ -46,16 +46,13 @@ public class MovieItem {
 		}
 		window=new JFrame(windowLabel);
 		
-		if(op==1 || op==2) {
+		switch(op) {
+		
+		case 1:
 			MvName = new JTextField(200);
 			MvYear = new JTextField(200);
 			MvGenre = new JTextField(200);
 			MvSynopsis = new JTextField(200);
-		}
-		
-		switch(op) {
-		
-		case 1:
 			saveMovie.setBounds(245, 175, 115, 30);
 			this.window.add(saveMovie);
 			
@@ -104,8 +101,8 @@ public class MovieItem {
 		window.setLocationRelativeTo(null);
 		this.window.setVisible(true);
 
-		saveMovie.addActionListener((ActionListener) this);
-		deleteMovie.addActionListener((ActionListener) this);
+		deleteMovie.addActionListener(this);
+		saveMovie.addActionListener(this);
 	}
 	
 	
@@ -132,7 +129,7 @@ public class MovieItem {
 			}
 		}
 		if(source == deleteMovie) {
-			data.deleteSnack(position);
+			data.deleteMovie(position);
 		}
 	}
 }

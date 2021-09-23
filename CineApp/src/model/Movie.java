@@ -1,9 +1,6 @@
 package model;
 
-import java.util.Scanner;
-
 public class Movie {
-	private Scanner ler = new Scanner(System.in).useDelimiter("\n");
 	private String name;
 	private int year;
 	private String genre;
