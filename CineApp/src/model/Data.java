@@ -6,6 +6,9 @@ public class Data {
 	private  ArrayList<Snack> snacks = new ArrayList<Snack>();
 	private  ArrayList<Beverage> beverages = new ArrayList<Beverage>();
 	private  ArrayList<Movie> movies = new ArrayList<Movie>();
+	private  ArrayList<Employee> employees = new ArrayList<Employee>();
+	final int max = 999999999;
+	final int min = 100000000;
 	
 	public void fillWithRandomData() {
 		boolean trueOrFalse = true;
@@ -14,6 +17,13 @@ public class Data {
 			
 			beverages.add(new Beverage("Bebida "+(i+1), i+10, i*7, (i+5)*65, trueOrFalse, !trueOrFalse, trueOrFalse ));
 			trueOrFalse =! trueOrFalse;
+			
+			employees.add(new Employee(
+					"Funcionário " + (i + 1),
+					String.valueOf((int)Math.floor(Math.random()*(max-min+1)+min)),
+					String.valueOf((int)Math.floor(Math.random()*(max-min+1)+min)),
+					(int)Math.floor(Math.random()*(max-min+1)+min)
+			));
 		}
 		movies.add( new Movie(
 				"Creed",
@@ -49,6 +59,10 @@ public class Data {
 	public ArrayList<Movie> getMovies() {
 		return movies;
 	}
+	
+	public ArrayList<Employee> getEmployees() {
+		return employees;
+	}
 
 	public void setSnacks(Snack snack) {
 		snacks.add(snack);
@@ -62,6 +76,10 @@ public class Data {
 		movies.add(movie);
 	}
 	
+	public void setEmployees(Employee employee) {
+		employees.add(employee);
+	}
+	
 	public void updateSnack(int index, Snack snack) {
 	    this.snacks.set(index, snack);
 	}
@@ -72,5 +90,9 @@ public class Data {
 	
 	public void updateMovie(int index, Movie movie) {
 		this.movies.set(index, movie);
+	}
+	
+	public void updateEmployee(int index, Employee employee) {
+		this.employees.set(index, employee);
 	}
 }

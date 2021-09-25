@@ -34,6 +34,10 @@ public class DataControl {
 	public ArrayList<Movie> getMovies() {
 		return this.data.getMovies();
 	}
+	
+	public ArrayList<Employee> getEmployees() {
+		return this.data.getEmployees();
+	}
 	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
@@ -56,6 +60,12 @@ public class DataControl {
 		Movie movies = new Movie(movieData[1], Integer.parseInt(movieData[2]), movieData[3], movieData[4]);
 		data.updateMovie(Integer.parseInt(movieData[0]), movies);
 		
+		return true;
+	}
+	
+	public boolean editEmployee(String[] employeeData) {
+		Employee employees = new Employee(employeeData[1], employeeData[2], employeeData[3], Integer.parseInt(employeeData[4]));
+		data.updateEmployee(Integer.parseInt(employeeData[0]), employees);
 		return true;
 	}
 	
@@ -82,6 +92,12 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean addEmployee(String[] employeeData) {
+		Employee employees = new Employee(employeeData[0], employeeData[1], employeeData[2], Integer.parseInt(employeeData[3]));
+		data.setEmployees(employees);
+		return true;
+	}
+	
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
 			return true;
@@ -95,6 +111,11 @@ public class DataControl {
 	public boolean deleteMovie(int i) {
 		data.getMovies().remove(i);
 		
+		return true;
+	}
+	
+	public boolean deleteEmployee(int i) {
+		data.getEmployees().remove(i);
 		return true;
 	}
 
