@@ -37,11 +37,11 @@ public class EmployeeItem implements ActionListener {
 		position=p;
 		
 		if (op == 1) {
-			windowLabel = "Cadastrar Filme";
+			windowLabel = "Cadastrar Funcionario";
 			labelName = new JLabel("Nome: ");
 		}
 		if (op == 2) {
-			windowLabel = "Filme: Informações";
+			windowLabel = "Funcionario: Informações";
 			labelName = new JLabel("Nome: ");
 		}
 		window=new JFrame(windowLabel);

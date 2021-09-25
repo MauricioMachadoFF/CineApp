@@ -38,6 +38,10 @@ public class DataControl {
 	public ArrayList<Employee> getEmployees() {
 		return this.data.getEmployees();
 	}
+	
+	public ArrayList<MovieRoom> getRooms() {
+		return this.data.getRooms();
+	}
 	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
@@ -66,6 +70,17 @@ public class DataControl {
 	public boolean editEmployee(String[] employeeData) {
 		Employee employees = new Employee(employeeData[1], employeeData[2], employeeData[3], Integer.parseInt(employeeData[4]));
 		data.updateEmployee(Integer.parseInt(employeeData[0]), employees);
+		return true;
+	}
+	
+	public boolean editRoom(String[] roomData) {
+		MovieRoom rooms = new MovieRoom(
+				Integer.parseInt(roomData[1]),
+				Double.parseDouble(roomData[2]),
+				Boolean.valueOf(roomData[3]),
+				Boolean.valueOf(roomData[4])
+		);
+		data.updateRoom(Integer.parseInt(roomData[0]), rooms);
 		return true;
 	}
 	
@@ -98,6 +113,17 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean addRoom(String[] roomData) {
+		MovieRoom rooms = new MovieRoom(
+				Integer.parseInt(roomData[0]),
+				Double.parseDouble(roomData[1]),
+				Boolean.valueOf(roomData[2]),
+				Boolean.valueOf(roomData[3])
+		);
+		data.setRooms(rooms);
+		return true;
+	}
+	
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
 			return true;
@@ -116,6 +142,11 @@ public class DataControl {
 	
 	public boolean deleteEmployee(int i) {
 		data.getEmployees().remove(i);
+		return true;
+	}
+	
+	public boolean deleteRoom(int i) {
+		data.getRooms().remove(i);
 		return true;
 	}
 
