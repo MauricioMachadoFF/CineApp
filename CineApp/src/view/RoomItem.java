@@ -113,7 +113,7 @@ public class RoomItem implements ActionListener {
 				
 			} else {
 				// edição de um lanche cadastrado
-				newRoom[0] = Integer.toString(position);
+				editedRoom[0] = Integer.toString(position); 
 				
 				editedRoom[1] =  roomNumber.getText();
 				editedRoom[2] =  price.getText();
