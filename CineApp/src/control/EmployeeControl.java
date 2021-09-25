@@ -4,10 +4,10 @@ import model.*;
 
 public class EmployeeControl
 {
-	private ArrayList<Movie> employees = new ArrayList<Movie>();
+	private ArrayList<Employee> employees = new ArrayList<Employee>();
 	
 	public EmployeeControl(DataControl data) {
-		employees = data.getMovies();
+		employees = data.getEmployees();
 	}
 	
 	public String[] getEmployeesName() {
