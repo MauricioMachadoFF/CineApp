@@ -1,5 +1,6 @@
 package model;
 
+import java.text.ParseException;
 import java.util.*;
 
 public class Data {
@@ -8,12 +9,13 @@ public class Data {
 	private  ArrayList<Movie> movies = new ArrayList<Movie>();
 	private  ArrayList<Employee> employees = new ArrayList<Employee>();
 	private  ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
-	final int max = 999999999;
-	final int min = 100000000;
+	private  ArrayList<Session> sessions = new ArrayList<Session>();
+	final int max = 999;
+	final int min = 100;
 	final double maxVal = 100.00;
 	final double minVal = 30.00; 
 	
-	public void fillWithRandomData() {
+	public void fillWithRandomData() throws ParseException {
 		boolean trueOrFalse = true;
 		for(int i = 0; i < 5; i++) {
 			snacks.add(new Snack("Lanche "+(i+1), i+2, i*10, (i+1)*6331, trueOrFalse));
@@ -27,36 +29,30 @@ public class Data {
 					(int)Math.floor(Math.random()*(max-min+1)+min)
 			));
 			
+			movies.add( new Movie(
+					"Filme "+(i+1),
+					2000+i,
+					"Action",
+					"Sinopse "+(i+1),
+					i+7*3
+				));
+			
 			rooms.add(new MovieRoom(
 				(i +1),
-				(double)Math.random()*(maxVal-minVal+1)+minVal,
+				(i+15)*2,
 				trueOrFalse,
 				trueOrFalse	
 			));
 			
+			sessions.add( new Session(
+					"2021-12-24",
+					rooms.get(i),
+					movies.get(i),
+					(int)Math.floor(Math.random()*(100)+1)
+				));
+			
 			trueOrFalse =! trueOrFalse;
 		}
-		movies.add( new Movie(
-				"Creed",
-				2015,
-				"Action",
-				"The former World Heavyweight Champion Rocky Balboa serves as a trainer and mentor to Adonis Johnson, the son of his late friend and former rival Apollo Creed.",
-				10
-			));
-		movies.add( new Movie(
-				"Attack on Titan",
-				2014,
-				"Anime",
-				"After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.",
-				56
-			));
-		movies.add( new Movie(
-				"Room",
-				2016,
-				"Horror",
-				"Held captive for 7 years in an enclosed space, a woman and her young son finally gain their freedom, allowing the boy to experience the outside world for the first time.",
-				34
-			));
 	}
 
 	public ArrayList<Snack> getSnacks() {
@@ -77,6 +73,10 @@ public class Data {
 	
 	public ArrayList<MovieRoom> getRooms() {
 		return rooms;
+	}
+	
+	public ArrayList<Session> getSessions() {
+		return sessions;
 	}
 
 	public void setSnacks(Snack snack) {
@@ -99,6 +99,10 @@ public class Data {
 		rooms.add(room);
 	}
 	
+	public void setSessions(Session session) {
+		sessions.add(session);
+	}
+	
 	public void updateSnack(int index, Snack snack) {
 	    this.snacks.set(index, snack);
 	}
@@ -117,5 +121,9 @@ public class Data {
 	
 	public void updateRoom(int index, MovieRoom room) {
 		this.rooms.set(index, room);
+	}
+	
+	public void updateSession(int index, Session session) {
+		this.sessions.set(index, session);
 	}
 }

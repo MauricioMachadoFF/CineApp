@@ -1,5 +1,7 @@
 package control;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import model.*;
 
@@ -7,17 +9,17 @@ public class DataControl {
 	private Data data = new Data();
 	
 	public DataControl() {
-		data.fillWithRandomData();
+		try {
+			data.fillWithRandomData();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Data getData() {
 		return data;
 	}
-	
-	//acho que essa parte do código é desnecessária
-	/*public SnackControl getSnackControl() {
-		return snackControl;
-	}*/
 
 	public void setData(Data data) {
 		this.data = data;
@@ -41,6 +43,10 @@ public class DataControl {
 	
 	public ArrayList<MovieRoom> getRooms() {
 		return this.data.getRooms();
+	}
+	
+	public ArrayList<Session> getSession() {
+		return this.data.getSessions();
 	}
 	 
 	public boolean editSnack(String[] snackData) {
@@ -84,6 +90,23 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean editSession(String[] sessionData, MovieRoom room, Movie movie) {
+		try {
+			Session sessions = new Session(
+					sessionData[1],
+					room,
+					movie,
+					Integer.parseInt(sessionData[2]));
+			
+			data.updateSession(Integer.parseInt(sessionData[0]), sessions);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
 	public boolean addSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[0], Double.valueOf(snackData[1]),
 				Integer.parseInt(snackData[2]), Integer.parseInt(snackData[3]), Boolean.valueOf(snackData[4]));
@@ -124,6 +147,18 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean addSession(String[] sessionData) throws ParseException {
+		
+		Session sessions = new Session(
+				sessionData[0],
+				data.getRooms().get(Integer.parseInt(sessionData[1])),
+				data.getMovies().get(Integer.parseInt(sessionData[2])),
+				Integer.parseInt(sessionData[3])
+				);
+		data.setSessions(sessions);
+		return true;
+	}
+	
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
 			return true;
@@ -147,6 +182,11 @@ public class DataControl {
 	
 	public boolean deleteRoom(int i) {
 		data.getRooms().remove(i);
+		return true;
+	}
+	
+	public boolean deleteSession(int i) {
+		data.getSessions().remove(i);
 		return true;
 	}
 

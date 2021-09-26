@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import control.DataControl;
 
-public class FoodDetailScreen implements ActionListener {
+public class FoodItem implements ActionListener {
 	private JFrame window;
 	private JLabel labelName;
 	private JTextField name;
@@ -39,7 +39,7 @@ public class FoodDetailScreen implements ActionListener {
 	private String windowLabel;
 	
 	public void addEdit(int op, DataControl d, 
-			FoodScreen food, int p) {
+			FoodSubMenu food, int p) {
 		
 		option=op;
 		data=d;

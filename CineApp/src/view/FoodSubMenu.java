@@ -1,5 +1,4 @@
 package view;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +15,8 @@ import control.BeverageControl;
 import control.DataControl;
 import control.SnackControl;
 
-public class FoodScreen implements ActionListener, ListSelectionListener {
+public class FoodSubMenu implements ActionListener, ListSelectionListener {
+	
 	private JFrame window;
 	private JLabel title;
 	private JButton createSnack;
@@ -83,10 +83,10 @@ public class FoodScreen implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 		
 		if(src == createSnack) {
-			new FoodDetailScreen().addEdit(1, data, this, 0);
+			new FoodItem().addEdit(1, data, this, 0);
 		}
 		if(src == createBeverage) {
-			new FoodDetailScreen().addEdit(2, data, this, 1);
+			new FoodItem().addEdit(2, data, this, 1);
 		}
 		//atualiza a lista de lanches
 		if(src == updateFood) {
@@ -103,14 +103,15 @@ public class FoodScreen implements ActionListener, ListSelectionListener {
 		Object source = e.getSource();
 
 		if(e.getValueIsAdjusting() && source == listSnacks) {
-			new FoodDetailScreen().addEdit(3, data, this, 
+			new FoodItem().addEdit(3, data, this, 
 			listSnacks.getSelectedIndex());
 		}
 		
 		if(e.getValueIsAdjusting() && source == listBeverages) {
-			new FoodDetailScreen().addEdit(4, data, this, 
+			new FoodItem().addEdit(4, data, this, 
 			listBeverages.getSelectedIndex());
 		}
 		
 	}
+
 }

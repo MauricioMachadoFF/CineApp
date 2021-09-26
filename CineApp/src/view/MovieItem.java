@@ -12,7 +12,7 @@ import control.DataControl;
 
 public class MovieItem implements ActionListener {
 	private JFrame window;
-	private JLabel labelMvName= new JLabel("Nome do Flme: ");
+	private JLabel labelMvName= new JLabel("Nome do Filme: ");
 	private JTextField MvName;
 	private JLabel labelMvYear = new JLabel("Ano de Lançamento: ");
 	private JTextField MvYear;

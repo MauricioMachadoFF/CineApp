@@ -80,7 +80,7 @@ public class RoomItem implements ActionListener {
 		labelPrice.setBounds(30, 50, 150, 25);
 		price.setBounds(180, 50, 180, 25);
 		is3D.setBounds(30, 140, 150, 25);
-		acessability.setBounds(30, 170, 150, 25);
+		acessability.setBounds(30, 170, 250, 25);
 		
 		this.window.add(labelRoomNumber);
 		this.window.add(roomNumber);

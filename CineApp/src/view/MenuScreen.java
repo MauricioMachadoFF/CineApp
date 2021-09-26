@@ -54,13 +54,14 @@ public class MenuScreen implements ActionListener {
 		movie.addActionListener(menu);
 		employee.addActionListener(menu);
 		room.addActionListener(menu);
+		session.addActionListener(menu);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
 		if(src == food) {
-			new FoodScreen().showData(data);
+			new FoodSubMenu().showData(data);
 		}
 		else if (src == movie) {
 			new MovieSubMenu().showData(data);
@@ -70,6 +71,9 @@ public class MenuScreen implements ActionListener {
 		}
 		else if (src == room) {
 			new RoomSubMenu().showData(data);
+		}
+		else if (src == session) {
+			new SessionSubMenu().showData(data);
 		}
 			
 	}
