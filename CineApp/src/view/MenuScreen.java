@@ -50,6 +50,7 @@ public class MenuScreen implements ActionListener {
 	public static void main(String[] args) {
 		MenuScreen menu = new MenuScreen();
 		
+		sale.addActionListener(menu);
 		food.addActionListener(menu);
 		movie.addActionListener(menu);
 		employee.addActionListener(menu);
@@ -74,6 +75,9 @@ public class MenuScreen implements ActionListener {
 		}
 		else if (src == session) {
 			new SessionSubMenu().showData(data);
+		}
+		else if(src == sale) {
+			new SaleSubMenu().showData(data);
 		}
 			
 	}
