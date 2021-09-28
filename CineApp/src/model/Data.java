@@ -10,6 +10,7 @@ public class Data {
 	private  ArrayList<Employee> employees = new ArrayList<Employee>();
 	private  ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
 	private  ArrayList<Session> sessions = new ArrayList<Session>();
+	private  ArrayList<Sale> sales = new ArrayList<Sale>();
 	final int max = 999;
 	final int min = 100;
 	final double maxVal = 100.00;
@@ -51,6 +52,14 @@ public class Data {
 					(int)Math.floor(Math.random()*(100)+1)
 				));
 			
+			sales.add(new Sale(
+				employees.get(i),
+				"Cliente" + i,
+				(i * 4.5),
+				"Debit",
+				beverages,
+				snacks
+			));
 			trueOrFalse =! trueOrFalse;
 		}
 	}
@@ -78,6 +87,10 @@ public class Data {
 	public ArrayList<Session> getSessions() {
 		return sessions;
 	}
+	
+	public ArrayList<Sale> getSales() {
+		return sales;
+	}
 
 	public void setSnacks(Snack snack) {
 		snacks.add(snack);
@@ -101,6 +114,10 @@ public class Data {
 	
 	public void setSessions(Session session) {
 		sessions.add(session);
+	}
+	
+	public void setSales(Sale sale) {
+		sales.add(sale);
 	}
 	
 	public void updateSnack(int index, Snack snack) {

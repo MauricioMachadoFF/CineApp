@@ -10,13 +10,18 @@ public class Sale {
 	private ArrayList<Snack> snacks = new ArrayList<Snack>();
 	private double total;
 	private String paymentMethod;
+	private String clientCPF;
 	final int max = 10000;
 	final int min = 1;
 
-	public Sale(Employee employee) {
+	public Sale(Employee employee, String clientCPF, double total, String paymentMethod, ArrayList<Beverage> beverages, ArrayList<Snack> snacks) {
 		this.saleId=(int)Math.floor(Math.random()*(max-min+1)+min);
 		this.employee = employee;
-		
+		this.clientCPF = clientCPF;
+		this.total = total;
+		this.paymentMethod = paymentMethod;
+		this.beverages = beverages;
+		this.snacks = snacks;		
 	}
 
 	public int getSaleId() {
@@ -42,6 +47,10 @@ public class Sale {
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}
+	
+	public String getClientCPF() {
+		return clientCPF;
+	}
 
 	public void setSaleId(int saleId) {
 		this.saleId = saleId;
@@ -65,6 +74,10 @@ public class Sale {
 
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+	
+	public void setClientCPF(String clientCPF) {
+		this.clientCPF = clientCPF;
 	}
 	
 }
