@@ -67,11 +67,11 @@ public class TicketSale implements ActionListener, ListSelectionListener {
 		Object src = e.getSource();
 		
 		if(src == newTicket) {
-			//new SessionItem().addEdit(1, data, this, 1);
+			new TicketItem().addView(1, data, this, 1);
 		}
 		//atualiza a lista de lanches
 		if(src == refresh) {
-			listTickets.setListData(new SessionControl(data).getSessionDetails());
+			listTickets.setListData(new TicketControl(data).getTicketDetail());
 			listTickets.updateUI();
 		}
 		
