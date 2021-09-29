@@ -35,7 +35,6 @@ public class AddSaleItem implements ActionListener {
 		
 		window.setSize(500, 350);
 		window.setLocationRelativeTo(null);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 	}
 	
@@ -53,6 +52,9 @@ public class AddSaleItem implements ActionListener {
 		
 		if(src == finishSale) {
 			new FinishSaleItem().addEdit(data, this, 1);
+			
+		} else if(src==ticketSale) {
+			new TicketSale().showData(data);
 		}
 		
 	}

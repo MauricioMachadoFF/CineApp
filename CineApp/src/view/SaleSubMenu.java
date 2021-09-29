@@ -35,7 +35,6 @@ public class SaleSubMenu implements ActionListener {
 		
 		window.setSize(500, 350);
 		window.setLocationRelativeTo(null);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 	}
 	

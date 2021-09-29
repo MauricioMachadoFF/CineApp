@@ -10,6 +10,7 @@ public class Data {
 	private  ArrayList<Employee> employees = new ArrayList<Employee>();
 	private  ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
 	private  ArrayList<Session> sessions = new ArrayList<Session>();
+	private  ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 	private  ArrayList<Sale> sales = new ArrayList<Sale>();
 	final int max = 999;
 	final int min = 100;
@@ -88,6 +89,10 @@ public class Data {
 		return sessions;
 	}
 	
+	public ArrayList<Ticket> getTickets() {
+		return tickets;
+	}
+	
 	public ArrayList<Sale> getSales() {
 		return sales;
 	}
@@ -114,6 +119,10 @@ public class Data {
 	
 	public void setSessions(Session session) {
 		sessions.add(session);
+	}
+	
+	public void setTickets(Ticket ticket) {
+		tickets.add(ticket);
 	}
 	
 	public void setSales(Sale sale) {

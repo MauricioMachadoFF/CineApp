@@ -48,6 +48,10 @@ public class DataControl {
 	public ArrayList<Session> getSession() {
 		return this.data.getSessions();
 	}
+	
+	public ArrayList<Ticket> getTickets() {
+		return this.data.getTickets();
+	}
 	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
@@ -159,6 +163,15 @@ public class DataControl {
 		return true;
 	}
 	
+	public boolean addTicket(String[] ticketData) {
+		Ticket tickets = new Ticket(
+				ticketData[0],
+				data.getSessions().get(Integer.parseInt(ticketData[1]))
+		);
+		data.setTickets(tickets);
+		return true;
+	}
+	
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
 			return true;
@@ -187,6 +200,11 @@ public class DataControl {
 	
 	public boolean deleteSession(int i) {
 		data.getSessions().remove(i);
+		return true;
+	}
+	
+	public boolean deleteTicket(int i) {
+		data.getTickets().remove(i);
 		return true;
 	}
 
