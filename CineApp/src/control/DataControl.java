@@ -87,9 +87,10 @@ public class DataControl {
 	public boolean editRoom(String[] roomData) {
 		MovieRoom rooms = new MovieRoom(
 				Integer.parseInt(roomData[1]),
-				Double.parseDouble(roomData[2]),
-				Boolean.valueOf(roomData[3]),
-				Boolean.valueOf(roomData[4])
+				Integer.parseInt(roomData[2]),
+				Double.parseDouble(roomData[3]),
+				Boolean.valueOf(roomData[4]),
+				Boolean.valueOf(roomData[5])
 		);
 		data.updateRoom(Integer.parseInt(roomData[0]), rooms);
 		return true;
@@ -144,9 +145,10 @@ public class DataControl {
 	public boolean addRoom(String[] roomData) {
 		MovieRoom rooms = new MovieRoom(
 				Integer.parseInt(roomData[0]),
-				Double.parseDouble(roomData[1]),
-				Boolean.valueOf(roomData[2]),
-				Boolean.valueOf(roomData[3])
+				Integer.parseInt(roomData[1]),
+				Double.parseDouble(roomData[2]),
+				Boolean.valueOf(roomData[3]),
+				Boolean.valueOf(roomData[4])
 		);
 		data.setRooms(rooms);
 		return true;

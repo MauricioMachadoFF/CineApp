@@ -17,12 +17,14 @@ public class RoomItem implements ActionListener {
 	private JTextField roomNumber;
 	private JLabel labelPrice= new JLabel("Preço da Sala: ");
 	private JTextField price;
+	private JLabel labelSeatAmount= new JLabel("Quantidade de assentos disponíveis: ");
+	private JTextField seatAmount;
 	private JCheckBox is3D;
 	private JCheckBox acessability;
 	private JButton deleteRoom = new JButton("Excluir");
 	private JButton saveRoom = new JButton("Salvar");
-	private String[] editedRoom= new String[5];
-	private String[] newRoom = new String[4];
+	private String[] editedRoom= new String[6];
+	private String[] newRoom = new String[5];
 	private static DataControl data;
 	private int position;
 	private int option;
@@ -50,6 +52,7 @@ public class RoomItem implements ActionListener {
 		case 1:
 			roomNumber = new JTextField(200);
 			price = new JTextField(200);
+			seatAmount = new JTextField(200);
 			is3D = new JCheckBox("A Sala é 3D?");
 			acessability = new JCheckBox("A Sala possui acessibilidade?");
 			saveRoom.setBounds(245, 190, 115, 30);
@@ -60,7 +63,8 @@ public class RoomItem implements ActionListener {
 		case 2:
 			roomNumber = new JTextField(String.valueOf(data.getRooms().get(p).getRoomNumber()), 200);
 			price = new JTextField(String.valueOf(data.getRooms().get(p).getPrice()), 200);
-			is3D = new JCheckBox("A Sala é 3D?", data.getSnacks().get(p).getIsSweet());
+			seatAmount = new JTextField(String.valueOf(data.getRooms().get(p).getSeatAmount()));
+			is3D = new JCheckBox("A Sala é 3D?", data.getRooms().get(p).getIs3D());
 			acessability = new JCheckBox("A Sala possui acessibilidade?", data.getRooms().get(p).getIsAcessabilty());
 			saveRoom.setBounds(120, 190, 115, 30);
 			deleteRoom.setBounds(245, 190, 115, 30);
@@ -79,12 +83,16 @@ public class RoomItem implements ActionListener {
 		roomNumber.setBounds(180, 20, 180, 25);
 		labelPrice.setBounds(30, 50, 150, 25);
 		price.setBounds(180, 50, 180, 25);
+		labelSeatAmount.setBounds(30, 80, 150, 25);
+		seatAmount.setBounds(180, 80, 180, 25);
 		is3D.setBounds(30, 140, 150, 25);
 		acessability.setBounds(30, 170, 250, 25);
 		
 		this.window.add(labelRoomNumber);
 		this.window.add(roomNumber);
 		this.window.add(labelPrice);
+		this.window.add(labelSeatAmount);
+		this.window.add(seatAmount);
 		this.window.add(price);
 		this.window.add(is3D);
 		this.window.add(acessability);
@@ -105,20 +113,24 @@ public class RoomItem implements ActionListener {
 		Object source = e.getSource();
 		if(source == saveRoom) {
 			if(option==1) { //cadastro de um lanche
-				newRoom[0] =  roomNumber.getText();
-				newRoom[1] =  price.getText();
-				newRoom[2] =  String.valueOf(is3D.isSelected());
-				newRoom[3] =  String.valueOf(acessability.isSelected());
+				
+				newRoom[0] =  seatAmount.getText();
+				newRoom[1] =  roomNumber.getText();
+				newRoom[2] =  price.getText();
+				newRoom[3] =  String.valueOf(is3D.isSelected());
+				newRoom[4] =  String.valueOf(acessability.isSelected());
+				
 				data.addRoom(newRoom);
 				
 			} else {
 				// edição de um lanche cadastrado
 				editedRoom[0] = Integer.toString(position); 
 				
-				editedRoom[1] =  roomNumber.getText();
-				editedRoom[2] =  price.getText();
-				editedRoom[3] =  String.valueOf(is3D.isSelected());
-				editedRoom[4] =  String.valueOf(acessability.isSelected());
+				editedRoom[1] = seatAmount.getText();
+				editedRoom[2] =  roomNumber.getText();
+				editedRoom[3] =  price.getText();
+				editedRoom[4] =  String.valueOf(is3D.isSelected());
+				editedRoom[5] =  String.valueOf(acessability.isSelected());
 				data.editRoom(editedRoom);
 			}
 		}

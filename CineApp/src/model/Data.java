@@ -40,6 +40,7 @@ public class Data {
 				));
 			
 			rooms.add(new MovieRoom(
+				(i + 45),
 				(i +1),
 				(i+15)*2,
 				trueOrFalse,
