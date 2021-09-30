@@ -14,7 +14,6 @@ public class MovieControl {
 		for(int n = 0; n < movies.size(); n++) {
 			list[n] = movies.get(n).getName();
 		}
-		
 		return list;
 	}
 }
