@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -101,24 +102,22 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 		searchFilter(searchByName.getText());
 	}
 	
-	//Erro na hora de filtrar está aqui em alguma parte da funçao searchFilter
+	//Está Filtrando porém não atualiza no GUI
+	
+	
+	
+	//AQUI CLARAAAAA
 	private void searchFilter(String searchTerm) {
 		String[] filteredList = new String[100];
-		int i = 0;
 		int j = 0;
 		
-		while(i != -1) {
+		for(int i = 0; i < this.moviesNames.length; i++) {
 			if(this.moviesNames[i].toLowerCase().contains(searchTerm.toLowerCase())) {
 				filteredList[j] = moviesNames[i];
 				j++;
 			}
-			
-			if(this.moviesNames[i] == null) {
-				i = -1;
-			} else {
-				i++;
-			}
 		}
+		
 		this.listMovies = new JList<String>(filteredList);
 	}
 	
