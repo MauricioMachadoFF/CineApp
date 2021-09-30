@@ -25,6 +25,8 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 	private JButton refreshMovie;
 	private JLabel labelSearchByName = new JLabel("Pesquisar por Nome:");
 	private JTextField searchByName = new JTextField(200);
+	private JLabel labelSearchByGenre = new JLabel("Pesquisar por Genero:");
+	private JTextField searchByGenre = new JTextField(200);
 	private static DataControl data;
 	private JList<String> listMovies;
 	private String[] moviesNames = new String[100];
@@ -49,6 +51,8 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 			listMovies.setVisibleRowCount(30);
 			labelSearchByName.setBounds(100, 50, 250, 30);
 			searchByName.setBounds(250, 50, 250, 30);
+			labelSearchByGenre.setBounds(100, 65, 250, 30);
+			searchByGenre.setBounds(250, 65, 250, 30);
 
 			createMovie.setBounds(10, 250, 150, 30);
 			refreshMovie.setBounds(330, 250, 150, 30);
@@ -59,6 +63,8 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 			window.add(listMovies);
 			window.add(labelSearchByName);
 			window.add(searchByName);
+			window.add(labelSearchByGenre);
+			window.add(searchByGenre);
 			window.add(createMovie);
 			window.add(refreshMovie);
 
@@ -68,6 +74,7 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 
 			
 			//Preciso de algum trigger pra chamar a função searchTxtKeyReleased
+			searchByGenre.addKeyListener(listener);
 			searchByName.addKeyListener(listener);
 			createMovie.addActionListener(this);
 			refreshMovie.addActionListener(this);
@@ -115,6 +122,7 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 			if(this.moviesNames[i].toLowerCase().contains(searchTerm.toLowerCase())) {
 				filteredList[j] = moviesNames[i];
 				j++;
+				System.out.println("palavras" + i + filteredList[j-1]);
 			}
 		}
 		

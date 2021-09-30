@@ -34,7 +34,7 @@ public class Data {
 			movies.add( new Movie(
 					"Filme "+(i+1),
 					2000+i,
-					"Action",
+					"Action" + i,
 					"Sinopse "+(i+1),
 					i+7*3
 				));

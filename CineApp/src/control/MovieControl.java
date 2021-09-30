@@ -16,4 +16,12 @@ public class MovieControl {
 		}
 		return list;
 	}
+	
+	public String[] getMoviesGenre() {
+		String[] list = new String[movies.size()];
+		for(int n = 0; n < movies.size(); n++) {
+			list[n] = movies.get(n).getGenre();
+		}
+		return list;
+	}
 }
