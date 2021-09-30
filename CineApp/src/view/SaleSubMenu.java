@@ -38,7 +38,7 @@ public class SaleSubMenu implements ActionListener {
 		window.setVisible(true);
 	}
 	
-	public static void showData(DataControl d) {
+	public void showData(DataControl d) {
 		SaleSubMenu menu = new SaleSubMenu();
 		data = d;
 		

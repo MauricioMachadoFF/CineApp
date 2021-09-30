@@ -38,7 +38,7 @@ public class AddSaleItem implements ActionListener {
 		window.setVisible(true);
 	}
 	
-	public static void showData(DataControl d) {
+	public void showData(DataControl d) {
 		AddSaleItem menu = new AddSaleItem();
 		data = d;
 		
@@ -55,6 +55,9 @@ public class AddSaleItem implements ActionListener {
 			
 		} else if(src==ticketSale) {
 			new TicketSale().showData(data);
+		}
+		else if(src==foodSale) {
+			new FoodSale().showData(data);
 		}
 		
 	}

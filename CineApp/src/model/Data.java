@@ -59,7 +59,8 @@ public class Data {
 				(i * 4.5),
 				"Debit",
 				beverages,
-				snacks
+				snacks,
+				sessions.get(i)
 			));
 			trueOrFalse =! trueOrFalse;
 		}

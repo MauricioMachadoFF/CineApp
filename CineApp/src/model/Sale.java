@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Sale {
 	private int saleId;
 	private Employee employee;
-//	private ArrayList<Ticket> tickets = new ArrayList<Ticket>;
+	private ArrayList<Session> tickets = new ArrayList<Session>();
 	private ArrayList<Beverage> beverages = new ArrayList<Beverage>();
 	private ArrayList<Snack> snacks = new ArrayList<Snack>();
 	private double total;
@@ -14,7 +14,7 @@ public class Sale {
 	final int max = 10000;
 	final int min = 1;
 
-	public Sale(Employee employee, String clientCPF, double total, String paymentMethod, ArrayList<Beverage> beverages, ArrayList<Snack> snacks) {
+	public Sale(Employee employee, String clientCPF, double total, String paymentMethod, ArrayList<Beverage> beverages, ArrayList<Snack> snacks, Session tickets) {
 		this.saleId=(int)Math.floor(Math.random()*(max-min+1)+min);
 		this.employee = employee;
 		this.clientCPF = clientCPF;
@@ -22,6 +22,7 @@ public class Sale {
 		this.paymentMethod = paymentMethod;
 		this.beverages = beverages;
 		this.snacks = snacks;		
+		this.tickets.add(tickets);
 	}
 
 	public int getSaleId() {
@@ -51,6 +52,11 @@ public class Sale {
 	public String getClientCPF() {
 		return clientCPF;
 	}
+	
+
+	public ArrayList<Session> getTickets() {
+		return tickets;
+	}
 
 	public void setSaleId(int saleId) {
 		this.saleId = saleId;
@@ -78,6 +84,10 @@ public class Sale {
 	
 	public void setClientCPF(String clientCPF) {
 		this.clientCPF = clientCPF;
+	}
+	
+	public void setTickets(ArrayList<Session> tickets) {
+		this.tickets = tickets;
 	}
 	
 }

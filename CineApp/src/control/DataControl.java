@@ -52,6 +52,7 @@ public class DataControl {
 	public ArrayList<Ticket> getTickets() {
 		return this.data.getTickets();
 	}
+	
 	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
