@@ -27,10 +27,12 @@ public class FoodSale implements ActionListener{
 	private ArrayList<Snack> snacks = new ArrayList<Snack>();
 	private String[] snacksNames = new String[100];
 	private String[] beveragesNames = new String[100];
+	private int salePos;
 	
-	public void showData(DataControl d){
+	public void showData(DataControl d, int salePos){
 			data = d;
-
+			this.salePos = salePos;
+			
 			snacksNames = new SnackControl(data).getSnacksName();
 			listSnacks = new JList<String>(snacksNames);
 			listSnacks.setLayoutOrientation(JList.VERTICAL);
@@ -80,6 +82,11 @@ public class FoodSale implements ActionListener{
 					data.getSnacks().get(listSnacks.getSelectedIndex()).setStockQuantity(
 						data.getSnacks().get(listSnacks.getSelectedIndex()).getStockQuantity()-1
 					);
+					
+					//Add data to the current Sale and see on the console if it's correct
+					data.getSales().get(salePos).addSnack(data.getSnacks().get(listSnacks.getSelectedIndex()));
+					System.out.println(data.getSales().get(salePos).toString());
+					
 					JOptionPane.showMessageDialog(null, data.getSnacks().get(listSnacks.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
 				} else {
 					JOptionPane.showMessageDialog(null, "Sem estoque disponível!", "Erro", 0);
@@ -90,6 +97,11 @@ public class FoodSale implements ActionListener{
 					data.getBeverages().get(listBeverages.getSelectedIndex()).setStockQuantity(
 							data.getBeverages().get(listBeverages.getSelectedIndex()).getStockQuantity()-1
 						);
+					
+					//Add data to the current Sale and see on the console if it's correct
+					data.getSales().get(salePos).addBeverage(data.getBeverages().get(listBeverages.getSelectedIndex()));
+					System.out.println(data.getSales().get(salePos).toString());
+					
 					JOptionPane.showMessageDialog(null, data.getBeverages().get(listBeverages.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
 				} else {
 					JOptionPane.showMessageDialog(null, "Sem estoque disponível!", "Erro", 0);

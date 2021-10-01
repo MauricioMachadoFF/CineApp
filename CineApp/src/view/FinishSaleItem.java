@@ -30,13 +30,16 @@ public class FinishSaleItem implements ActionListener {
 	private static DataControl data;
 	private int position;
 	private int option;
+	private int salePos;
 	
 	public void addEdit(DataControl d, 
-			AddSaleItem sale, int p) {
+			AddSaleItem sale, int p, int salePos) {
 		
 		data=d;
 		position=p;
-		
+		this.salePos = salePos;
+		System.out.println("Finalizar compra numero" + this.salePos);
+//		System.out.println(data.getSales().get(this.salePos).toString());
 		ButtonGroup paymentMethod = new ButtonGroup();
 		paymentMethod.add(debitMethod);
 		paymentMethod.add(creditMethod);

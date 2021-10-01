@@ -97,12 +97,20 @@ public class Sale {
 	public void addTicket(Session ticket) {
 		// TODO Auto-generated method stub
 		this.tickets.add(ticket);
-	} 
+	}
+	
+	public void addBeverage(Beverage beverage) {
+		this.beverages.add(beverage);
+	}
+	
+	public void addSnack(Snack snack) {
+		this.snacks.add(snack);
+	}
 	
 	public String toString() {
 		return new String("Funcionário Responsável: " + this.employee)
 			.concat("\nTickets: " + this.tickets)
-//			.concat("\nComidas: " + this.beverages + this.snacks)
+			.concat("\nComidas: " + this.beverages + this.snacks)
 //			.concat("\nTotal: " + this.total)
 			.concat("\nclientCPF: ") + this.clientCPF;
 	}

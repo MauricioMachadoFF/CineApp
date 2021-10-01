@@ -55,13 +55,13 @@ public class AddSaleItem implements ActionListener {
 		Object src = e.getSource();
 		
 		if(src == finishSale) {
-			new FinishSaleItem().addEdit(data, this, 1);
+			new FinishSaleItem().addEdit(data, this, 1, this.salePosition);
 			
 		} else if(src==ticketSale) {
 			new TicketSale().showData(data, this.salePosition);
 		}
 		else if(src==foodSale) {
-			new FoodSale().showData(data);
+			new FoodSale().showData(data, this.salePosition);
 		}
 		
 	}

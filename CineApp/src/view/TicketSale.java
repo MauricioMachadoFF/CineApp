@@ -26,6 +26,9 @@ public class TicketSale implements ActionListener{
 	private String[] ticketsNames = new String[100];
 	private int salePos;
 	
+	//Quando iniciada mais de uma vez
+	//Multiplas telas abrem de uma vez
+	//Para diversas vendas
 	public void showData(DataControl d, int salePos){
 		data = d;
 		this.salePos = salePos;
