@@ -18,6 +18,7 @@ public class AddSaleItem implements ActionListener {
 	private static JButton ticketSale = new JButton("Vender ingresso");
 	private static JButton finishSale = new JButton("Finalizar Venda");
 	public static DataControl data = new DataControl();
+	private int salePosition;
 	
 	public AddSaleItem() {
 		title.setBounds(200, 10, 300, 20);
@@ -36,11 +37,14 @@ public class AddSaleItem implements ActionListener {
 		window.setSize(500, 350);
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
+		
+		setSalePosition(data.getSales().size());
 	}
 	
 	public void showData(DataControl d) {
 		AddSaleItem menu = new AddSaleItem();
 		data = d;
+		data.addSale();
 		
 		foodSale.addActionListener(menu);
 		ticketSale.addActionListener(menu);
@@ -54,11 +58,15 @@ public class AddSaleItem implements ActionListener {
 			new FinishSaleItem().addEdit(data, this, 1);
 			
 		} else if(src==ticketSale) {
-			new TicketSale().showData(data);
+			new TicketSale().showData(data, this.salePosition);
 		}
 		else if(src==foodSale) {
 			new FoodSale().showData(data);
 		}
 		
+	}
+	
+	private void setSalePosition(int salePos) {
+		this.salePosition = salePos;
 	}
 }

@@ -24,6 +24,10 @@ public class Sale {
 		this.snacks = snacks;		
 		this.tickets.add(tickets);
 	}
+	
+	public Sale() {
+		this.saleId=(int)Math.floor(Math.random()*(max-min+1)+min);
+	}
 
 	public int getSaleId() {
 		return saleId;
@@ -90,4 +94,16 @@ public class Sale {
 		this.tickets = tickets;
 	}
 	
+	public void addTicket(Session ticket) {
+		// TODO Auto-generated method stub
+		this.tickets.add(ticket);
+	} 
+	
+	public String toString() {
+		return new String("Funcionário Responsável: " + this.employee)
+			.concat("\nTickets: " + this.tickets)
+//			.concat("\nComidas: " + this.beverages + this.snacks)
+//			.concat("\nTotal: " + this.total)
+			.concat("\nclientCPF: ") + this.clientCPF;
+	}
 }

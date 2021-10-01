@@ -24,10 +24,12 @@ public class TicketSale implements ActionListener{
 	private static DataControl data;
 	private JList<String> listTickets;
 	private String[] ticketsNames = new String[100];
+	private int salePos;
 	
-	public void showData(DataControl d){
+	public void showData(DataControl d, int salePos){
 		data = d;
-
+		this.salePos = salePos;
+		System.out.println("No ticket Sale o valor da posiçao da venda eh" + salePos);
 		ticketsNames = new SessionControl(data).getSessionDetails();
 		listTickets = new JList<String>(ticketsNames);
 		listTickets.setLayoutOrientation(JList.VERTICAL);
@@ -64,12 +66,14 @@ public class TicketSale implements ActionListener{
 		
 		if(src == newTicket) {
 			if (!listTickets.isSelectionEmpty()) {
-			System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
+//			System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
 				if( data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable() > 0){
 					data.getSession().get(listTickets.getSelectedIndex()).setSeatsAvailable(
 							data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable()-1
 					);
-					System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
+					data.getSales().get(salePos).addTicket(data.getSession().get(listTickets.getSelectedIndex()));
+//					System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
+					System.out.println(data.getSales().get(salePos).toString());
 					JOptionPane.showMessageDialog(null, 
 												"Ingresso para " + data.getSession().get(listTickets.getSelectedIndex()).getMovie().getName() + " adicionado com sucesso! \n" +
 												"Assentos disponíveis para essa sessão: " + data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable(),

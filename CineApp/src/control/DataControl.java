@@ -53,6 +53,10 @@ public class DataControl {
 		return this.data.getTickets();
 	}
 	
+	public ArrayList<Sale> getSales() {
+		return this.data.getSales();
+	}
+	
 	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
@@ -139,6 +143,11 @@ public class DataControl {
 	public boolean addEmployee(String[] employeeData) {
 		Employee employees = new Employee(employeeData[0], employeeData[1], employeeData[2], Integer.parseInt(employeeData[3]));
 		data.setEmployees(employees);
+		return true;
+	}
+	public boolean addSale() {
+		Sale sale = new Sale();
+		data.setSales(sale);
 		return true;
 	}
 	
