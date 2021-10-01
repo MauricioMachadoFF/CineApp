@@ -15,6 +15,8 @@ import control.DataControl;
 public class FinishSaleItem implements ActionListener {
 	private JFrame window;
 	private String title = "Finalizar Venda";
+	private JLabel labelEmployeeCode= new JLabel("Código do Funcionário: ");
+	private JTextField employeeCode;
 	private JLabel labelClientCPF= new JLabel("CPF do cliente: ");
 	private JTextField clientCPF;
 	private JLabel labelTotal = new JLabel("Total: ");
@@ -49,25 +51,32 @@ public class FinishSaleItem implements ActionListener {
 		
 		clientCPF = new JTextField(200);
 		
+		employeeCode = new JTextField(200);
+		
 		//Algo errado no cálculo do total, verificar!!!
 		data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
-		total = new JTextField(String.valueOf(data.getSales().get(this.salePos).getTotal()));
 		
+		total = new JTextField(String.valueOf(data.getSales().get(this.salePos).getTotal()));
 		total.setEditable(false);
 		
 		labelClientCPF.setBounds(30, 20, 150, 25);
 		clientCPF.setBounds(180, 20, 180, 25);
-		labelTotal.setBounds(30, 50, 150, 25);
-		total.setBounds(180, 50, 180, 25);
-		labelPaymentMethod.setBounds(30, 80, 150, 25);
-		debitMethod.setBounds(30, 100, 150, 25);
-		creditMethod.setBounds(30, 120, 150, 25);
-		cashMethod.setBounds(30, 140, 150, 25);
-		saveSale.setBounds(245, 175, 115, 30);
-		cancelSale.setBounds(30, 175, 175, 30);
+		labelEmployeeCode.setBounds(30, 50, 150, 25);
+		employeeCode.setBounds(180, 50, 180, 25);
+		labelTotal.setBounds(30, 80, 150, 25);
+		total.setBounds(180, 80, 180, 25);
+		labelPaymentMethod.setBounds(30, 100, 150, 25);
+		debitMethod.setBounds(30, 120, 150, 25);
+		creditMethod.setBounds(30, 140, 150, 25);
+		cashMethod.setBounds(30, 160, 150, 25);
+		saveSale.setBounds(245, 180, 115, 30);
+		cancelSale.setBounds(30, 180, 175, 30);
+		
 		
 		this.window.add(labelClientCPF);
 		this.window.add(clientCPF);
+		this.window.add(labelEmployeeCode);
+		this.window.add(employeeCode);
 		this.window.add(labelTotal);
 		this.window.add(total);
 		this.window.add(labelPaymentMethod);
@@ -91,14 +100,16 @@ public class FinishSaleItem implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		
 		if(source == saveSale) {
-				saleData[0] =  total.getText();
-				
+				System.out.println();
+				System.out.println("Visão Geralll");
+				System.out.println();
+			
+				data.getSales().get(this.salePos).setClientCPF(clientCPF.getText());
+				data.getSales().get(this.salePos).setEmployee(data.getEmployeeByCode(Integer.parseInt(employeeCode.getText())));
 //				data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
-	
-				saleData[2] =  total.getText();
-				saleData[3] =  total.getText();
+				
+				System.out.println(data.getSales().get(this.salePos).toString());
 		}
 		else if(source == cancelSale) {
 			data.deleteSale(this.salePos);

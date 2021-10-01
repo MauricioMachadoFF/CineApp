@@ -69,7 +69,7 @@ public class Sale {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-
+	
 	public void setBeverages(ArrayList<Beverage> beverages) {
 		this.beverages = beverages;
 	}
@@ -82,19 +82,17 @@ public class Sale {
 		this.total = total;
 	}
 	
+	//Verificar por que o cálculo não está funcionando!!!
 	public void setTotal(ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Session> tickets) {
 		this.total = 0;
 		for(Snack snack: snacks) {
 			this.total += snack.getPrice();
-			System.out.println("Preço" +  this.total);
 		}
 		for(Beverage beverage: beverages) {
 			this.total += beverage.getPrice();
-			System.out.println("Preço" +  this.total);
 		}
 		for(Session ticket: tickets) {
 			this.total += ticket.getRoom().getPrice();
-			System.out.println("Preço" +  this.total);
 		}
 	}
 

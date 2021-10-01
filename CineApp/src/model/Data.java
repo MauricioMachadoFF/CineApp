@@ -28,7 +28,7 @@ public class Data {
 					"Funcionário " + (i + 1),
 					String.valueOf((int)Math.floor(Math.random()*(max-min+1)+min)),
 					String.valueOf((int)Math.floor(Math.random()*(max-min+1)+min)),
-					(int)Math.floor(Math.random()*(max-min+1)+min)
+					(i + 1)
 			));
 			
 			movies.add( new Movie(

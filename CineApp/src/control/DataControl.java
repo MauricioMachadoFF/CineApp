@@ -57,6 +57,14 @@ public class DataControl {
 		return this.data.getSales();
 	}
 	
+	public Employee getEmployeeByCode(int empCode) {
+		for(Employee employee: data.getEmployees()) {
+			if (employee.getEmployeeCode() == empCode) {
+				return employee;
+			} 
+		}
+		return null;
+	}
 	 
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
