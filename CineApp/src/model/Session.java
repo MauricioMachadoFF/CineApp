@@ -8,6 +8,7 @@ public class Session {
 	private Date schedule;
 	private MovieRoom room;
 	private Movie movie;
+	private int seatsAvailable;
 	private int sessionId;
 	final int max = 100000;
 	final int min = 1;
@@ -17,6 +18,7 @@ public class Session {
 		this.room = room;
 		this.movie = movie;
 		this.sessionId = (int)Math.floor(Math.random()*(max-min+1)+min);
+		this.seatsAvailable = room.getSeatAmount();
 	}
 	
 	public Session(String preSchedule, MovieRoom room, Movie movie, int sessionId) throws ParseException {
@@ -24,11 +26,19 @@ public class Session {
 		this.room = room;
 		this.movie = movie;
 		this.sessionId = sessionId;
+		this.seatsAvailable = room.getSeatAmount();
 	}
-	
 	
 	public Date getSchedule() {
 		return schedule;
+	}
+	
+	public int getSeatsAvailable() {
+		return seatsAvailable;
+	}
+
+	public void setSeatsAvailable(int seatsAvailable) {
+		this.seatsAvailable = seatsAvailable;
 	}
 
 	public void setSchedule(String preSchedule) throws ParseException {

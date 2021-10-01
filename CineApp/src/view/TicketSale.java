@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,11 +17,10 @@ import control.DataControl;
 import control.SessionControl;
 import control.TicketControl;
 
-public class TicketSale implements ActionListener, ListSelectionListener {
+public class TicketSale implements ActionListener{
 	private JFrame window;
 	private JLabel title;
 	private JButton newTicket;
-	private JButton refresh;
 	private static DataControl data;
 	private JList<String> listTickets;
 	private String[] ticketsNames = new String[100];
@@ -28,7 +28,7 @@ public class TicketSale implements ActionListener, ListSelectionListener {
 	public void showData(DataControl d){
 		data = d;
 
-		ticketsNames = new TicketControl(data).getTicketDetail();
+		ticketsNames = new SessionControl(data).getSessionDetails();
 		listTickets = new JList<String>(ticketsNames);
 		listTickets.setLayoutOrientation(JList.VERTICAL);
 			
@@ -36,7 +36,6 @@ public class TicketSale implements ActionListener, ListSelectionListener {
 		window = new JFrame("Ingressos");
 		title = new JLabel("Ingressos Vendidos");
 		newTicket = new JButton("Vender Ingresso");
-		refresh = new JButton("Atualizar");
 
 		title.setFont(new Font("Arial", Font.BOLD, 20));
 		title.setBounds(150, 10, 250, 30);
@@ -44,45 +43,45 @@ public class TicketSale implements ActionListener, ListSelectionListener {
 		listTickets.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listTickets.setVisibleRowCount(30);
 
-		newTicket.setBounds(10, 250, 150, 30);
-		refresh.setBounds(330, 250, 150, 30);
+		newTicket.setBounds(10, 250, 200, 30);
 
 		window.setLayout(null);
 
 		window.add(title);
 		window.add(listTickets);
 		window.add(newTicket);
-		window.add(refresh);
 
 		window.setSize(500, 350);
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 
 		newTicket.addActionListener(this);
-		refresh.addActionListener(this);
-		listTickets.addListSelectionListener(this);
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
 		if(src == newTicket) {
-			new TicketItem().addView(1, data, this, 1);
-		}
-		//atualiza a lista de lanches
-		if(src == refresh) {
-			listTickets.setListData(new TicketControl(data).getTicketDetail());
-			listTickets.updateUI();
-		}
-		
-	}
-
-	public void valueChanged(ListSelectionEvent e) {
-		Object source = e.getSource();
-
-		if(e.getValueIsAdjusting() && source == listTickets) {
-			new TicketItem().addView(2, data, this, 
-			listTickets.getSelectedIndex());
+			if (!listTickets.isSelectionEmpty()) {
+			System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
+				if( data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable() > 0){
+					data.getSession().get(listTickets.getSelectedIndex()).setSeatsAvailable(
+							data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable()-1
+					);
+					System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
+					JOptionPane.showMessageDialog(null, 
+												"Ingresso para " + data.getSession().get(listTickets.getSelectedIndex()).getMovie().getName() + " adicionado com sucesso! \n" +
+												"Assentos disponíveis para essa sessão: " + data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable(),
+												"Informação",
+												1);
+				} else {
+					JOptionPane.showMessageDialog(null, "Sem assentos disponíveis!", "Erro", 0);
+				}
+				listTickets.clearSelection();
+			} else {
+				JOptionPane.showMessageDialog(null, "Nenhuma sessão selecionada", "Erro", 0);
+			}
 		}
 		
 	}

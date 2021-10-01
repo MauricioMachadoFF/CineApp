@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
 import control.BeverageControl;
@@ -72,7 +73,31 @@ public class FoodSale implements ActionListener{
 		Object src = e.getSource();
 		
 		if(src == addItem) {
-			snacks.add(data.getSnacks().get(listSnacks.getSelectedIndex()));
+			if (!listSnacks.isSelectionEmpty()) {
+				if(data.getSnacks().get(listSnacks.getSelectedIndex()).getStockQuantity()>0) {
+					//snacks.add(data.getSnacks().get(listSnacks.getSelectedIndex()));
+					
+					data.getSnacks().get(listSnacks.getSelectedIndex()).setStockQuantity(
+						data.getSnacks().get(listSnacks.getSelectedIndex()).getStockQuantity()-1
+					);
+					JOptionPane.showMessageDialog(null, data.getSnacks().get(listSnacks.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
+				} else {
+					JOptionPane.showMessageDialog(null, "Sem estoque disponível!", "Erro", 0);
+				}
+				listSnacks.clearSelection();
+			} else if(!listBeverages.isSelectionEmpty()) {
+				if(data.getBeverages().get(listBeverages.getSelectedIndex()).getStockQuantity()>0) {
+					data.getBeverages().get(listBeverages.getSelectedIndex()).setStockQuantity(
+							data.getBeverages().get(listBeverages.getSelectedIndex()).getStockQuantity()-1
+						);
+					JOptionPane.showMessageDialog(null, data.getBeverages().get(listBeverages.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
+				} else {
+					JOptionPane.showMessageDialog(null, "Sem estoque disponível!", "Erro", 0);
+				}
+				listBeverages.clearSelection();
+			} else {
+				JOptionPane.showMessageDialog(null, "Nenhum alimento selecionado", "Erro", 0);
+			}
 		}
 		
 	}

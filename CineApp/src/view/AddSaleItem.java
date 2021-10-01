@@ -14,8 +14,8 @@ public class AddSaleItem implements ActionListener {
 	
 	private static JFrame window = new JFrame("Gerenciamento de Vendas");
 	private static JLabel title = new JLabel("Geração de venda 1 (trocar numero dps)");
-	private static JButton foodSale = new JButton("Comprar comida");
-	private static JButton ticketSale = new JButton("Comprar ingresso");
+	private static JButton foodSale = new JButton("Vender comida");
+	private static JButton ticketSale = new JButton("Vender ingresso");
 	private static JButton finishSale = new JButton("Finalizar Venda");
 	public static DataControl data = new DataControl();
 	
