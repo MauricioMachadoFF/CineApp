@@ -25,7 +25,7 @@ public class FinishSaleItem implements ActionListener {
 	private JRadioButton cashMethod = new JRadioButton("Dinheiro");
 	private JButton cancelSale = new JButton("Cancelar Compra");
 	private JButton saveSale = new JButton("Salvar");
-	private String[] editedEmployee= new String[5];
+	private String[] saleData= new String[5];
 	private String[] newEmployee = new String[4];
 	private static DataControl data;
 	private int position;
@@ -48,7 +48,12 @@ public class FinishSaleItem implements ActionListener {
 		window=new JFrame(title);
 		
 		clientCPF = new JTextField(200);
-		total = new JTextField(200);
+		
+		//Algo errado no cálculo do total, verificar!!!
+		data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
+		total = new JTextField(String.valueOf(data.getSales().get(this.salePos).getTotal()));
+		
+		total.setEditable(false);
 		
 		labelClientCPF.setBounds(30, 20, 150, 25);
 		clientCPF.setBounds(180, 20, 180, 25);
@@ -86,27 +91,22 @@ public class FinishSaleItem implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-//		if(source == saveEmployee) {
-//			if(option==1) { //cadastro de um lanche
-//				newEmployee[0] =  name.getText();
-//				newEmployee[1] =  cellphone.getText();
-//				newEmployee[2] =  cpf.getText();
-//				newEmployee[3] =  empCode.getText();
-//				data.addEmployee(newEmployee);
-//				
-//			} else {
-//				// edição de um lanche cadastrado
-//				editedEmployee[0] = Integer.toString(position);
-//				
-//				editedEmployee[1] =  name.getText();
-//				editedEmployee[2] =  cellphone.getText();
-//				editedEmployee[3] =  cpf.getText();
-//				editedEmployee[4] =  empCode.getText();
-//				data.editEmployee(editedEmployee);
-//			}
-//		}
-//		if(source == deleteEmployee) {
-//			data.deleteEmployee(position);
-//		}
+		
+		if(source == saveSale) {
+				saleData[0] =  total.getText();
+				
+//				data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
+	
+				saleData[2] =  total.getText();
+				saleData[3] =  total.getText();
+		}
+		else if(source == cancelSale) {
+			data.deleteSale(this.salePos);
+			
+			//Tem que fazer um pouco mais
+			//quando cancelar a venda as janelas devem ser fechadas até a janela
+			//de gerenciamento de vendas onde pode começar outra venda
+		}
 	}
+	
 }

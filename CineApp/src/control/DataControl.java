@@ -219,5 +219,10 @@ public class DataControl {
 		data.getTickets().remove(i);
 		return true;
 	}
+	
+	public boolean deleteSale(int i) {
+		data.getSales().remove(i);
+		return true;
+	}
 
 }
