@@ -76,7 +76,7 @@ public class TicketSale implements ActionListener,  ItemListener{
 					data.getSales().get(salePos).setTotal(data.getSales().get(salePos).getTotal() + 
 							data.getSession().get(listTickets.getSelectedIndex()).getRoom().getPrice());
 					
-					System.out.println(data.getSales().get(salePos).toString());
+//					System.out.println(data.getSales().get(salePos).toString());
 					JOptionPane.showMessageDialog(null, 
 												"Ingresso para " + data.getSession().get(listTickets.getSelectedIndex()).getMovie().getName() + " adicionado com sucesso! \n" +
 												"Assentos disponíveis para essa sessão: " + data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable(),
