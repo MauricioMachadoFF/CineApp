@@ -24,7 +24,6 @@ public class Snack extends Food {
 				.concat("Lote: " + this.batch + "\n");
 	}
 
-
 	public boolean getIsSweet() {
 		return isSweet;
 	}

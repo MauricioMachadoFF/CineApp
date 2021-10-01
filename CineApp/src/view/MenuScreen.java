@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
 public class MenuScreen implements ActionListener {
 	
 	private static JFrame window = new JFrame("Sistema do Cinema");

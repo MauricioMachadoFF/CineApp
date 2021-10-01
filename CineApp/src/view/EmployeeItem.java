@@ -110,7 +110,7 @@ public class EmployeeItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveEmployee) {
-			if(option==1) { //cadastro de um lanche
+			if(option==1) { //cadastro
 				newEmployee[0] =  name.getText();
 				newEmployee[1] =  cellphone.getText();
 				newEmployee[2] =  cpf.getText();
@@ -118,7 +118,7 @@ public class EmployeeItem implements ActionListener {
 				data.addEmployee(newEmployee);
 				
 			} else {
-				// edição de um lanche cadastrado
+				// edição
 				editedEmployee[0] = Integer.toString(position);
 				
 				editedEmployee[1] =  name.getText();

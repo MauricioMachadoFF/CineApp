@@ -6,14 +6,13 @@ public class Employee {
 	private String CPF;
 	private int employeeCode;
 	
-	//KInda like the create/registerEmployee
+	//Kinda like the create/registerEmployee
 	public Employee(String name, String cellphone, String CPF, int employeeCode) {
 		this.name = name;
 		this.cellphone = cellphone;
 		this.CPF = CPF;
 		this.employeeCode = employeeCode;
 	}
-	
 	
 	//See Sale to understand how to deal better with this constructor
 	public Employee() {
@@ -47,7 +46,6 @@ public class Employee {
 	public void setEmployeeCode(int employeeCode) {
 		this.employeeCode = employeeCode;
 	}
-	
 	
 	//readEmployee
 	public String toString() {

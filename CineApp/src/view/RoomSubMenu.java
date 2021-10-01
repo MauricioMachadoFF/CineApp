@@ -66,7 +66,7 @@ public class RoomSubMenu implements ActionListener, ListSelectionListener {
 		if(src == createRoom) {
 			new RoomItem().addEdit(1, data, this, 1);
 		}
-		//atualiza a lista de lanches
+		//atualiza
 		if(src == refreshRoom) {
 			listRooms.setListData(new RoomControl(data).getRoomsNumber());
 			listRooms.updateUI();

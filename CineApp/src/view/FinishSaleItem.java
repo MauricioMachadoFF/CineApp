@@ -7,10 +7,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import control.DataControl;
+import model.Sale;
 
 public class FinishSaleItem implements ActionListener {
 	private JFrame window;
@@ -27,34 +29,23 @@ public class FinishSaleItem implements ActionListener {
 	private JRadioButton cashMethod = new JRadioButton("Dinheiro");
 	private JButton cancelSale = new JButton("Cancelar Compra");
 	private JButton saveSale = new JButton("Salvar");
-	private String[] saleData= new String[5];
-	private String[] newEmployee = new String[4];
 	private static DataControl data;
-	private int position;
-	private int option;
 	private int salePos;
 	
 	public void addEdit(DataControl d, 
-			AddSaleItem sale, int p, int salePos) {
+			AddSaleItem s, int p, int salePos) {
 		
 		data=d;
-		position=p;
 		this.salePos = salePos;
-		System.out.println("Finalizar compra numero" + this.salePos);
-//		System.out.println(data.getSales().get(this.salePos).toString());
 		ButtonGroup paymentMethod = new ButtonGroup();
+		
 		paymentMethod.add(debitMethod);
 		paymentMethod.add(creditMethod);
 		paymentMethod.add(cashMethod);
 		
 		window=new JFrame(title);
-		
 		clientCPF = new JTextField(200);
-		
 		employeeCode = new JTextField(200);
-		
-		//Algo errado no cálculo do total, verificar!!!
-		//data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
 		
 		total = new JTextField(String.valueOf(data.getSales().get(this.salePos).getTotal()));
 		total.setEditable(false);
@@ -65,12 +56,12 @@ public class FinishSaleItem implements ActionListener {
 		employeeCode.setBounds(180, 50, 180, 25);
 		labelTotal.setBounds(30, 80, 150, 25);
 		total.setBounds(180, 80, 180, 25);
-		labelPaymentMethod.setBounds(30, 100, 150, 25);
-		debitMethod.setBounds(30, 120, 150, 25);
-		creditMethod.setBounds(30, 140, 150, 25);
-		cashMethod.setBounds(30, 160, 150, 25);
-		saveSale.setBounds(245, 180, 115, 30);
-		cancelSale.setBounds(30, 180, 175, 30);
+		labelPaymentMethod.setBounds(30, 110, 250, 25);
+		debitMethod.setBounds(30, 130, 150, 25);
+		creditMethod.setBounds(30, 150, 150, 25);
+		cashMethod.setBounds(30, 170, 150, 25);
+		saveSale.setBounds(245, 200, 115, 30);
+		cancelSale.setBounds(30, 200, 175, 30);
 		
 		
 		this.window.add(labelClientCPF);
@@ -101,22 +92,28 @@ public class FinishSaleItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveSale) {
-				System.out.println();
-				System.out.println("Visão Geralll");
-				System.out.println();
+				//System.out.println();
+				//System.out.println("Visão Geral");
+				//System.out.println();
 			
 				data.getSales().get(this.salePos).setClientCPF(clientCPF.getText());
 				data.getSales().get(this.salePos).setEmployee(data.getEmployeeByCode(Integer.parseInt(employeeCode.getText())));
-//				data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
 				
-				System.out.println(data.getSales().get(this.salePos).toString());
+					if(debitMethod.isSelected()){
+						data.getSales().get(this.salePos).setPaymentMethod(debitMethod.getText());	
+					} else if(creditMethod.isSelected()){
+						data.getSales().get(this.salePos).setPaymentMethod(creditMethod.getText());	
+					} else if(cashMethod.isSelected()) {
+						data.getSales().get(this.salePos).setPaymentMethod(creditMethod.getText());	
+					} else {
+						JOptionPane.showMessageDialog(null, "Nenhum método de pagamento selecionado", "Erro", 0);
+					}
+								
+				//System.out.println(data.getSales().get(this.salePos).toString());
+				this.window.dispose();
 		}
 		else if(source == cancelSale) {
 			data.deleteSale(this.salePos);
-			
-			//Tem que fazer um pouco mais
-			//quando cancelar a venda as janelas devem ser fechadas até a janela
-			//de gerenciamento de vendas onde pode começar outra venda
 		}
 	}
 	

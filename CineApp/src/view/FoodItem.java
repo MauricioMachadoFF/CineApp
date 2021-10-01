@@ -176,7 +176,7 @@ public class FoodItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveSnack) {
-			if(option==1) { //cadastro de um lanche
+			if(option==1) { //cadastro
 				newSnack[0] =  name.getText();
 				newSnack[1] =  price.getText();
 				newSnack[2] =  stock.getText();
@@ -185,7 +185,7 @@ public class FoodItem implements ActionListener {
 				data.addSnack(newSnack);
 				
 			} else {
-				// edição de um lanche cadastrado
+				// edição
 				editedSnack[0] = Integer.toString(position);
 				
 				editedSnack[1] =  name.getText();
@@ -201,7 +201,7 @@ public class FoodItem implements ActionListener {
 		}
 		
 		if(source == saveBeverage) {
-			if(option==2) { //cadastro de uma bebida
+			if(option==2) { //cadastro
 				newBeverage[0] =  name.getText();
 				newBeverage[1] =  price.getText();
 				newBeverage[2] =  stock.getText();
@@ -213,7 +213,7 @@ public class FoodItem implements ActionListener {
 				data.addBeverage(newBeverage);
 				
 			} else {
-				// edição de uma bebida cadastrada
+				// edição
 				editedBeverage[0] = Integer.toString(position);
 				
 				editedBeverage[1] =  name.getText();

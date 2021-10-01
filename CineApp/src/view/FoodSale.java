@@ -85,7 +85,6 @@ public class FoodSale implements ActionListener{
 					data.getSales().get(salePos).addSnack(data.getSnacks().get(listSnacks.getSelectedIndex()));
 					//Update Total Amount
 					data.getSales().get(salePos).setTotal(data.getSales().get(salePos).getTotal()+data.getSnacks().get(listSnacks.getSelectedIndex()).getPrice());
-					System.out.println(data.getSales().get(salePos).toString());
 					
 					JOptionPane.showMessageDialog(null, data.getSnacks().get(listSnacks.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
 				} else {
@@ -102,7 +101,6 @@ public class FoodSale implements ActionListener{
 					data.getSales().get(salePos).addBeverage(data.getBeverages().get(listBeverages.getSelectedIndex()));
 					//Update Total Amount
 					data.getSales().get(salePos).setTotal(data.getSales().get(salePos).getTotal()+data.getBeverages().get(listBeverages.getSelectedIndex()).getPrice());
-					System.out.println(data.getSales().get(salePos).toString());
 					
 					JOptionPane.showMessageDialog(null, data.getBeverages().get(listBeverages.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
 				} else {

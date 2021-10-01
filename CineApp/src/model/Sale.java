@@ -111,6 +111,7 @@ public class Sale {
 			.concat("\nTickets: " + this.tickets)
 			.concat("\nComidas: " + this.beverages + this.snacks)
 			.concat("\nTotal: " + this.total)
+			.concat("\nMetodo: " + this.paymentMethod)
 			.concat("\nclientCPF: ") + this.clientCPF;
 	}
 }

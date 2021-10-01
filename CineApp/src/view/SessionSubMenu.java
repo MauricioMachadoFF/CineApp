@@ -67,7 +67,7 @@ public class SessionSubMenu implements ActionListener, ListSelectionListener {
 		if(src == createSession) {
 			new SessionItem().addEdit(1, data, this, 1);
 		}
-		//atualiza a lista de lanches
+		//atualiza
 		if(src == refreshSession) {
 			listSessions.setListData(new SessionControl(data).getSessionDetails());
 			listSessions.updateUI();

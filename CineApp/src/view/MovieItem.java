@@ -110,7 +110,7 @@ public class MovieItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveMovie) {
-			if(option==1) { //cadastro de um lanche
+			if(option==1) { //cadastro
 				newMovie[0] =  MvName.getText();
 				newMovie[1] =  MvYear.getText();
 				newMovie[2] =  MvGenre.getText();
@@ -118,7 +118,7 @@ public class MovieItem implements ActionListener {
 				data.addMovie(newMovie);
 				
 			} else {
-				// edição de um lanche cadastrado
+				// edição
 				editedMovie[0] = Integer.toString(position);
 				
 				editedMovie[1] =  MvName.getText();

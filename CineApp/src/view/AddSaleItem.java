@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 public class AddSaleItem implements ActionListener {
 	
 	private static JFrame window = new JFrame("Gerenciamento de Vendas");
-	private static JLabel title = new JLabel("Geração de venda 1 (trocar numero dps)");
+	private static JLabel title = new JLabel("Nova Venda");
 	private static JButton foodSale = new JButton("Vender comida");
 	private static JButton ticketSale = new JButton("Vender ingresso");
 	private static JButton finishSale = new JButton("Finalizar Venda");
@@ -21,18 +21,17 @@ public class AddSaleItem implements ActionListener {
 	private int salePosition;
 	
 	public AddSaleItem() {
-		title.setBounds(200, 10, 300, 20);
 		foodSale.setBounds(100, 50, 300, 30);
 		ticketSale.setBounds(100, 90, 300, 30);
 		finishSale.setBounds(100, 130, 300, 30);
-
+		title.setBounds(180, 10, 300, 20);
 		
 		window.setLayout(null);
 		
-		window.add(title);
 		window.add(foodSale);
 		window.add(ticketSale);
 		window.add(finishSale);
+		window.add(title);
 		
 		window.setSize(500, 350);
 		window.setLocationRelativeTo(null);

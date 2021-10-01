@@ -6,8 +6,6 @@ public class MovieRoom {
 	private boolean is3D;
 	private int roomNumber;
 	private double price;
-	
-	// Verificar esse tipo de sala como boolean
 
 	public MovieRoom(int seatAmount, int roomNumber, double price, boolean is3D, boolean acessability) {
 		this.seatAmount = seatAmount;

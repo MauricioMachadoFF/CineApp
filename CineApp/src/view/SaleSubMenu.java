@@ -29,8 +29,8 @@ public class SaleSubMenu implements ActionListener {
 		window.setLayout(null);
 		
 		window.add(title);
-		window.add(Rank1);
-		window.add(Rank2);
+		//window.add(Rank1); sera posteriormente implementado
+		//window.add(Rank2);
 		window.add(addSale);
 		
 		window.setSize(500, 350);

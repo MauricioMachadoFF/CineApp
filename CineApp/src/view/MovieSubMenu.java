@@ -85,7 +85,6 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 	
 	private void searchTxt(String text) {
 		int index=0;
-		//searchFilter(text);
 		index = listMovies.getNextMatch(text, 0, Position.Bias.Forward);
 		if(index == -1) {
 			JOptionPane.showMessageDialog(null, "Nenhuma correspondência encontrada!", "Erro", 0);

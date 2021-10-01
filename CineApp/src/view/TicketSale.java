@@ -24,10 +24,7 @@ public class TicketSale implements ActionListener,  ItemListener{
 	private JList<String> listTickets;
 	private String[] ticketsNames = new String[100];
 	private int salePos;
-	
-	//Quando iniciada mais de uma vez
-	//Multiplas telas abrem de uma vez
-	//Para diversas vendas
+
 	public void showData(DataControl d, int salePos){
 		data = d;
 		this.salePos = salePos;
@@ -69,7 +66,6 @@ public class TicketSale implements ActionListener,  ItemListener{
 		
 		if(src == newTicket) {
 			if (!listTickets.isSelectionEmpty()) {
-//			System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
 				if( data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable() > 0){
 					data.getSession().get(listTickets.getSelectedIndex()).setSeatsAvailable(
 							data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable()-1
@@ -99,7 +95,6 @@ public class TicketSale implements ActionListener,  ItemListener{
 
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 }

@@ -112,7 +112,7 @@ public class RoomItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveRoom) {
-			if(option==1) { //cadastro de um lanche
+			if(option==1) { //cadastro
 				
 				newRoom[0] =  seatAmount.getText();
 				newRoom[1] =  roomNumber.getText();
@@ -123,7 +123,7 @@ public class RoomItem implements ActionListener {
 				data.addRoom(newRoom);
 				
 			} else {
-				// edição de um lanche cadastrado
+				// edição
 				editedRoom[0] = Integer.toString(position); 
 				
 				editedRoom[1] = seatAmount.getText();
