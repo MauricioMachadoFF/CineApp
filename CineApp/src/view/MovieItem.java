@@ -97,7 +97,7 @@ public class MovieItem implements ActionListener {
 
 		this.window.setLayout(null);
 
-		window.setSize(500, 350);
+		window.setSize(500, 450);
 		window.setLocationRelativeTo(null);
 		this.window.setVisible(true);
 

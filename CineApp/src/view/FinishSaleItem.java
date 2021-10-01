@@ -54,7 +54,7 @@ public class FinishSaleItem implements ActionListener {
 		employeeCode = new JTextField(200);
 		
 		//Algo errado no cálculo do total, verificar!!!
-		data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
+		//data.getSales().get(this.salePos).setTotal(data.getSnacks() ,data.getBeverages(), data.getSession());
 		
 		total = new JTextField(String.valueOf(data.getSales().get(this.salePos).getTotal()));
 		total.setEditable(false);

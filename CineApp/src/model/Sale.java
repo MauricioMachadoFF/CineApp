@@ -57,7 +57,6 @@ public class Sale {
 		return clientCPF;
 	}
 	
-
 	public ArrayList<Session> getTickets() {
 		return tickets;
 	}
@@ -80,20 +79,6 @@ public class Sale {
 
 	public void setTotal(double total) {
 		this.total = total;
-	}
-	
-	//Verificar por que o cálculo não está funcionando!!!
-	public void setTotal(ArrayList<Snack> snacks, ArrayList<Beverage> beverages, ArrayList<Session> tickets) {
-		this.total = 0;
-		for(Snack snack: snacks) {
-			this.total += snack.getPrice();
-		}
-		for(Beverage beverage: beverages) {
-			this.total += beverage.getPrice();
-		}
-		for(Session ticket: tickets) {
-			this.total += ticket.getRoom().getPrice();
-		}
 	}
 
 	public void setPaymentMethod(String paymentMethod) {
@@ -125,7 +110,7 @@ public class Sale {
 		return new String("Funcionário Responsável: " + this.employee)
 			.concat("\nTickets: " + this.tickets)
 			.concat("\nComidas: " + this.beverages + this.snacks)
-//			.concat("\nTotal: " + this.total)
+			.concat("\nTotal: " + this.total)
 			.concat("\nclientCPF: ") + this.clientCPF;
 	}
 }

@@ -10,7 +10,6 @@ public class Data {
 	private  ArrayList<Employee> employees = new ArrayList<Employee>();
 	private  ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
 	private  ArrayList<Session> sessions = new ArrayList<Session>();
-	private  ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 	private  ArrayList<Sale> sales = new ArrayList<Sale>();
 	final int max = 999;
 	final int min = 100;
@@ -19,6 +18,7 @@ public class Data {
 	
 	public void fillWithRandomData() throws ParseException {
 		boolean trueOrFalse = true;
+		
 		for(int i = 0; i < 5; i++) {
 			snacks.add(new Snack("Lanche "+(i+1), i+2, i*10, (i+1)*6331, trueOrFalse));
 			
@@ -34,7 +34,7 @@ public class Data {
 			movies.add( new Movie(
 					"Filme "+(i+1),
 					2000+i,
-					"Action" + i,
+					"Action",
 					"Sinopse "+(i+1),
 					i+7*3
 				));
@@ -91,10 +91,6 @@ public class Data {
 		return sessions;
 	}
 	
-	public ArrayList<Ticket> getTickets() {
-		return tickets;
-	}
-	
 	public ArrayList<Sale> getSales() {
 		return sales;
 	}
@@ -121,10 +117,6 @@ public class Data {
 	
 	public void setSessions(Session session) {
 		sessions.add(session);
-	}
-	
-	public void setTickets(Ticket ticket) {
-		tickets.add(ticket);
 	}
 	
 	public void setSales(Sale sale) {

@@ -24,7 +24,6 @@ public class FoodSale implements ActionListener{
 	private static DataControl data;
 	private JList<String> listSnacks;
 	private JList<String> listBeverages;
-	private ArrayList<Snack> snacks = new ArrayList<Snack>();
 	private String[] snacksNames = new String[100];
 	private String[] beveragesNames = new String[100];
 	private int salePos;
@@ -77,7 +76,6 @@ public class FoodSale implements ActionListener{
 		if(src == addItem) {
 			if (!listSnacks.isSelectionEmpty()) {
 				if(data.getSnacks().get(listSnacks.getSelectedIndex()).getStockQuantity()>0) {
-					//snacks.add(data.getSnacks().get(listSnacks.getSelectedIndex()));
 					
 					data.getSnacks().get(listSnacks.getSelectedIndex()).setStockQuantity(
 						data.getSnacks().get(listSnacks.getSelectedIndex()).getStockQuantity()-1
@@ -85,6 +83,8 @@ public class FoodSale implements ActionListener{
 					
 					//Add data to the current Sale and see on the console if it's correct
 					data.getSales().get(salePos).addSnack(data.getSnacks().get(listSnacks.getSelectedIndex()));
+					//Update Total Amount
+					data.getSales().get(salePos).setTotal(data.getSales().get(salePos).getTotal()+data.getSnacks().get(listSnacks.getSelectedIndex()).getPrice());
 					System.out.println(data.getSales().get(salePos).toString());
 					
 					JOptionPane.showMessageDialog(null, data.getSnacks().get(listSnacks.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);
@@ -96,10 +96,12 @@ public class FoodSale implements ActionListener{
 				if(data.getBeverages().get(listBeverages.getSelectedIndex()).getStockQuantity()>0) {
 					data.getBeverages().get(listBeverages.getSelectedIndex()).setStockQuantity(
 							data.getBeverages().get(listBeverages.getSelectedIndex()).getStockQuantity()-1
-						);
+					);
 					
 					//Add data to the current Sale and see on the console if it's correct
 					data.getSales().get(salePos).addBeverage(data.getBeverages().get(listBeverages.getSelectedIndex()));
+					//Update Total Amount
+					data.getSales().get(salePos).setTotal(data.getSales().get(salePos).getTotal()+data.getBeverages().get(listBeverages.getSelectedIndex()).getPrice());
 					System.out.println(data.getSales().get(salePos).toString());
 					
 					JOptionPane.showMessageDialog(null, data.getBeverages().get(listBeverages.getSelectedIndex()).getName() + " adicionado com sucesso!", "Informação", 1);

@@ -3,6 +3,8 @@ package view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,14 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import control.DataControl;
 import control.SessionControl;
-import control.TicketControl;
 
-public class TicketSale implements ActionListener{
+public class TicketSale implements ActionListener,  ItemListener{
 	private JFrame window;
 	private JLabel title;
 	private JButton newTicket;
@@ -67,6 +66,7 @@ public class TicketSale implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
+		
 		if(src == newTicket) {
 			if (!listTickets.isSelectionEmpty()) {
 //			System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
@@ -75,7 +75,11 @@ public class TicketSale implements ActionListener{
 							data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable()-1
 					);
 					data.getSales().get(salePos).addTicket(data.getSession().get(listTickets.getSelectedIndex()));
-//					System.out.println(data.getSession().get(listTickets.getSelectedIndex()).getSeatsAvailable());
+					
+					//Update Total Amount
+					data.getSales().get(salePos).setTotal(data.getSales().get(salePos).getTotal() + 
+							data.getSession().get(listTickets.getSelectedIndex()).getRoom().getPrice());
+					
 					System.out.println(data.getSales().get(salePos).toString());
 					JOptionPane.showMessageDialog(null, 
 												"Ingresso para " + data.getSession().get(listTickets.getSelectedIndex()).getMovie().getName() + " adicionado com sucesso! \n" +
@@ -90,6 +94,12 @@ public class TicketSale implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Nenhuma sessão selecionada", "Erro", 0);
 			}
 		}
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 }
