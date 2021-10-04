@@ -1,13 +1,14 @@
 package control;
 
+import java.util.ArrayList;
+import model.*;
+
 /**
+ * 
  * Controle das informações acerca da classe Beverage
  * @author Mauricio Machado
  * @version 1.0 (Out 2020)
  */
-import java.util.ArrayList;
-import model.*;
-
 public class BeverageControl {
 	ArrayList<Beverage> beverages = new ArrayList<Beverage>();
 	

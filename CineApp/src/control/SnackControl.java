@@ -6,7 +6,7 @@ import model.*;
 /**
  * Controle das informações acerca da classe Snack
  * @author Mauricio Machado
- * @version 1.0 (Out 2020)
+ * @version 1.0 (Out 2021)
  */
 public class SnackControl {
 	ArrayList<Snack> snacks = new ArrayList<Snack>();

@@ -5,7 +5,7 @@ import model.*;
 /**
  * Controle das informações acerca da classe Movie
  * @author Mauricio Machado
- * @version 1.0 (Out 2020)
+ * @version 1.0 (Out 2021)
  */
 public class MovieControl {
 	private ArrayList<Movie> movies = new ArrayList<Movie>();

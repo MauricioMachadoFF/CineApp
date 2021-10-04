@@ -5,7 +5,7 @@ import model.*;
 /**
  * Controle das informações acerca da classe MovieRoom
  * @author Mauricio Machado
- * @version 1.0 (Out 2020)
+ * @version 1.0 (Out 2021)
  */
 public class RoomControl {
 	private ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();

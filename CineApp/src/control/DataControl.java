@@ -5,6 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import model.*;
 
+/**
+ * Controle de todos os tipos de dados disponíveis na aplicação
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
+
 public class DataControl {
 	private Data data = new Data();
 	
@@ -15,7 +21,7 @@ public class DataControl {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public Data getData() {
 		return data;
 	}
@@ -52,6 +58,11 @@ public class DataControl {
 		return this.data.getSales();
 	}
 	
+	/**
+	 * Pesquisar um funcionário pelo seu código
+	 * @param empCode Número inteiro que precisa ser UM CÓDIGO JÁ EXISTENTE para buscar ser positiva
+	 * @return Retorna o objeto employee encontrado caso busca seja positiva e retorna null se não encontrar o código usado como parâmetro
+	 */
 	public Employee getEmployeeByCode(int empCode) {
 		for(Employee employee: data.getEmployees()) {
 			if (employee.getEmployeeCode() == empCode) {
@@ -61,6 +72,11 @@ public class DataControl {
 		return null;
 	}
 	 
+	/**
+	 * Editar um snack já cadastrado
+	 * @param snackData - Array de String, onde cada posição é uma variável/informação do snack
+	 * @return Retorna verdadeiro se a operação foi bem-sucedida
+	 */
 	public boolean editSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
 				Integer.parseInt(snackData[3]), Integer.parseInt(snackData[4]), Boolean.valueOf(snackData[5]));
@@ -69,6 +85,11 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Editar uma bebida já cadastrada
+	 * @param snackData - Array de String, onde cada posição é uma variável/informação da comida
+	 * @return Retorna verdadeiro se a operação foi bem-sucedida
+	 */
 	public boolean editBeverage(String[] beverageData) {
 		Beverage beverages = new Beverage(beverageData[1], Double.valueOf(beverageData[2]),
 				Integer.parseInt(beverageData[3]), Integer.parseInt(beverageData[4]), Boolean.valueOf(beverageData[5]),
@@ -78,6 +99,11 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Editar um filme já cadastrado
+	 * @param snackData - Array de String, onde cada posição é uma variável/informação do filme
+	 * @return Retorna verdadeiro se a operação foi bem-sucedida
+	 */
 	public boolean editMovie(String[] movieData) {
 		Movie movies = new Movie(movieData[1], Integer.parseInt(movieData[2]), movieData[3], movieData[4]);
 		data.updateMovie(Integer.parseInt(movieData[0]), movies);
@@ -85,12 +111,22 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Editar um funcionário já cadastrado
+	 * @param snackData - Array de String, onde cada posição é uma variável/informação do funcionário
+	 * @return Retorna verdadeiro se a operação foi bem-sucedida
+	 */
 	public boolean editEmployee(String[] employeeData) {
 		Employee employees = new Employee(employeeData[1], employeeData[2], employeeData[3], Integer.parseInt(employeeData[4]));
 		data.updateEmployee(Integer.parseInt(employeeData[0]), employees);
 		return true;
 	}
 	
+	/**
+	 * Editar uma sala já cadastrada
+	 * @param snackData - Array de String, onde cada posição é uma variável/informação da sala
+	 * @return Retorna verdadeiro se a operação foi bem-sucedida
+	 */
 	public boolean editRoom(String[] roomData) {
 		MovieRoom rooms = new MovieRoom(
 				Integer.parseInt(roomData[1]),
@@ -103,6 +139,11 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Editar uma sessão já cadastrada
+	 * @param snackData - Array de String, onde cada posição é uma variável/informação da sala
+	 * @return Retorna verdadeiro se a operação foi bem-sucedida
+	 */
 	public boolean editSession(String[] sessionData, MovieRoom room, Movie movie) {
 		try {
 			Session sessions = new Session(
@@ -120,6 +161,12 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Cadastrar um novo Snack
+	 * @param snackData - Array de String onde cada posição é uma variável do snack. Possui 5 posições (String name, double price, int stock, int batch, boolean isSweet). 
+	 * Os valores são passados todos como string, devido o uso de GUI.
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean addSnack(String[] snackData) {
 		Snack snacks = new Snack(snackData[0], Double.valueOf(snackData[1]),
 				Integer.parseInt(snackData[2]), Integer.parseInt(snackData[3]), Boolean.valueOf(snackData[4]));
@@ -127,7 +174,12 @@ public class DataControl {
 		
 		return true;
 	}
-	
+	/**
+	 * Cadastrar uma nova bebida
+	 * @param beverageData - Array de String onde cada posição é uma variável da beverage/bebida. Possui 6 posições (String name, double price, int stock, int batch, boolean isDiet, boolean hasIce, boolean hasStraw). 
+	 * Os valores são passados todos como string, devido o uso de GUI.
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean addBeverage(String[] beverageData) {
 		Beverage beverages = new Beverage(beverageData[0], Double.valueOf(beverageData[1]),
 				Integer.parseInt(beverageData[2]), Integer.parseInt(beverageData[3]), Boolean.valueOf(beverageData[4]),
@@ -137,12 +189,23 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Cadastrar um novo filme
+	 * @param movieData - Array de String onde cada posição é uma variável do filme. Possui 4 posições (String name, int year, String genre, String synopsis). 
+	 * Os valores são passados todos como string, devido o uso de GUI.
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean addMovie(String[] movieData) {
 		Movie movies = new Movie(movieData[0], Integer.parseInt(movieData[1]), movieData[2], movieData[3]);
 		data.setMovies(movies);
 		return true;
 	}
 	
+	/**
+	 * Cadastrar um novo funcionário
+	 * @param employeeData - Array de String onde cada posição é uma variável do funcionário. Possui 4 posições (String name, String cellphone, String cpf, String empCode). 
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean addEmployee(String[] employeeData) {
 		Employee employees = new Employee(employeeData[0], employeeData[1], employeeData[2], Integer.parseInt(employeeData[3]));
 		data.setEmployees(employees);
@@ -154,6 +217,12 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Cadastrar uma nova sala
+	 * @param roomData - Array de String onde cada posição é uma variável da sala. Possui 5 posições (int seatAmount, int roomNumber, double price, boolean is3D, boolean acessability). 
+	 * Os valores são passados todos como string, devido o uso de GUI.
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean addRoom(String[] roomData) {
 		MovieRoom rooms = new MovieRoom(
 				Integer.parseInt(roomData[0]),
@@ -166,6 +235,12 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Cadastrar uma nova sessão
+	 * @param sessionData - Array de String onde cada posição é uma variável da sessão. Possui 4 posições (Date sessionData, Room room, Movie movie, int sessionId). 
+	 * Os valores são passados todos como string, devido o uso de GUI.
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean addSession(String[] sessionData) throws ParseException {
 		
 		Session sessions = new Session(
@@ -178,38 +253,72 @@ public class DataControl {
 		return true;
 	}
 	
+	/**
+	 * Excluir um snack
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteSnack(int i) {
 		data.getSnacks().remove(i);
 			return true;
 	}
 	
+	/**
+	 * Excluir uma bebida
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteBeverage(int i) {
 		data.getBeverages().remove(i);
 			return true;
 	}
 	
+	/**
+	 * Excluir um filme
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteMovie(int i) {
 		data.getMovies().remove(i);
 		
 		return true;
 	}
 	
+	/**
+	 * Excluir um funcionário
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteEmployee(int i) {
 		data.getEmployees().remove(i);
 		return true;
 	}
 	
+	/**
+	 * Excluir uma sala
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteRoom(int i) {
 		data.getRooms().remove(i);
 		return true;
 	}
 	
+	/**
+	 * Excluir uma sessão
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteSession(int i) {
 		data.getSessions().remove(i);
 		return true;
 	}
 	
-	
+	/**
+	 * Excluir uma venda
+	 * @param i Posição do elemento dentro do arraylist
+	 * @return Retorna true se a operação foi bem sucedida
+	 */
 	public boolean deleteSale(int i) {
 		data.getSales().remove(i);
 		return true;

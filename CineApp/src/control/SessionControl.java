@@ -6,7 +6,7 @@ import model.*;
 /**
  * Controle das informações acerca da classe Session
  * @author Mauricio Machado
- * @version 1.0 (Out 2020)
+ * @version 1.0 (Out 2021)
  */
 public class SessionControl {
 	ArrayList<Session> session = new ArrayList<Session>();
