@@ -13,6 +13,11 @@ import javax.swing.event.ListSelectionListener;
 
 import control.*;
 
+/**
+ * Submenu para operações relacionados com funcionários.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class EmployeeSubMenu implements ActionListener, ListSelectionListener {
 	private JFrame window;
 	private JLabel title;
@@ -22,6 +27,14 @@ public class EmployeeSubMenu implements ActionListener, ListSelectionListener {
 	private JList<String> listEmployees;
 	private String[] employeesNames = new String[100];
 	
+	/**
+	 * Geração do submenu de funcionários.
+	 * (1) Permite adicionar novos funcionários
+	 * (2) Permite atualizar a tela, para mostrar novos funcionários cadastrados
+	 * (3) Permite editar funcionários já cadastrados
+	 * (4) Permite excluir funcionários já cadastrados
+	 * @param d Passagem dos dados já cadastrados no início da aplicação.
+	 */
 	public void showData(DataControl d){
 		data = d;
 
@@ -60,6 +73,11 @@ public class EmployeeSubMenu implements ActionListener, ListSelectionListener {
 			listEmployees.addListSelectionListener(this);
 	}
 	
+	/**
+	 * Escuta por eventos de cliques em botões.
+	 * (1) Adicionar novo funcionário
+	 * (2) Atualizar lista
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
@@ -74,6 +92,9 @@ public class EmployeeSubMenu implements ActionListener, ListSelectionListener {
 		
 	}
 
+	/**
+	 * Escuta eventos de seleção na JList. Gera uma janela com mais informações detalhadas do funcionário selecionado.
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 

@@ -13,6 +13,11 @@ import javax.swing.event.ListSelectionListener;
 
 import control.*;
 
+/**
+ * Submenu para operações relacionados com as salas de cinema.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class RoomSubMenu implements ActionListener, ListSelectionListener {
 	private JFrame window;
 	private JLabel title;
@@ -22,6 +27,14 @@ public class RoomSubMenu implements ActionListener, ListSelectionListener {
 	private JList<String> listRooms;
 	private String[] roomsNumbers = new String[100];
 	
+	/**
+	 * Geração do submenu de salas.
+	 * || (1) Permite adicionar novas salas
+	 * || (2) Permite atualizar a tela, para mostrar novas salas cadastrados
+	 * || (3) Permite editar salas já cadastradas
+	 * || (4) Permite excluir salas já cadastradas
+	 * @param d Passagem dos dados já cadastrados no início da aplicação.
+	 */
 	public void showData(DataControl d){
 		data = d;
 
@@ -60,6 +73,11 @@ public class RoomSubMenu implements ActionListener, ListSelectionListener {
 			listRooms.addListSelectionListener(this);
 	}
 	
+	/**
+	 * Escuta eventos de clique em botões.
+	 * || (1) Adicionar sala
+	 * || (2) Atualizar lista
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
@@ -74,6 +92,10 @@ public class RoomSubMenu implements ActionListener, ListSelectionListener {
 		
 	}
 
+	/**
+	 * Escuta eventos de seleção na JList
+	 * || (1) Editar/excluir sala selecionada
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 

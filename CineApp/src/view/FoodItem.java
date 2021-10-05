@@ -47,8 +47,8 @@ public class FoodItem implements ActionListener {
 	 * Execução da operação selecionada no FoodSubMenu
 	 * (1) Cadastro de nova comida
 	 * (2) Cadastro de nova bebida
-	 * (3) edição/exclusão de nova comida
-	 * (4) edição/exclusão de nova bebida
+	 * (3) edição/exclusão de comida
+	 * (4) edição/exclusão de bebida
 	 * @param op
 	 * @param d Recebe todas as informações de dados já cadastrados no sistema.
 	 * @param food 

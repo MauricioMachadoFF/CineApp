@@ -10,6 +10,11 @@ import javax.swing.JTextField;
 
 import control.DataControl;
 
+/**
+ * Menu/Janela com informação detalhada do funcionário selecionado no EmployeeSubMenu.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class EmployeeItem implements ActionListener {
 	private JFrame window;
 	private JLabel labelName= new JLabel("Nome: ");
@@ -29,6 +34,16 @@ public class EmployeeItem implements ActionListener {
 	private int option;
 	private String windowLabel;
 	
+	/**
+	 * Execução da operação selecionada no EmployeeSubMenu
+	 * || (1) Cadastrar novo funcionário
+	 * || (2) Editar funcionário
+	 * || (3) Excluir funcionário
+	 * @param op
+	 * @param d Recebe todas as informações de dados já cadastrados no sistema.
+	 * @param employee
+	 * @param p Posição do item selecionado
+	 */
 	public void addEdit(int op, DataControl d, 
 			EmployeeSubMenu employee, int p) {
 		
@@ -106,7 +121,9 @@ public class EmployeeItem implements ActionListener {
 	}
 	
 	
-	
+	/**
+	 * Escuta pelos eventos de clique e concluí a operação. Atualizando os dados do sistema para refletirem em toda aplicação.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveEmployee) {

@@ -11,6 +11,11 @@ import javax.swing.JTextField;
 
 import control.DataControl;
 
+/**
+ * Menu/Janela com informações detalhadas sobre a sala selecionada
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class RoomItem implements ActionListener {
 	private JFrame window;
 	private JLabel labelRoomNumber= new JLabel("Número da Sala: ");
@@ -30,6 +35,15 @@ public class RoomItem implements ActionListener {
 	private int option;
 	private String windowLabel;
 	
+	/**
+	 * Execução da operação selecionada no RoomSubMenu
+	 * || (1) Cadastro de nova Sala
+	 * || (2) edição/exclusão de sala selecioanada
+	 * @param op
+	 * @param d Recebe todas as informações de dados já cadastrados no sistema.
+	 * @param food 
+	 * @param p Posição do item selecionado
+	 */
 	public void addEdit(int op, DataControl d, 
 			RoomSubMenu room, int p) {
 		
@@ -38,11 +52,11 @@ public class RoomItem implements ActionListener {
 		position=p;
 		
 		if (op == 1) {
-			windowLabel = "Cadastrar Filme";
+			windowLabel = "Cadastrar Sala";
 			labelRoomNumber = new JLabel("Número: ");
 		}
 		if (op == 2) {
-			windowLabel = "Filme: Informações";
+			windowLabel = "Sala: Informações";
 			labelRoomNumber = new JLabel("Número: ");
 		}
 		window=new JFrame(windowLabel);
@@ -108,7 +122,9 @@ public class RoomItem implements ActionListener {
 	}
 	
 	
-	
+	/**
+	 * Escuta pelos eventos de clique e concluí a operação. Atualizando os dados do sistema para refletirem em toda aplicação.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveRoom) {
