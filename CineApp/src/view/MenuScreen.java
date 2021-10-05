@@ -9,6 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Menu inicial da aplicação. Permite navegar entre as opções/ operações possíveis em toda a aplicação.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
+
 public class MenuScreen implements ActionListener {
 	
 	private static JFrame window = new JFrame("Sistema do Cinema");
@@ -21,6 +27,10 @@ public class MenuScreen implements ActionListener {
 	private static JButton sale = new JButton("Realizar Venda");
 	public static DataControl data = new DataControl();
 	
+	
+	/**
+	 * Construtor da tela Menu. Define o tamanho da janela, os componentes e seus respectivos tamanhos.
+	 */
 	public MenuScreen() {
 		title.setBounds(200, 10, 300, 20);
 		sale.setBounds(100, 50, 300, 30);
@@ -46,6 +56,10 @@ public class MenuScreen implements ActionListener {
 		window.setVisible(true);
 	}
 	
+	/**
+	 * Função main da aplicação responsável por integrar o menu principal, com os submenus.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		MenuScreen menu = new MenuScreen();
 		
@@ -57,6 +71,9 @@ public class MenuScreen implements ActionListener {
 		session.addActionListener(menu);
 	}
 	
+	/**
+	 * Escuta por eventos de cliques nos botões declarados. Abre um submenu específico dependendo do botão clicado.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		

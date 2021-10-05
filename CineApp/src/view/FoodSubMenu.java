@@ -15,6 +15,11 @@ import control.BeverageControl;
 import control.DataControl;
 import control.SnackControl;
 
+/**
+ * Submenu para operações relacionados com comidas e bebidas.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class FoodSubMenu implements ActionListener, ListSelectionListener {
 	
 	private JFrame window;
@@ -28,6 +33,14 @@ public class FoodSubMenu implements ActionListener, ListSelectionListener {
 	private String[] snacksNames = new String[100];
 	private String[] beveragesNames = new String[100];
 	
+	/**
+	 * Geração do submenu de comidas e bebidas.
+	 * (1) Permite adicionar novas comidas ou bebidas
+	 * (2) Permite atualizar a tela, para mostrar novos itens cadastrados
+	 * (3) Permite editar itens já cadastrados
+	 * (4) Permite excluir itens já cadastrados
+	 * @param d Passagem dos dados já cadastrados no início da aplicação.
+	 */
 	public void showData(DataControl d){
 		data = d;
 
@@ -79,6 +92,12 @@ public class FoodSubMenu implements ActionListener, ListSelectionListener {
 			
 	}
 
+	/**
+	 * Escuta por eventos de clique.
+	 * (1) Cadastrar nova comida
+	 * (2) Cadastrar nova bebida
+	 * (3) Atualizar as listas existentes
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
@@ -99,6 +118,11 @@ public class FoodSubMenu implements ActionListener, ListSelectionListener {
 		
 	}
 
+	/**
+	 * Escuta por eventos de cliques nas duas JLists definidas.
+	 * (1) Abre o item especificado de comida. Permite edição e/ou exclusão.
+	 * (2) Abre o item especificado de bebida. Permite edição e/ou exclusão.
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 

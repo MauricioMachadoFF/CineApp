@@ -16,6 +16,11 @@ import javax.swing.text.Position;
 
 import control.*;
 
+/**
+ * SubMenu para operações relacionadas com filmes.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class MovieSubMenu implements ActionListener, ListSelectionListener {
 	private JFrame window;
 	private JLabel title;
@@ -29,7 +34,10 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 	private static DataControl data;
 	private JList<String> listMovies;
 	private String[] moviesNames = new String[100];
-	
+	/**
+	 * Geração do SubMenu de filmes.
+	 * @param d Passagem dos dados já cadastrados no início da aplicação. 
+	 */
 	public void showData(DataControl d){
 		data = d;
 
@@ -83,6 +91,10 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 			listMovies.addListSelectionListener(this);
 	}
 	
+	/**
+	 * Filtro de filmes disponíveis pelo nome.
+	 * @param text Termo de busca, o filme procurado deverá conter o termo de busca em sua String
+	 */
 	private void searchTxt(String text) {
 		int index=0;
 		index = listMovies.getNextMatch(text, 0, Position.Bias.Forward);
@@ -95,6 +107,10 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 		}
 	}
 	
+	/**
+	 * Filtro de filmes disponíveis por gênero.
+	 * @param text Termo de busca, o gênero do filme procurado deverá conter o termo de busca em sua String.
+	 */
 	private void searchGenre(String text) {
 			int[] positions = new int[100];
 	    	int j = 0;
@@ -110,6 +126,12 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 		        
 	}
 	
+	/**
+	 * Escuta os eventos de clique.
+	 * (1) Cadastrar novo filme
+	 * (2) Atualizar lista de filmes
+	 * (3) Filtrar lista de filmes
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
@@ -132,6 +154,10 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 		}
 	}
 
+	/**
+	 * Escuta por eventos de seleção na JList de filmes. Cria uma nova janela, com os dados do filme selecionado.
+	 * (1) Permite a edição/exclusão do filme selecionado
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 

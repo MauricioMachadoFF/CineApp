@@ -11,6 +11,11 @@ import javax.swing.JTextField;
 
 import control.DataControl;
 
+/**
+ * Menu para acesso as informações detalhadas de uma comida ou bebida.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class FoodItem implements ActionListener {
 	private JFrame window;
 	private JLabel labelName;
@@ -38,6 +43,17 @@ public class FoodItem implements ActionListener {
 	private int option;
 	private String windowLabel;
 	
+	/**
+	 * Execução da operação selecionada no FoodSubMenu
+	 * (1) Cadastro de nova comida
+	 * (2) Cadastro de nova bebida
+	 * (3) edição/exclusão de nova comida
+	 * (4) edição/exclusão de nova bebida
+	 * @param op
+	 * @param d Recebe todas as informações de dados já cadastrados no sistema.
+	 * @param food 
+	 * @param p Posição do item selecionado
+	 */
 	public void addEdit(int op, DataControl d, 
 			FoodSubMenu food, int p) {
 		
@@ -172,7 +188,9 @@ public class FoodItem implements ActionListener {
 	}
 	
 	
-	
+	/**
+	 * Escuta pelos eventos de clique e concluí a operação. Atualizando os dados do sistema para refletirem em toda aplicação.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveSnack) {

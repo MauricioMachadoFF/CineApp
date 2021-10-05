@@ -10,6 +10,11 @@ import javax.swing.JTextField;
 
 import control.DataControl;
 
+/**
+ * Menu para acesso detalhado da informação de um filme
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class MovieItem implements ActionListener {
 	private JFrame window;
 	private JLabel labelMvName= new JLabel("Nome do Filme: ");
@@ -29,6 +34,16 @@ public class MovieItem implements ActionListener {
 	private int option;
 	private String windowLabel;
 	
+	/**
+	 * Execução da operação selecionada no MovieSubMenu
+	 * (1) Cadastrar novo filme
+	 * (2) Editar filme selecionado
+	 * (3) Excluir filme selecionado
+	 * @param op
+	 * @param d Dados cadastrados em toda aplicação até o momento.
+	 * @param movie
+	 * @param p Posição do filme selecionado
+	 */
 	public void addEdit(int op, DataControl d, 
 			MovieSubMenu movie, int p) {
 		
