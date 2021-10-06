@@ -14,6 +14,11 @@ import javax.swing.JTextField;
 import control.DataControl;
 import model.Sale;
 
+/**
+ * Menu para finalização de uma venda.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class FinishSaleItem implements ActionListener {
 	private JFrame window;
 	private String title = "Finalizar Venda";
@@ -32,6 +37,13 @@ public class FinishSaleItem implements ActionListener {
 	private static DataControl data;
 	private int salePos;
 	
+	/**
+	 * Geração do menu e controle do preenchimento das informações finais.
+	 * @param d Dados cadastrados na aplicação até o momento
+	 * @param s
+	 * @param p 
+	 * @param salePos Posição da venda selecionada
+	 */
 	public void addEdit(DataControl d, 
 			AddSaleItem s, int p, int salePos) {
 		
@@ -88,7 +100,11 @@ public class FinishSaleItem implements ActionListener {
 	}
 	
 	
-	
+	/**
+	 * Escuta eventos de botões.
+	 * || (1) Finalizar Venda
+	 * || (2) Cancelar Venda
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveSale) {

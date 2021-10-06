@@ -16,6 +16,11 @@ import javax.swing.ListSelectionModel;
 import control.DataControl;
 import control.SessionControl;
 
+/**
+ * Menu para adição de ticket na venda
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class TicketSale implements ActionListener,  ItemListener{
 	private JFrame window;
 	private JLabel title;
@@ -24,7 +29,12 @@ public class TicketSale implements ActionListener,  ItemListener{
 	private JList<String> listTickets;
 	private String[] ticketsNames = new String[100];
 	private int salePos;
-
+	
+	/**
+	 * Gerar menu para venda dos tickets
+	 * @param d Dados cadastrados na aplicação até o momento
+	 * @param salePos Posição da nova venda no ArrayList de vendas
+	 */
 	public void showData(DataControl d, int salePos){
 		data = d;
 		this.salePos = salePos;
@@ -60,6 +70,9 @@ public class TicketSale implements ActionListener,  ItemListener{
 		
 	}
 	
+	/**
+	 * Escuta os eventos de clique e valida os dados para evitar venda de ingressos vazias.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		

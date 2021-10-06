@@ -18,6 +18,12 @@ import control.RoomControl;
 import model.Movie;
 import model.MovieRoom;
 
+/**
+ * Menu/Janela com informações detalhadas sobre a sessão selecionada
+ * @author Mauricio
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class SessionItem implements ActionListener{
 	private JFrame window;
 	private JLabel labelMovieName= new JLabel("Selecione o filme: ");
@@ -45,6 +51,15 @@ public class SessionItem implements ActionListener{
 	private String windowLabel;
 	private SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
+	/**
+	 * Execução da operação selecionada no SessionSubMenu
+	 * || (1) Cadastro de nova sessão
+	 * || (2) edição/exclusão de sessão selecioanada
+	 * @param op
+	 * @param d Recebe todas as informações de dados já cadastrados no sistema.
+	 * @param session
+	 * @param p Posição do item selecionado
+	 */
 	public void addEdit(int op, DataControl d, 
 			SessionSubMenu session, int p) {
 		

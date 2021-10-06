@@ -11,7 +11,6 @@ import model.*;
  */
 public class BeverageControl {
 	ArrayList<Beverage> beverages = new ArrayList<Beverage>();
-	
 	/**
      * Preencher a ArrayList session com todos as bebidas existentes até o momento
 	 * @param data um objeto de classe DataControl que nos possibilita operar com todos os dados presentes na aplicação

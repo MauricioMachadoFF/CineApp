@@ -17,6 +17,11 @@ import control.DataControl;
 import control.SnackControl;
 import model.Snack;
 
+/**
+ * Menu para adição de comidas e bebidas para uma venda
+ * @author Mauricio Machado 
+ * @version 1.0 (Out 2021)
+ */
 public class FoodSale implements ActionListener{
 	private JFrame window;
 	private JLabel title;
@@ -28,6 +33,11 @@ public class FoodSale implements ActionListener{
 	private String[] beveragesNames = new String[100];
 	private int salePos;
 	
+	/**
+	 * Geração do Menu de venda de comidas.
+	 * @param d
+	 * @param salePos Posição da nova venda
+	 */
 	public void showData(DataControl d, int salePos){
 			data = d;
 			this.salePos = salePos;
@@ -69,7 +79,10 @@ public class FoodSale implements ActionListener{
 			addItem.addActionListener(this);
 			
 	}
-
+	/**
+	 * Escuta eventos de botões. Além disso valida os eventos para que comidas/bebidas sem estoque
+	 * não sejam vendidas.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		

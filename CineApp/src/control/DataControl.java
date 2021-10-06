@@ -74,7 +74,7 @@ public class DataControl {
 	 
 	/**
 	 * Editar um snack já cadastrado
-	 * @param snackData - Array de String, onde cada posição é uma variável/informação do snack
+	 * @param snackData Array de String, onde cada posição é uma variável/informação do snack
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editSnack(String[] snackData) {
@@ -94,7 +94,7 @@ public class DataControl {
 	
 	/**
 	 * Editar uma bebida já cadastrada
-	 * @param snackData - Array de String, onde cada posição é uma variável/informação da comida
+	 * @param beverageData - Array de String, onde cada posição é uma variável/informação da comida
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editBeverage(String[] beverageData) {
@@ -114,7 +114,7 @@ public class DataControl {
 	
 	/**
 	 * Editar um filme já cadastrado
-	 * @param snackData - Array de String, onde cada posição é uma variável/informação do filme
+	 * @param movieData - Array de String, onde cada posição é uma variável/informação do filme
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editMovie(String[] movieData) {
@@ -126,7 +126,7 @@ public class DataControl {
 	
 	/**
 	 * Editar um funcionário já cadastrado
-	 * @param snackData - Array de String, onde cada posição é uma variável/informação do funcionário
+	 * @param employeeData - Array de String, onde cada posição é uma variável/informação do funcionário
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editEmployee(String[] employeeData) {
@@ -137,7 +137,7 @@ public class DataControl {
 	
 	/**
 	 * Editar uma sala já cadastrada
-	 * @param snackData - Array de String, onde cada posição é uma variável/informação da sala
+	 * @param roomData - Array de String, onde cada posição é uma variável/informação da sala
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editRoom(String[] roomData) {
@@ -154,7 +154,9 @@ public class DataControl {
 	
 	/**
 	 * Editar uma sessão já cadastrada
-	 * @param snackData - Array de String, onde cada posição é uma variável/informação da sala
+	 * @param sessionData Array de String, onde cada posição é uma variável/informação da sala
+	 * @param room Sala da sessão selecionada
+	 * @param movie Filme da sessão selecionada
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editSession(String[] sessionData, MovieRoom room, Movie movie) {

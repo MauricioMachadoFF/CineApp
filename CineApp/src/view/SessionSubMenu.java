@@ -14,6 +14,11 @@ import javax.swing.event.ListSelectionListener;
 import control.DataControl;
 import control.SessionControl;
 
+/**
+ * Submenu para operações relacionados com as salas de cinema.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class SessionSubMenu implements ActionListener, ListSelectionListener {
 	private JFrame window;
 	private JLabel title;
@@ -23,6 +28,14 @@ public class SessionSubMenu implements ActionListener, ListSelectionListener {
 	private JList<String> listSessions;
 	private String[] sessionsNames = new String[100];
 	
+	/**
+	 * Geração do submenu de sessões.
+	 * || (1) Permite adicionar novas sessões
+	 * || (2) Permite atualizar a tela, para mostrar novas sessões cadastradas
+	 * || (3) Permite editar sessões já cadastradas
+	 * || (4) Permite excluir salas já cadastradas
+	 * @param d Passagem dos dados já cadastrados no início da aplicação.
+	 */
 	public void showData(DataControl d){
 		data = d;
 
@@ -61,6 +74,11 @@ public class SessionSubMenu implements ActionListener, ListSelectionListener {
 			listSessions.addListSelectionListener(this);
 	}
 	
+	/**
+	 * Escuta eventos de clique em botões.
+	 * || (1) Adicionar sessão
+	 * || (2) Atualizar lista de sessões
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
@@ -75,6 +93,10 @@ public class SessionSubMenu implements ActionListener, ListSelectionListener {
 		
 	}
 
+	/**
+	 * Escuta eventos de seleção na JList
+	 * || (1) Editar/excluir sessão selecionada
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 

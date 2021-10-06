@@ -9,7 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
+/**
+ * Janela para adição de dados a uma nova venda.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class AddSaleItem implements ActionListener {
 	
 	private static JFrame window = new JFrame("Gerenciamento de Vendas");
@@ -40,6 +45,13 @@ public class AddSaleItem implements ActionListener {
 		setSalePosition(data.getSales().size());
 	}
 	
+	/**
+	 * Geração do submenu de adicionar venda.
+	 * || (1) Permite adicionar comidas na compra
+	 * || (2) Permite adicionar ingressos na compra.
+	 * || (3) Permite finalizar a compra, pedindo as informações finais.
+	 * @param d Passagem dos dados já cadastrados no início da aplicação.
+	 */
 	public void showData(DataControl d) {
 		AddSaleItem menu = new AddSaleItem();
 		data = d;
@@ -50,6 +62,12 @@ public class AddSaleItem implements ActionListener {
 		finishSale.addActionListener(menu);
 	}
 	
+	/**
+	 * Escuta eventos de botões para definir qual opção foi selecionada.
+	 * || (1) Permite finalizar a compra, pedindo as informações finais.
+	 * || (2) Permite adicionar ingressos na compra.
+	 * || (3) Permite adicionar comidas na compra
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		

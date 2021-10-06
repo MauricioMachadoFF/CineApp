@@ -41,7 +41,7 @@ public class RoomItem implements ActionListener {
 	 * || (2) edição/exclusão de sala selecioanada
 	 * @param op
 	 * @param d Recebe todas as informações de dados já cadastrados no sistema.
-	 * @param food 
+	 * @param room
 	 * @param p Posição do item selecionado
 	 */
 	public void addEdit(int op, DataControl d, 
