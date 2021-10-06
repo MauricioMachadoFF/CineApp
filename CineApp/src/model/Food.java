@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Classe abstrata pai das classes Beverage e Snack
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class Food {
 	protected String name;
 	protected double price;

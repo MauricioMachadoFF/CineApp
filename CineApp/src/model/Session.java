@@ -4,6 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Classe responsável pela criação de objetos do tipo Session/sessão
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class Session {
 	private Date schedule;
 	private MovieRoom room;
@@ -57,7 +63,9 @@ public class Session {
 	public int getSessionId() {
 		return sessionId;
 	}
-	
+	/**
+	 * Pega todos os dados relevantes do objetos e transforma em uma String.
+	 */
 	public String toString() {
 		return new String("Nome do Filme: " + this.movie.getName())
 				.concat("\nNumero da Sala: " + this.room.getRoomNumber())

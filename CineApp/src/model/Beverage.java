@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Classe responsável pela criação de objetos do tipo Beverage/bebida
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class Beverage extends Food {
 	private boolean isDiet;
 	private boolean hasIce;
@@ -20,6 +26,9 @@ public class Beverage extends Food {
 		
 	}
 	
+	/**
+	 * Pega todos os dados relevantes do objetos e transforma em uma String.
+	 */
 	public String toString() {
 		return new String("Nome: " + this.name + "\n")
 				.concat("Valor: R$ " + this.price + "\n")

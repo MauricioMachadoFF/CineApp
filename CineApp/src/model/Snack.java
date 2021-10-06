@@ -1,6 +1,11 @@
 package model;
 
-
+/**
+ * Classe responsável pela criação de objetos do tipo Snack/comida
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class Snack extends Food {
 	private boolean isSweet;
 	
@@ -17,6 +22,9 @@ public class Snack extends Food {
 		
 	}
 	
+	/**
+	 * Pega todos os dados relevantes do objetos e transforma em uma String.
+	 */
 	public String toString() {
 		return new String("Nome: " + this.name + "\n")
 				.concat("Valor: R$ " + this.price + "\n")

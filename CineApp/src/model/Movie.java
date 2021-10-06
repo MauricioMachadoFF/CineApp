@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Classe responsável pela criação de objetos do tipo Movie/filme
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class Movie {
 	private String name;
 	private int year;
@@ -55,7 +61,9 @@ public class Movie {
 	public void setMovieId() {
 		this.movieId = (int)Math.floor(Math.random()*(max-min+1)+min);
 	}
-	
+	/**
+	 * Pega todos os dados relevantes do objetos e transforma em uma String.
+	 */
 	public String toString() {
 		return new String("Title: " + this.name)
 			.concat("\nYear: " + this.year)

@@ -3,6 +3,11 @@ package model;
 import java.text.ParseException;
 import java.util.*;
 
+/**
+ * Responsável pela inserção de dados no sistema.
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ */
 public class Data {
 	private  ArrayList<Snack> snacks = new ArrayList<Snack>();
 	private  ArrayList<Beverage> beverages = new ArrayList<Beverage>();
@@ -16,6 +21,10 @@ public class Data {
 	final double maxVal = 100.00;
 	final double minVal = 30.00; 
 	
+	/**
+	 * Preenche todas as informações do sistema (comida, bebida, filme, sala, sessão e venda) com 5 objetos aleatórios.
+	 * @throws ParseException
+	 */
 	public void fillWithRandomData() throws ParseException {
 		boolean trueOrFalse = true;
 		

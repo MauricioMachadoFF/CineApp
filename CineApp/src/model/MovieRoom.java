@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Classe responsável pela criação de objetos do tipo MovieRoom/sala
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class MovieRoom {
 	private int seatAmount;
 	private boolean acessability;
@@ -54,7 +60,9 @@ public class MovieRoom {
 		this.seatAmount = amount;
 	}
 
-	
+	/**
+	 * Pega todos os dados relevantes do objetos e transforma em uma String.
+	 */
 	public String toString() {
 		return new String("Numero da Sala: " + this.roomNumber)
 				.concat("\nPreco da Sala: " + this.price)

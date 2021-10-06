@@ -2,6 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe responsável pela criação de objetos do tipo Sale/venda
+ * @author Mauricio Machado
+ * @version 1.0 (Out 2021)
+ *
+ */
 public class Sale {
 	private int saleId;
 	private Employee employee;
@@ -93,19 +99,33 @@ public class Sale {
 		this.tickets = tickets;
 	}
 	
+	/**
+	 * Adiciona tickets na venda atual
+	 * @param ticket Ticket que será adicionado no ArrayList de tickets
+	 */
 	public void addTicket(Session ticket) {
 		// TODO Auto-generated method stub
 		this.tickets.add(ticket);
 	}
-	
+	/**
+	 * Adiciona bebidas na venda atual
+	 * @param beverage Bebida que será adicionado no ArrayList de beverages
+	 */
 	public void addBeverage(Beverage beverage) {
 		this.beverages.add(beverage);
 	}
 	
+	/**
+	 * Adiciona comidas na venda atual
+	 * @param snack Comida que será adicionado no ArrayList de snacks
+	 */
 	public void addSnack(Snack snack) {
 		this.snacks.add(snack);
 	}
 	
+	/**
+	 * Pega todos os dados relevantes do objetos e transforma em uma String.
+	 */
 	public String toString() {
 		return new String("Funcionário Responsável: " + this.employee)
 			.concat("\nTickets: " + this.tickets)
