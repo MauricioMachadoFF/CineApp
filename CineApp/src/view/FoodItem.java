@@ -217,7 +217,7 @@ public class FoodItem implements ActionListener {
 					added = data.editSnack(editedSnack);
 				}
 				if (added) {
-					JOptionPane.showMessageDialog(null, "Lanche Adicionado!", null, 1);
+					JOptionPane.showMessageDialog(null, "Lanche Salvo!", null, 1);
 					window.dispose();
 				}else {
 					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
@@ -228,7 +228,7 @@ public class FoodItem implements ActionListener {
 			} catch (NullPointerException ex) {
 				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
 						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
-						+ "2| Insira somente números nos campos de preço e estoque", null, 
+						+ "2| Insira somente números nos campos de preço, estoque e lote", null, 
 						0);
 			}
 		}
@@ -237,30 +237,47 @@ public class FoodItem implements ActionListener {
 		}
 		
 		if(source == saveBeverage) {
-			if(option==2) { //cadastro
-				newBeverage[0] =  name.getText();
-				newBeverage[1] =  price.getText();
-				newBeverage[2] =  stock.getText();
-				newBeverage[3] =  batch.getText();
-				newBeverage[4] =  String.valueOf(isDiet.isSelected());
-				newBeverage[5] =  String.valueOf(hasIce.isSelected());
-				newBeverage[6] =  String.valueOf(hasStraw.isSelected());
-				
-				data.addBeverage(newBeverage);
-				
-			} else {
-				// edição
-				editedBeverage[0] = Integer.toString(position);
-				
-				editedBeverage[1] =  name.getText();
-				editedBeverage[2] =  price.getText();
-				editedBeverage[3] =  stock.getText();
-				editedBeverage[4] =  batch.getText();
-				editedBeverage[5] =  String.valueOf(isDiet.isSelected());
-				editedBeverage[6] =  String.valueOf(hasIce.isSelected());
-				editedBeverage[7] =  String.valueOf(hasStraw.isSelected());
-				
-				data.editBeverage(editedBeverage);
+			try {
+				boolean added;
+				if(option==2) { //cadastro
+					newBeverage[0] =  name.getText();
+					newBeverage[1] =  price.getText();
+					newBeverage[2] =  stock.getText();
+					newBeverage[3] =  batch.getText();
+					newBeverage[4] =  String.valueOf(isDiet.isSelected());
+					newBeverage[5] =  String.valueOf(hasIce.isSelected());
+					newBeverage[6] =  String.valueOf(hasStraw.isSelected());
+					
+					added=data.addBeverage(newBeverage);
+					
+				} else {
+					// edição
+					editedBeverage[0] = Integer.toString(position);
+					
+					editedBeverage[1] =  name.getText();
+					editedBeverage[2] =  price.getText();
+					editedBeverage[3] =  stock.getText();
+					editedBeverage[4] =  batch.getText();
+					editedBeverage[5] =  String.valueOf(isDiet.isSelected());
+					editedBeverage[6] =  String.valueOf(hasIce.isSelected());
+					editedBeverage[7] =  String.valueOf(hasStraw.isSelected());
+					
+					added=data.editBeverage(editedBeverage);
+				}
+				if (added) {
+					JOptionPane.showMessageDialog(null, "Bebida Salva!", null, 1);
+					window.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+							+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+							+ "2| Insira somente números nos campos de preço, estoque e lote", null, 
+							0);
+				}
+			} catch(NullPointerException ex) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números nos campos de preço, estoque e lote", null, 
+						0);
 			}
 		}
 		if(source == deleteBeverage) {

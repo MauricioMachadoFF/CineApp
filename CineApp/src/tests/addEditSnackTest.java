@@ -29,20 +29,11 @@ class addEditSnackTest {
 		s[5] = "true";
 		assertTrue(snack.editSnack(s));
 		
-		s[0] = "1";
-		s[1] = "nome";
 		s[2] = "preco";
-		s[3] = "5";
-		s[4] = "85461";
-		s[5] = "true";
 		assertFalse(snack.editSnack(s));
 		
-		s[0] = "1";
-		s[1] = "nome";
 		s[2] = "3.75";
 		s[3] = "1.5";
-		s[4] = "85461";
-		s[5] = "true";
 		assertFalse(snack.editSnack(s));
 	}
 
@@ -59,18 +50,11 @@ class addEditSnackTest {
 		s[4] = "true";
 		assertTrue(snack.addSnack(s));
 		
-		s[0] = "nome";
 		s[1] = "preco";
-		s[2] = "5";
-		s[3] = "85461";
-		s[4] = "true";
 		assertFalse(snack.addSnack(s));
 		
-		s[0] = "nome";
 		s[1] = "3.75";
 		s[2] = "1.5";
-		s[3] = "85461";
-		s[4] = "true";
 		assertFalse(snack.addSnack(s));
 	}
 

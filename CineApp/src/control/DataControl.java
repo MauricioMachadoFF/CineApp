@@ -84,9 +84,11 @@ public class DataControl {
 		
 		data.updateSnack(Integer.parseInt(snackData[0]), snacks);
 		
-		return true;
+			return true;
 		} catch (NumberFormatException e) {
-		return false;
+			return false;
+		} catch (Exception e) {
+			return false;
 		}
 	}
 	
@@ -96,12 +98,18 @@ public class DataControl {
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editBeverage(String[] beverageData) {
-		Beverage beverages = new Beverage(beverageData[1], Double.valueOf(beverageData[2]),
-				Integer.parseInt(beverageData[3]), Integer.parseInt(beverageData[4]), Boolean.valueOf(beverageData[5]),
-				Boolean.valueOf(beverageData[6]), Boolean.valueOf(beverageData[7]));
-		data.updateBeverage(Integer.parseInt(beverageData[0]), beverages);
-		
-		return true;
+		try {
+			Beverage beverages = new Beverage(beverageData[1], Double.valueOf(beverageData[2]),
+					Integer.parseInt(beverageData[3]), Integer.parseInt(beverageData[4]), Boolean.valueOf(beverageData[5]),
+					Boolean.valueOf(beverageData[6]), Boolean.valueOf(beverageData[7]));
+			data.updateBeverage(Integer.parseInt(beverageData[0]), beverages);
+			
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -190,12 +198,18 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean addBeverage(String[] beverageData) {
-		Beverage beverages = new Beverage(beverageData[0], Double.valueOf(beverageData[1]),
-				Integer.parseInt(beverageData[2]), Integer.parseInt(beverageData[3]), Boolean.valueOf(beverageData[4]),
-				Boolean.valueOf(beverageData[5]), Boolean.valueOf(beverageData[6]));
-		data.setBeverages(beverages);
-		
-		return true;
+		try {
+			Beverage beverages = new Beverage(beverageData[0], Double.valueOf(beverageData[1]),
+					Integer.parseInt(beverageData[2]), Integer.parseInt(beverageData[3]), Boolean.valueOf(beverageData[4]),
+					Boolean.valueOf(beverageData[5]), Boolean.valueOf(beverageData[6]));
+			data.setBeverages(beverages);
+			
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
