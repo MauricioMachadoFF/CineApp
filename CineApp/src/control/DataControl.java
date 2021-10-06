@@ -78,11 +78,15 @@ public class DataControl {
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editSnack(String[] snackData) {
+		try {
 		Snack snacks = new Snack(snackData[1], Double.valueOf(snackData[2]),
 				Integer.parseInt(snackData[3]), Integer.parseInt(snackData[4]), Boolean.valueOf(snackData[5]));
+		
 		data.updateSnack(Integer.parseInt(snackData[0]), snacks);
 		
 		return true;
+		} catch (NumberFormatException e) {
+		return false;}
 	}
 	
 	/**
@@ -168,11 +172,15 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean addSnack(String[] snackData) {
-		Snack snacks = new Snack(snackData[0], Double.valueOf(snackData[1]),
-				Integer.parseInt(snackData[2]), Integer.parseInt(snackData[3]), Boolean.valueOf(snackData[4]));
-		data.setSnacks(snacks);
-		
-		return true;
+		try {
+			Snack snacks = new Snack(snackData[0], Double.valueOf(snackData[1]),
+					Integer.parseInt(snackData[2]), Integer.parseInt(snackData[3]), Boolean.valueOf(snackData[4]));
+			data.setSnacks(snacks);
+			
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
+		}
 	}
 	/**
 	 * Cadastrar uma nova bebida
