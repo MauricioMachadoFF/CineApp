@@ -86,7 +86,8 @@ public class DataControl {
 		
 		return true;
 		} catch (NumberFormatException e) {
-		return false;}
+		return false;
+		}
 	}
 	
 	/**

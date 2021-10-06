@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import control.DataControl;
@@ -194,24 +195,41 @@ public class FoodItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveSnack) {
-			if(option==1) { //cadastro
-				newSnack[0] =  name.getText();
-				newSnack[1] =  price.getText();
-				newSnack[2] =  stock.getText();
-				newSnack[3] =  batch.getText();
-				newSnack[4] =  String.valueOf(isSweet.isSelected());
-				data.addSnack(newSnack);
-				
-			} else {
-				// edição
-				editedSnack[0] = Integer.toString(position);
-				
-				editedSnack[1] =  name.getText();
-				editedSnack[2] =  price.getText();
-				editedSnack[3] =  stock.getText();
-				editedSnack[4] =  batch.getText();
-				editedSnack[5] =  String.valueOf(isSweet.isSelected());
-				data.editSnack(editedSnack);
+			try {
+				boolean added;
+				if(option==1) { //cadastro
+					newSnack[0] =  name.getText();
+					newSnack[1] =  price.getText();
+					newSnack[2] =  stock.getText();
+					newSnack[3] =  batch.getText();
+					newSnack[4] =  String.valueOf(isSweet.isSelected());
+					added = data.addSnack(newSnack);
+					
+				} else {
+					// edição
+					editedSnack[0] = Integer.toString(position);
+					
+					editedSnack[1] =  name.getText();
+					editedSnack[2] =  price.getText();
+					editedSnack[3] =  stock.getText();
+					editedSnack[4] =  batch.getText();
+					editedSnack[5] =  String.valueOf(isSweet.isSelected());
+					added = data.editSnack(editedSnack);
+				}
+				if (added) {
+					JOptionPane.showMessageDialog(null, "Lanche Adicionado!", null, 1);
+					window.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+							+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+							+ "2| Insira somente números nos campos de preço e estoque", null, 
+							0);
+				}
+			} catch (NullPointerException ex) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números nos campos de preço e estoque", null, 
+						0);
 			}
 		}
 		if(source == deleteSnack) {
