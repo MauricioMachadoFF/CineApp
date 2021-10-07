@@ -350,9 +350,18 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean deleteMovie(int i) {
-		data.getMovies().remove(i);
-		
-		return true;
+		String aux;
+		boolean isntBeenUsed = true;
+		for (int j = 0; j < data.getSessions().size(); j++) {
+			aux = data.getSessions().get(j).getMovie().getName();
+			if(data.getMovies().get(i).getName().compareTo(aux)==0) {
+				isntBeenUsed=false;
+			}
+		}
+		if(isntBeenUsed) {
+			data.getMovies().remove(i);
+		}
+		return isntBeenUsed;
 	}
 	
 	/**
@@ -371,8 +380,18 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean deleteRoom(int i) {
-		data.getRooms().remove(i);
-		return true;
+		
+		boolean isntBeenUsed = true;
+		for (int j = 0; j < data.getSessions().size(); j++) {
+			if(data.getSessions().get(j).getRoom().getRoomNumber()==
+			    data.getRooms().get(i).getRoomNumber()) {
+				isntBeenUsed=false;
+			}
+		}
+		if(isntBeenUsed) {
+			data.getRooms().remove(i);
+		}
+		return isntBeenUsed;
 	}
 	
 	/**

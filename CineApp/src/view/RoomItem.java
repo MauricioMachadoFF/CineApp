@@ -169,8 +169,19 @@ public class RoomItem implements ActionListener {
 			}
 		}
 		if(source == deleteRoom) {
-			data.deleteRoom(position);
+			
+			boolean delete;
+			delete = data.deleteRoom(position);
+			if (delete) {
+				JOptionPane.showMessageDialog(null, "Sala Excluída!", null, 1);
+				window.dispose();
+			}else {
+				JOptionPane.showMessageDialog(null,"Erro ao excluir a sala!\n"
+						+ "Tenha certeza de que essa sala não esteja cadastrada em nenhuma sessão", null, 
+						0);
+			}
 			window.dispose();
+			
 		}
 	}
 }

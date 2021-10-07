@@ -163,7 +163,16 @@ public class MovieItem implements ActionListener {
 			}
 		}
 		if(source == deleteMovie) {
-			data.deleteMovie(position);
+			boolean delete;
+			delete = data.deleteMovie(position);
+			if (delete) {
+				JOptionPane.showMessageDialog(null, "Filme Excluído!", null, 1);
+				window.dispose();
+			}else {
+				JOptionPane.showMessageDialog(null,"Erro ao excluir o filme!\n"
+						+ "Tenha certeza de que esse filme não esteja cadastrado em nenhuma sessão", null, 
+						0);
+			}
 			window.dispose();
 		}
 	}
