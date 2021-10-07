@@ -112,18 +112,29 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 	 * @param text Termo de busca, o gênero do filme procurado deverá conter o termo de busca em sua String.
 	 */
 	private void searchGenre(String text) {
-			int[] positions = new int[100];
+			int[] positions = new int[data.getMovies().size()];
 	    	int j = 0;
 			
-			for(int i = 0; i < data.getMovies().size()-1; i++) {
+			for(int i = 0; i < data.getMovies().size(); i++) {
+				positions[i] = -1;
 				if(data.getMovies().get(i).getGenre().toLowerCase().contains(text.toLowerCase())) {
-					positions[j] = listMovies.getNextMatch(data.getMovies().get(i).getName(), 0, Position.Bias.Forward);
+					positions[j] = i;
 					j++;
+					moviesNames[i] = data.getMovies().get(i).getName() + " - "+ data.getMovies().get(i).getGenre();
+				} else {
+					moviesNames[i] = data.getMovies().get(i).getName();
 				}
 			}
-
-			listMovies.setSelectedIndices(positions);
-		        
+			
+			if (j==0) {
+				JOptionPane.showMessageDialog(null, "Nenhuma correspondência encontrada!", "Erro", 0);
+			} else {
+				JOptionPane.showMessageDialog(null, "Foram encontrados "+j+" filmes do gênero '"+text+"'", "Informação", 1);
+				listMovies.setListData(moviesNames);
+				listMovies.updateUI();
+				listMovies.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+				listMovies.setSelectedIndices(positions);
+			}
 	}
 	
 	/**
@@ -142,6 +153,8 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 		if(src == refreshMovie) {
 			listMovies.setListData(new MovieControl(data).getMoviesName());
 			listMovies.updateUI();
+			searchByName.setText(null);
+			searchByGenre.setText(null);
 		}
 		if(src == searchMovie) {
 			if (searchByName.getText().length() > 0) {
