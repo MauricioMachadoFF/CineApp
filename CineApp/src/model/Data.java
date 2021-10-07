@@ -16,8 +16,8 @@ public class Data {
 	private  ArrayList<MovieRoom> rooms = new ArrayList<MovieRoom>();
 	private  ArrayList<Session> sessions = new ArrayList<Session>();
 	private  ArrayList<Sale> sales = new ArrayList<Sale>();
-	final int max = 999;
-	final int min = 100;
+	final int max = 999999999;
+	final int min = 100000000;
 	final double maxVal = 100.00;
 	final double minVal = 30.00; 
 	

@@ -61,11 +61,11 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 			searchByName.setBounds(210, 50, 250, 30);
 			labelSearchByGenre.setBounds(50, 85, 250, 30);
 			searchByGenre.setBounds(210, 90, 250, 30);
-			searchMovie.setBounds(175, 125, 150, 30);
-			listMovies.setBounds(50, 190, 410, 100);
+			searchMovie.setBounds(250, 125, 150, 30);
+			listMovies.setBounds(50, 190, 410, 150);
 			
-			createMovie.setBounds(50, 340, 150, 30);
-			refreshMovie.setBounds(310, 340, 150, 30);
+			createMovie.setBounds(50, 350, 150, 30);
+			refreshMovie.setBounds(310, 350, 150, 30);
 
 			window.setLayout(null);
 

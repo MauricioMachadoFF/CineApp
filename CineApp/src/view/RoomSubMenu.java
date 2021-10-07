@@ -50,7 +50,7 @@ public class RoomSubMenu implements ActionListener, ListSelectionListener {
 
 			title.setFont(new Font("Arial", Font.BOLD, 20));
 			title.setBounds(150, 10, 250, 30);
-			listRooms.setBounds(100, 50, 150, 160);
+			listRooms.setBounds(100, 50, 300, 160);
 			listRooms.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listRooms.setVisibleRowCount(30);
 

@@ -2,21 +2,10 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-
-import control.DataControl;
-import control.MovieControl;
-import control.RoomControl;
-import model.Movie;
-import model.MovieRoom;
+import javax.swing.*;
+import control.*;
+import model.*;
 
 /**
  * Menu/Janela com informações detalhadas sobre a sessão selecionada
@@ -163,27 +152,51 @@ public class SessionItem implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == save) {
-			if(option==1) { //cadastro
-				newSession[0] =  sessionDate.getText();
-				newSession[1] =  Integer.toString(listRooms.getSelectedIndex());
-				newSession[2] =  Integer.toString(listMovies.getSelectedIndex());
-				newSession[3] =  sessionId.getText();
+			try {
+				boolean added=false;
+				if(option==1) { //cadastro
+					if (!listRooms.isSelectionEmpty() || !listRooms.isSelectionEmpty() ) {
+						newSession[0] =  sessionDate.getText();
+						newSession[1] =  Integer.toString(listRooms.getSelectedIndex());
+						newSession[2] =  Integer.toString(listMovies.getSelectedIndex());
+						newSession[3] =  sessionId.getText();
+						
+						added=data.addSession(newSession);
+					}
+					
+				} else { //edicao
+					editedSession[0] = Integer.toString(position);
+					
+					editedSession[1] =  sessionDate.getText();
+					editedSession[2] =  sessionId.getText();
+					editedRoom = data.getSession().get(position).getRoom();
+					editedMovie = data.getSession().get(position).getMovie();
+					
+					added=data.editSession(editedSession, editedRoom, editedMovie);
+				}
 				
-				data.addSession(newSession);
+				if (added) {
+					JOptionPane.showMessageDialog(null, "Sessão Salva!", null, 1);
+					window.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+							+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+							+ "2| Insira somente números nos campos de 'Número da Sessão'\n"
+							+ "3| Insira a data no formato ANO-MÊS-DIA => 2021-10-25", null, 
+							0);
+				}
 				
-			} else { //edicao
-				editedSession[0] = Integer.toString(position);
-				
-				editedSession[1] =  sessionDate.getText();
-				editedSession[2] =  sessionId.getText();
-				editedRoom = data.getSession().get(position).getRoom();
-				editedMovie = data.getSession().get(position).getMovie();
-				
-				data.editSession(editedSession, editedRoom, editedMovie);
+			} catch (NullPointerException ex) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números nos campos de 'Número da Sessão'\n"
+						+ "3| Insira a data no formato ANO-MÊS-DIA => 2021-10-25", null, 
+						0);
 			}
 		}
 		if(source == delete) {
 			data.deleteSession(position);
+			window.dispose();
 		}
 	}
 }

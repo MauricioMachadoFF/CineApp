@@ -186,9 +186,9 @@ public class DataControl {
 			
 			data.updateSession(Integer.parseInt(sessionData[0]), sessions);
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			return false;
 		} catch (ParseException e) {
-			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}

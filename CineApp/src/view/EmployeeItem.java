@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import control.DataControl;
@@ -68,7 +69,7 @@ public class EmployeeItem implements ActionListener {
 			cellphone = new JTextField(200);
 			cpf = new JTextField(200);
 			empCode = new JTextField(200);
-			saveEmployee.setBounds(245, 175, 115, 30);
+			saveEmployee.setBounds(260, 175, 115, 30);
 			this.window.add(saveEmployee);
 			
 			break;
@@ -79,8 +80,8 @@ public class EmployeeItem implements ActionListener {
 			cpf = new JTextField(data.getEmployees().get(p).getCPF(), 200);
 			empCode = new JTextField(String.valueOf(data.getEmployees().get(p).getEmployeeCode()), 200);
 			
-			saveEmployee.setBounds(120, 175, 115, 30);
-			deleteEmployee.setBounds(245, 175, 115, 30);
+			saveEmployee.setBounds(135, 175, 115, 30);
+			deleteEmployee.setBounds(260, 175, 115, 30);
 			
 			this.window.add(saveEmployee);
 			this.window.add(deleteEmployee);
@@ -93,13 +94,13 @@ public class EmployeeItem implements ActionListener {
 		}
 		
 		labelName.setBounds(30, 20, 150, 25);
-		name.setBounds(180, 20, 180, 25);
+		name.setBounds(200, 20, 280, 25);
 		labelCellphone.setBounds(30, 50, 150, 25);
-		cellphone.setBounds(180, 50, 180, 25);
+		cellphone.setBounds(200, 50, 280, 25);
 		labelCpf.setBounds(30, 80, 150, 25);
-		cpf.setBounds(180, 80, 180, 25);
-		labelEmpCode.setBounds(30, 110, 150, 25);
-		empCode.setBounds(180, 110, 180, 25);
+		cpf.setBounds(200, 80, 280, 25);
+		labelEmpCode.setBounds(30, 110, 175, 25);
+		empCode.setBounds(200, 110, 280, 25);
 		
 		this.window.add(labelName);
 		this.window.add(name);
@@ -127,26 +128,45 @@ public class EmployeeItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveEmployee) {
-			if(option==1) { //cadastro
-				newEmployee[0] =  name.getText();
-				newEmployee[1] =  cellphone.getText();
-				newEmployee[2] =  cpf.getText();
-				newEmployee[3] =  empCode.getText();
-				data.addEmployee(newEmployee);
-				
-			} else {
-				// edição
-				editedEmployee[0] = Integer.toString(position);
-				
-				editedEmployee[1] =  name.getText();
-				editedEmployee[2] =  cellphone.getText();
-				editedEmployee[3] =  cpf.getText();
-				editedEmployee[4] =  empCode.getText();
-				data.editEmployee(editedEmployee);
+			try {
+				boolean added;
+				if(option==1) { //cadastro
+					newEmployee[0] =  name.getText();
+					newEmployee[1] =  cellphone.getText();
+					newEmployee[2] =  cpf.getText();
+					newEmployee[3] =  empCode.getText();
+					added = data.addEmployee(newEmployee);
+					
+				} else {
+					// edição
+					editedEmployee[0] = Integer.toString(position);
+					
+					editedEmployee[1] =  name.getText();
+					editedEmployee[2] =  cellphone.getText();
+					editedEmployee[3] =  cpf.getText();
+					editedEmployee[4] =  empCode.getText();
+					added = data.editEmployee(editedEmployee);
+				}
+				if (added) {
+					JOptionPane.showMessageDialog(null, "Dados salvos!", null, 1);
+					window.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+							+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+							+ "2| Insira somente números no campo de código do funcionário", null, 
+							0);
+				}
+			} catch (NullPointerException ex) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números no campo de código do funcionário", null, 
+						0);
 			}
+			window.dispose();
 		}
 		if(source == deleteEmployee) {
 			data.deleteEmployee(position);
+			window.dispose();
 		}
 	}
 }

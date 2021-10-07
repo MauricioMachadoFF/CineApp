@@ -234,6 +234,7 @@ public class FoodItem implements ActionListener {
 		}
 		if(source == deleteSnack) {
 			data.deleteSnack(position);
+			window.dispose();
 		}
 		
 		if(source == saveBeverage) {
@@ -282,6 +283,7 @@ public class FoodItem implements ActionListener {
 		}
 		if(source == deleteBeverage) {
 			data.deleteBeverage(position);
+			window.dispose();
 		}
 		
 	}

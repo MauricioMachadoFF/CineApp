@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import control.DataControl;
@@ -69,7 +70,7 @@ public class RoomItem implements ActionListener {
 			seatAmount = new JTextField(200);
 			is3D = new JCheckBox("A Sala é 3D?");
 			acessability = new JCheckBox("A Sala possui acessibilidade?");
-			saveRoom.setBounds(245, 190, 115, 30);
+			saveRoom.setBounds(200, 200, 115, 30);
 			this.window.add(saveRoom);
 			
 			break;
@@ -80,8 +81,8 @@ public class RoomItem implements ActionListener {
 			seatAmount = new JTextField(String.valueOf(data.getRooms().get(p).getSeatAmount()));
 			is3D = new JCheckBox("A Sala é 3D?", data.getRooms().get(p).getIs3D());
 			acessability = new JCheckBox("A Sala possui acessibilidade?", data.getRooms().get(p).getIsAcessabilty());
-			saveRoom.setBounds(120, 190, 115, 30);
-			deleteRoom.setBounds(245, 190, 115, 30);
+			saveRoom.setBounds(120, 200, 115, 30);
+			deleteRoom.setBounds(245, 200, 115, 30);
 			
 			this.window.add(saveRoom);
 			this.window.add(deleteRoom);
@@ -128,30 +129,48 @@ public class RoomItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveRoom) {
-			if(option==1) { //cadastro
-				
-				newRoom[0] =  seatAmount.getText();
-				newRoom[1] =  roomNumber.getText();
-				newRoom[2] =  price.getText();
-				newRoom[3] =  String.valueOf(is3D.isSelected());
-				newRoom[4] =  String.valueOf(acessability.isSelected());
-				
-				data.addRoom(newRoom);
-				
-			} else {
-				// edição
-				editedRoom[0] = Integer.toString(position); 
-				
-				editedRoom[1] = seatAmount.getText();
-				editedRoom[2] =  roomNumber.getText();
-				editedRoom[3] =  price.getText();
-				editedRoom[4] =  String.valueOf(is3D.isSelected());
-				editedRoom[5] =  String.valueOf(acessability.isSelected());
-				data.editRoom(editedRoom);
+			try {
+				boolean added;
+				if(option==1) { //cadastro
+					
+					newRoom[0] =  seatAmount.getText();
+					newRoom[1] =  roomNumber.getText();
+					newRoom[2] =  price.getText();
+					newRoom[3] =  String.valueOf(is3D.isSelected());
+					newRoom[4] =  String.valueOf(acessability.isSelected());
+					
+					added = data.addRoom(newRoom);
+					
+				} else {
+					// edição
+					editedRoom[0] = Integer.toString(position); 
+					
+					editedRoom[1] = seatAmount.getText();
+					editedRoom[2] =  roomNumber.getText();
+					editedRoom[3] =  price.getText();
+					editedRoom[4] =  String.valueOf(is3D.isSelected());
+					editedRoom[5] =  String.valueOf(acessability.isSelected());
+					added = data.editRoom(editedRoom);
+				}
+				if (added) {
+					JOptionPane.showMessageDialog(null, "Sala Salva!", null, 1);
+					window.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+							+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+							+ "2| Insira somente números nos campos de 'Número da sala', 'Preço da sala' e 'Assentos disponíveis'", null, 
+							0);
+				}
+			} catch(NullPointerException ex) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números nos campos de 'Número da sala', 'Preço da sala' e 'Assentos disponíveis'", null, 
+						0);
 			}
 		}
 		if(source == deleteRoom) {
 			data.deleteRoom(position);
+			window.dispose();
 		}
 	}
 }

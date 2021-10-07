@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import control.DataControl;
@@ -93,13 +94,13 @@ public class MovieItem implements ActionListener {
 		}
 		
 		labelMvName.setBounds(30, 20, 150, 25);
-		MvName.setBounds(180, 20, 180, 25);
+		MvName.setBounds(180, 20, 300, 25);
 		labelMvYear.setBounds(30, 50, 150, 25);
-		MvYear.setBounds(180, 50, 180, 25);
+		MvYear.setBounds(180, 50, 300, 25);
 		labelMvGenre.setBounds(30, 80, 150, 25);
-		MvGenre.setBounds(180, 80, 180, 25);
+		MvGenre.setBounds(180, 80, 300, 25);
 		labelMvSynopsis.setBounds(30, 110, 150, 25);
-		MvSynopsis.setBounds(180, 110, 180, 25);
+		MvSynopsis.setBounds(180, 110, 300, 25);
 		
 		this.window.add(labelMvName);
 		this.window.add(MvName);
@@ -125,26 +126,45 @@ public class MovieItem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if(source == saveMovie) {
-			if(option==1) { //cadastro
-				newMovie[0] =  MvName.getText();
-				newMovie[1] =  MvYear.getText();
-				newMovie[2] =  MvGenre.getText();
-				newMovie[3] =  MvSynopsis.getText();
-				data.addMovie(newMovie);
+			try {
+				boolean added;
+				if(option==1) { //cadastro
+					newMovie[0] =  MvName.getText();
+					newMovie[1] =  MvYear.getText();
+					newMovie[2] =  MvGenre.getText();
+					newMovie[3] =  MvSynopsis.getText();
+					added = data.addMovie(newMovie);
+					
+				} else {
+					// edição
+					editedMovie[0] = Integer.toString(position);
+					
+					editedMovie[1] =  MvName.getText();
+					editedMovie[2] =  MvYear.getText();
+					editedMovie[3] =  MvGenre.getText();
+					editedMovie[4] =  MvSynopsis.getText();
+					added = data.editMovie(editedMovie);
+				}
+				if (added) {
+					JOptionPane.showMessageDialog(null, "Filme Salvo!", null, 1);
+					window.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+							+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+							+ "2| Insira somente números no campo de Ano de Lançamento", null, 
+							0);
+				}
 				
-			} else {
-				// edição
-				editedMovie[0] = Integer.toString(position);
-				
-				editedMovie[1] =  MvName.getText();
-				editedMovie[2] =  MvYear.getText();
-				editedMovie[3] =  MvGenre.getText();
-				editedMovie[4] =  MvSynopsis.getText();
-				data.editMovie(editedMovie);
+			} catch(NullPointerException ex) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números no campo de Ano de Lançamento", null, 
+						0);
 			}
 		}
 		if(source == deleteMovie) {
 			data.deleteMovie(position);
+			window.dispose();
 		}
 	}
 }

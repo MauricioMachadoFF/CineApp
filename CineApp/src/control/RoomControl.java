@@ -26,7 +26,7 @@ public class RoomControl {
 	public String[] getRoomsNumber() {
 		String[] list = new String[rooms.size()];
 		for(int n = 0; n < rooms.size(); n++) {
-			list[n] = String.valueOf(rooms.get(n).getRoomNumber());
+			list[n] = "Sala "+String.valueOf(rooms.get(n).getRoomNumber());
 		}
 		
 		return list;

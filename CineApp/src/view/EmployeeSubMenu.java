@@ -49,12 +49,12 @@ public class EmployeeSubMenu implements ActionListener, ListSelectionListener {
 			refreshEmployee = new JButton("Atualizar");
 
 			title.setFont(new Font("Arial", Font.BOLD, 20));
-			title.setBounds(150, 10, 250, 30);
-			listEmployees.setBounds(100, 50, 150, 160);
+			title.setBounds(105, 10, 300, 30);
+			listEmployees.setBounds(100, 50, 300, 160);
 			listEmployees.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listEmployees.setVisibleRowCount(30);
 
-			addEmployee.setBounds(10, 250, 150, 30);
+			addEmployee.setBounds(10, 250, 200, 30);
 			refreshEmployee.setBounds(330, 250, 150, 30);
 
 			window.setLayout(null);
