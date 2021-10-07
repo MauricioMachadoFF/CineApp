@@ -1,7 +1,6 @@
 package control;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import model.*;
 
@@ -118,10 +117,16 @@ public class DataControl {
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editMovie(String[] movieData) {
-		Movie movies = new Movie(movieData[1], Integer.parseInt(movieData[2]), movieData[3], movieData[4]);
-		data.updateMovie(Integer.parseInt(movieData[0]), movies);
-		
-		return true;
+		try {
+			Movie movies = new Movie(movieData[1], Integer.parseInt(movieData[2]), movieData[3], movieData[4]);
+			data.updateMovie(Integer.parseInt(movieData[0]), movies);
+			
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -130,9 +135,15 @@ public class DataControl {
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editEmployee(String[] employeeData) {
-		Employee employees = new Employee(employeeData[1], employeeData[2], employeeData[3], Integer.parseInt(employeeData[4]));
-		data.updateEmployee(Integer.parseInt(employeeData[0]), employees);
-		return true;
+		try {
+			Employee employees = new Employee(employeeData[1], employeeData[2], employeeData[3], Integer.parseInt(employeeData[4]));
+			data.updateEmployee(Integer.parseInt(employeeData[0]), employees);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -141,15 +152,21 @@ public class DataControl {
 	 * @return Retorna verdadeiro se a operação foi bem-sucedida
 	 */
 	public boolean editRoom(String[] roomData) {
-		MovieRoom rooms = new MovieRoom(
-				Integer.parseInt(roomData[1]),
-				Integer.parseInt(roomData[2]),
-				Double.parseDouble(roomData[3]),
-				Boolean.valueOf(roomData[4]),
-				Boolean.valueOf(roomData[5])
-		);
-		data.updateRoom(Integer.parseInt(roomData[0]), rooms);
-		return true;
+		try {
+			MovieRoom rooms = new MovieRoom(
+					Integer.parseInt(roomData[1]),
+					Integer.parseInt(roomData[2]),
+					Double.parseDouble(roomData[3]),
+					Boolean.valueOf(roomData[4]),
+					Boolean.valueOf(roomData[5])
+			);
+			data.updateRoom(Integer.parseInt(roomData[0]), rooms);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -221,9 +238,15 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean addMovie(String[] movieData) {
-		Movie movies = new Movie(movieData[0], Integer.parseInt(movieData[1]), movieData[2], movieData[3]);
-		data.setMovies(movies);
-		return true;
+		try {
+			Movie movies = new Movie(movieData[0], Integer.parseInt(movieData[1]), movieData[2], movieData[3]);
+			data.setMovies(movies);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -232,14 +255,26 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean addEmployee(String[] employeeData) {
-		Employee employees = new Employee(employeeData[0], employeeData[1], employeeData[2], Integer.parseInt(employeeData[3]));
-		data.setEmployees(employees);
-		return true;
+		try {
+			Employee employees = new Employee(employeeData[0], employeeData[1], employeeData[2], Integer.parseInt(employeeData[3]));
+			data.setEmployees(employees);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
+	
+	
 	public boolean addSale() {
-		Sale sale = new Sale();
-		data.setSales(sale);
-		return true;
+		try {
+			Sale sale = new Sale();
+			data.setSales(sale);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -249,15 +284,21 @@ public class DataControl {
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
 	public boolean addRoom(String[] roomData) {
-		MovieRoom rooms = new MovieRoom(
-				Integer.parseInt(roomData[0]),
-				Integer.parseInt(roomData[1]),
-				Double.parseDouble(roomData[2]),
-				Boolean.valueOf(roomData[3]),
-				Boolean.valueOf(roomData[4])
-		);
-		data.setRooms(rooms);
-		return true;
+		try {
+			MovieRoom rooms = new MovieRoom(
+					Integer.parseInt(roomData[0]),
+					Integer.parseInt(roomData[1]),
+					Double.parseDouble(roomData[2]),
+					Boolean.valueOf(roomData[3]),
+					Boolean.valueOf(roomData[4])
+			);
+			data.setRooms(rooms);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
@@ -266,16 +307,21 @@ public class DataControl {
 	 * Os valores são passados todos como string, devido o uso de GUI.
 	 * @return Retorna true se a operação foi bem sucedida
 	 */
-	public boolean addSession(String[] sessionData) throws ParseException {
+	public boolean addSession(String[] sessionData){
 		
-		Session sessions = new Session(
-				sessionData[0],
-				data.getRooms().get(Integer.parseInt(sessionData[1])),
-				data.getMovies().get(Integer.parseInt(sessionData[2])),
-				Integer.parseInt(sessionData[3])
-				);
-		data.setSessions(sessions);
-		return true;
+		Session sessions;
+		try {
+			sessions = new Session(
+					sessionData[0],
+					data.getRooms().get(Integer.parseInt(sessionData[1])),
+					data.getMovies().get(Integer.parseInt(sessionData[2])),
+					Integer.parseInt(sessionData[3])
+					);
+			data.setSessions(sessions);
+			return true;
+		} catch (NumberFormatException | ParseException e) {
+			return false;
+		}
 	}
 	
 	/**

@@ -169,11 +169,7 @@ public class SessionItem implements ActionListener{
 				newSession[2] =  Integer.toString(listMovies.getSelectedIndex());
 				newSession[3] =  sessionId.getText();
 				
-				try {
-					data.addSession(newSession);
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
+				data.addSession(newSession);
 				
 			} else { //edicao
 				editedSession[0] = Integer.toString(position);
