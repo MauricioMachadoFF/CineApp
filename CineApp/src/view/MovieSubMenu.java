@@ -155,6 +155,7 @@ public class MovieSubMenu implements ActionListener, ListSelectionListener {
 			listMovies.updateUI();
 			searchByName.setText(null);
 			searchByGenre.setText(null);
+			
 		}
 		if(src == searchMovie) {
 			if (searchByName.getText().length() > 0) {

@@ -44,7 +44,7 @@ public class FoodSale implements ActionListener{
 			addItem = new JButton("Adicionar Item");
 
 			title.setFont(new Font("Arial", Font.BOLD, 20));
-			title.setBounds(150, 10, 250, 30);
+			title.setBounds(80, 10, 380, 30);
 			listSnacks.setBounds(100, 50, 150, 160);
 			listSnacks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listSnacks.setVisibleRowCount(30);

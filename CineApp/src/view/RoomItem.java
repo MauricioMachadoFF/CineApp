@@ -23,7 +23,7 @@ public class RoomItem implements ActionListener {
 	private JTextField roomNumber;
 	private JLabel labelPrice= new JLabel("Preço da Sala: ");
 	private JTextField price;
-	private JLabel labelSeatAmount= new JLabel("Quantidade de assentos disponíveis: ");
+	private JLabel labelSeatAmount= new JLabel("Quantidade de assentos: ");
 	private JTextField seatAmount;
 	private JCheckBox is3D;
 	private JCheckBox acessability;
@@ -95,11 +95,11 @@ public class RoomItem implements ActionListener {
 		}
 		
 		labelRoomNumber.setBounds(30, 20, 150, 25);
-		roomNumber.setBounds(180, 20, 180, 25);
+		roomNumber.setBounds(210, 20, 180, 25);
 		labelPrice.setBounds(30, 50, 150, 25);
-		price.setBounds(180, 50, 180, 25);
-		labelSeatAmount.setBounds(30, 80, 150, 25);
-		seatAmount.setBounds(180, 80, 180, 25);
+		price.setBounds(210, 50, 180, 25);
+		labelSeatAmount.setBounds(30, 80, 200, 25);
+		seatAmount.setBounds(210, 80, 180, 25);
 		is3D.setBounds(30, 140, 150, 25);
 		acessability.setBounds(30, 170, 250, 25);
 		

@@ -92,7 +92,7 @@ public class FoodItem implements ActionListener {
 		
 		case 1:
 			saveSnack.setBounds(245, 175, 115, 30);
-			isSweet = new JCheckBox("Eh doce");
+			isSweet = new JCheckBox("É doce");
 			
 			isSweet.setBounds(30, 140, 150, 25);
 			this.window.add(isSweet);
@@ -102,7 +102,7 @@ public class FoodItem implements ActionListener {
 			
 		case 2:
 			saveBeverage.setBounds(245, 175, 115, 30);
-			isDiet = new JCheckBox("Eh diet");
+			isDiet = new JCheckBox("É diet");
 			hasIce = new JCheckBox("Acompanha gelo");
 			hasStraw = new JCheckBox("Acompanha canudo");
 			

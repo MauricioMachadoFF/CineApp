@@ -12,7 +12,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import control.DataControl;
-import model.Sale;
 
 /**
  * Menu para finalização de uma venda.
@@ -63,11 +62,11 @@ public class FinishSaleItem implements ActionListener {
 		total.setEditable(false);
 		
 		labelClientCPF.setBounds(30, 20, 150, 25);
-		clientCPF.setBounds(180, 20, 180, 25);
-		labelEmployeeCode.setBounds(30, 50, 150, 25);
-		employeeCode.setBounds(180, 50, 180, 25);
+		clientCPF.setBounds(200, 20, 180, 25);
+		labelEmployeeCode.setBounds(30, 50, 200, 25);
+		employeeCode.setBounds(200, 50, 180, 25);
 		labelTotal.setBounds(30, 80, 150, 25);
-		total.setBounds(180, 80, 180, 25);
+		total.setBounds(200, 80, 180, 25);
 		labelPaymentMethod.setBounds(30, 110, 250, 25);
 		debitMethod.setBounds(30, 130, 150, 25);
 		creditMethod.setBounds(30, 150, 150, 25);

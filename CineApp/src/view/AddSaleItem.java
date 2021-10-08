@@ -29,7 +29,7 @@ public class AddSaleItem implements ActionListener {
 		foodSale.setBounds(100, 50, 300, 30);
 		ticketSale.setBounds(100, 90, 300, 30);
 		finishSale.setBounds(100, 130, 300, 30);
-		title.setBounds(180, 10, 300, 20);
+		title.setBounds(210, 10, 300, 20);
 		
 		window.setLayout(null);
 		
