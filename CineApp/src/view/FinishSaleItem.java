@@ -110,7 +110,7 @@ public class FinishSaleItem implements ActionListener {
 				//System.out.println();
 				//System.out.println("Visão Geral");
 				//System.out.println();
-			
+			try {
 				data.getSales().get(this.salePos).setClientCPF(clientCPF.getText());
 				data.getSales().get(this.salePos).setEmployee(data.getEmployeeByCode(Integer.parseInt(employeeCode.getText())));
 				
@@ -123,9 +123,17 @@ public class FinishSaleItem implements ActionListener {
 					} else {
 						JOptionPane.showMessageDialog(null, "Nenhum método de pagamento selecionado", "Erro", 0);
 					}
-								
-				//System.out.println(data.getSales().get(this.salePos).toString());
+				JOptionPane.showMessageDialog(null,"Compra finalizada!\n"
+							+ "1| Total: " + data.getSales().get(this.salePos).getTotal() + "\n", null, 
+							0);
 				this.window.dispose();
+			} catch (NumberFormatException event) {
+				JOptionPane.showMessageDialog(null,"Erro ao adicionar os dados!\n"
+						+ "1| Tenha certeza de que todos os campos estejam preenchidos\n"
+						+ "2| Insira somente números nos campos de CPF", null, 
+						0);
+			}
+				
 		}
 		else if(source == cancelSale) {
 			data.deleteSale(this.salePos);
